@@ -132,6 +132,8 @@ ${C2}└────────────────────────
 `.trim().split('\n')
     },
 ];
+
+
 """
 
 # ──[ Terminal JS logic ]───────────────────────────────────────────────────────────────
@@ -189,10 +191,18 @@ PORTFOLIO = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>arpatek</title>
+  <link rel="icon" href="/static/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <style>{_STYLES}</style>
+  <style>{_STYLES}
+img.profile {{
+  float: right;
+  width: 96px;
+  height: 96px;
+  margin: 0 0 12px 16px;
+  image-rendering: pixelated;
+}}</style>
 </head>
 <body>
   <div id="container">
@@ -202,6 +212,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
       <a href="https://codeberg.org/arpatek" class="right">codeberg</a>
     </div>
 
+    <img src="/static/profile.png" class="profile" alt="arpatek">
     <h1>&gt; arpatek.dev</h1>
 
     <pre class="terminal" id="term"><code></code></pre>
@@ -225,6 +236,7 @@ MANPAGE = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>arpatek(1)</title>
+  <link rel="icon" href="/static/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">

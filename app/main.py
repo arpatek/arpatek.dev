@@ -28,6 +28,7 @@ __version__ = "0.1.0"
 
 # ──[ Imports ]─────────────────────────────────────────────────────────────────────────
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
 from app.routes.portfolio import router as portfolio_router
@@ -42,6 +43,9 @@ app = FastAPI(
     redoc_url   = None,
 )
 
+
+# ──[ Static Files ]────────────────────────────────────────────────────────────────────
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 # ──[ Routers ]─────────────────────────────────────────────────────────────────────────
 app.include_router(portfolio_router)
