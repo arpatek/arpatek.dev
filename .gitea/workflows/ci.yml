@@ -27,3 +27,15 @@ jobs:
 
           docker push $IMAGE:$SHA
           docker push $IMAGE:latest
+
+      - name: Rollout restart
+        run: |
+          curl -LO https://dl.k8s.io/release/v1.35.4/bin/linux/amd64/kubectl
+          chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG_B64 }}" | base64 -d > ~/.kube/config
+          chmod 600 ~/.kube/config
+
+          kubectl rollout restart deployment/arpatek-dev
+          kubectl rollout status deployment/arpatek-dev --timeout=120s
