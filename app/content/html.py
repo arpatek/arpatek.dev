@@ -96,6 +96,13 @@ pre.terminal > code::after {
 
 # ──[ Terminal commands shown in the browser ]───────────────────────────────────────────
 _COMMANDS_JS = r"""
+const G0 = '<span style="color:#5fffff">';
+const G1 = '<span style="color:#00ffd7">';
+const G2 = '<span style="color:#00ffaf">';
+const G3 = '<span style="color:#00ff87">';
+const G4 = '<span style="color:#00ff5f">';
+const G5 = '<span style="color:#00ff00">';
+const G6 = '<span style="color:#87ff87">';
 const C1 = '<span style="color:#5fffff">';
 const C2 = '<span style="color:#87ff87">';
 const DM = '<span style="opacity:0.45">';
@@ -106,12 +113,16 @@ const COMMANDS = [
     {
         cmd: 'curl arpatek.dev',
         lines: `
-  ${C1}▄▄  ██████  ██████   ▄▄  ██████ ▄████▄ ██  ██${R}
- ${C1}█  █ ██  ██ ██   ██  █  █   ██  ██    █ ██ ██${R}
- ${C1}████ ██████ ██████   ████   ██  ████████ █████${R}       ${BD}Juan Garcia${R}
- ${C1}█  █ ██  ██ ██       █  █   ██  ██    █ ██ ██${R}        Linux technologist &amp; automation engineer
- ${C1}██ █  █   █  ██       ██    ██  ██    █ ██  ██${R}        ${C1}https://arpatek.dev${R} | ${C1}https://codeberg.org/arpatek${R}
-  ${DM}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄${R}
+${G0}         :::     :::::::::  :::::::::     ::: ::::::::::: :::::::::: :::    :::${R}
+${G1}       :+: :+:   :+:    :+: :+:    :+:  :+: :+:   :+:     :+:        :+:   :+:${R}
+${G2}     +:+   +:+  +:+    +:+ +:+    +:+ +:+   +:+  +:+     +:+        +:+  +:+${R}
+${G3}   +#++:++#++: +#++:++#:  +#++:++#+ +#++:++#++: +#+     +#++:++#   +#++:++${R}
+${G4}  +#+     +#+ +#+    +#+ +#+       +#+     +#+ +#+     +#+        +#+  +#+${R}
+${G5} #+#     #+# #+#    #+# #+#       #+#     #+# #+#     #+#        #+#   #+#${R}
+${G6}###     ### ###    ### ###       ###     ### ###     ########## ###    ###${R}
+
+  ${BD}Juan Garcia${R} — Linux technologist &amp; automation engineer
+  ${C1}https://arpatek.dev${R} | ${C1}https://codeberg.org/arpatek${R}
 
 
 ${C2}┌─About───────────────────────────┐${R} ${C2}┌─Links────┬────────────────────────────────┐${R}
