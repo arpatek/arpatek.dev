@@ -15,22 +15,22 @@ _STYLES = """
 ul { list-style-type: none; }
 
 :root {
-    --c1: #6adae7;   /* cyan    - links       */
-    --c2: #a3d97c;   /* green   - accents     */
-    --c3: #ff6583;   /* pink    - highlights  */
-    --c4: #4a4a5a;   /* dim                   */
-    --c5: #ffd56c;   /* yellow  - body text   */
+    --c1: #9db9b2;   /* teal    - links       */
+    --c2: #79be9a;   /* green   - accents     */
+    --c3: #b9746f;   /* red     - highlights  */
+    --c4: #877887;   /* dim purple            */
+    --c5: #dcd6d6;   /* light   - body text   */
 }
 
 body {
-    background: #1a1b1e;
+    background: #292329;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
 }
 
 #container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 10px auto;
     padding: 0 8px;
 }
@@ -43,17 +43,17 @@ h2 { color: var(--c4); font-size: 0.85rem; text-transform: uppercase;
      letter-spacing: 0.08em; margin: 1.4rem 0 0.4rem; }
 
 /* nav */
-#nav { border-bottom: 1px solid #6adae744; margin-bottom: 20px; overflow: hidden; }
+#nav { border-bottom: 1px solid #9db9b244; margin-bottom: 20px; overflow: hidden; }
 #nav a { display: block; float: left; padding: 12px 14px; color: var(--c5); }
-#nav a:hover { background: #252630; text-decoration: none; }
-#nav a.active { color: var(--c3); }
+#nav a:hover { background: #332e33; text-decoration: none; }
+#nav a.active { color: var(--c1); }
 #nav a.right { float: right; }
 
 /* terminal block */
 pre.terminal {
-    background: #141416;
-    border: 1px solid #a3d97c33;
-    box-shadow: 0 0 160px #a3d97c12, 0 0 60px #ff658308;
+    background: #1e1b1e;
+    border: 1px solid #79be9a33;
+    box-shadow: 0 0 160px #79be9a10, 0 0 60px #b9746f08;
     padding: 8px;
     min-height: 380px;
     overflow-x: auto;
@@ -67,7 +67,7 @@ pre.terminal > code::after {
     content: "";
     width: 6px;
     height: 12px;
-    background: var(--c1);
+    background: var(--c5);
     display: inline-block;
     animation: blink 1.5s step-start infinite;
 }
@@ -104,15 +104,15 @@ pre.terminal > code::after {
 
 # ──[ Terminal commands shown in the browser ]───────────────────────────────────────────
 _COMMANDS_JS = r"""
-const G0 = '<span style="color:#ff6583">';
-const G1 = '<span style="color:#e870a0">';
-const G2 = '<span style="color:#c87cc0">';
-const G3 = '<span style="color:#aa9eef">';
-const G4 = '<span style="color:#88c4ef">';
-const G5 = '<span style="color:#6adae7">';
-const G6 = '<span style="color:#a3d97c">';
-const C1 = '<span style="color:#6adae7">';
-const C2 = '<span style="color:#a3d97c">';
+const G0 = '<span style="color:#b9746f">';
+const G1 = '<span style="color:#cd9b98">';
+const G2 = '<span style="color:#c3b283">';
+const G3 = '<span style="color:#9db9b2">';
+const G4 = '<span style="color:#79be9a">';
+const G5 = '<span style="color:#a2d2b9">';
+const G6 = '<span style="color:#dcd6d6">';
+const C1 = '<span style="color:#9db9b2">';
+const C2 = '<span style="color:#79be9a">';
 const DM = '<span style="opacity:0.45">';
 const BD = '<span style="font-weight:700">';
 const R  = '</span>';
@@ -239,10 +239,10 @@ function ssFrame(cols) {
         for (let c = 0; c < cols; c++) {
             const trail = (ssColumns[c].pos - r + SS_ROWS) % SS_ROWS;
             let color, opacity;
-            if (trail === 0)     { color = '#ffd56c'; opacity = '1.00'; }
-            else if (trail < 4)  { color = '#6adae7'; opacity = (1 - trail / 6).toFixed(2); }
-            else if (trail < 10) { color = '#aa9eef'; opacity = (0.35 - (trail - 4) / 30).toFixed(2); }
-            else                 { color = '#1e1e24'; opacity = '0.05'; }
+            if (trail === 0)     { color = '#dcd6d6'; opacity = '1.00'; }
+            else if (trail < 4)  { color = '#9db9b2'; opacity = (1 - trail / 6).toFixed(2); }
+            else if (trail < 10) { color = '#877887'; opacity = (0.35 - (trail - 4) / 30).toFixed(2); }
+            else                 { color = '#1e1b1e'; opacity = '0.05'; }
             html += `<span style="color:${color};opacity:${opacity}">${ssGrid[r][c]}</span>`;
         }
         html += '\n';

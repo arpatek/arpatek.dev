@@ -10,20 +10,20 @@ Author: Juan Garcia (arpatek)
 
 # ──[ ANSI Codes ]──────────────────────────────────────────────────────────────────────
 R  = '\033[0m'          # reset
-C1 = '\033[38;5;116m'   # cyan    — links (#6adae7)
-C2 = '\033[38;5;150m'   # green   — boxes, legend labels (#a3d97c)
-C3 = '\033[38;5;221m'   # yellow  — body text (#ffd56c)
+C1 = '\033[38;5;109m'   # teal    — links (#9db9b2)
+C2 = '\033[38;5;115m'   # green   — boxes, legend labels (#79be9a)
+C3 = '\033[38;5;188m'   # light   — body text (#dcd6d6)
 DM = '\033[2m'          # dim     — decorative lines
 BD = '\033[1m'          # bold
 
-# gradient rows: pink → purple → cyan → green
-G0 = '\033[38;5;204m'   # #ff6583 pink
-G1 = '\033[38;5;211m'   # pink-purple
-G2 = '\033[38;5;176m'   # purple-pink
-G3 = '\033[38;5;147m'   # #aa9eef purple
-G4 = '\033[38;5;116m'   # #6adae7 cyan
-G5 = '\033[38;5;123m'   # lighter cyan
-G6 = '\033[38;5;150m'   # #a3d97c green
+# gradient rows: muted red → pink → gold → teal → green → near-white
+G0 = '\033[38;5;138m'   # #b9746f muted red
+G1 = '\033[38;5;181m'   # #cd9b98 dusty pink
+G2 = '\033[38;5;180m'   # #c3b283 muted gold
+G3 = '\033[38;5;109m'   # #9db9b2 teal
+G4 = '\033[38;5;115m'   # #79be9a sage green
+G5 = '\033[38;5;151m'   # #a2d2b9 mint
+G6 = '\033[38;5;188m'   # #dcd6d6 near-white
 
 # ──[ Portfolio ]───────────────────────────────────────────────────────────────────────
 PORTFOLIO = (
