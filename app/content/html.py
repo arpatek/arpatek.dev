@@ -26,7 +26,7 @@ body {
     background: #000;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 18px;
+    font-size: 13px;
 }
 
 #container {
@@ -60,7 +60,7 @@ pre.terminal {
     line-height: 16px;
     margin: 16px 0;
 }
-pre.terminal > code { font-size: 13px; }
+pre.terminal > code { font-size: 15px; }
 
 /* blinking cursor */
 pre.terminal > code::after {
