@@ -26,11 +26,11 @@ body {
     background: #000;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #container {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 10px auto;
     padding: 0 8px;
 }
