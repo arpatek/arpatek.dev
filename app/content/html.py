@@ -26,7 +26,7 @@ body {
     background: #000;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 #container {
