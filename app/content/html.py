@@ -74,6 +74,15 @@ pre.terminal > code::after {
 .no-cursor::after { animation: none !important; }
 @keyframes blink { 50% { opacity: 0; } }
 
+/* mobile */
+@media (max-width: 600px) {
+    body { font-size: 11px; padding: 0 4px; }
+    pre.terminal { min-height: 260px; }
+    pre.terminal > code { font-size: 10px; }
+    #nav a { padding: 10px 8px; }
+    img.profile { width: 64px; height: 64px; }
+}
+
 /* footer */
 .footer { text-align: center; font-size: 11px; color: var(--c4);
           margin-top: 16px; padding-bottom: 16px; }
