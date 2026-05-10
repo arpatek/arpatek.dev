@@ -1,0 +1,29 @@
+name: Build and Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login to Gitea registry
+        run: |
+          echo "${{ github.token }}" | docker login git.arpatek.dev \
+            -u ${{ github.actor }} --password-stdin
+
+      - name: Build and push
+        run: |
+          IMAGE=git.arpatek.dev/arpatek/arpatek.dev
+          SHA=${{ github.sha }}
+
+          docker build -t $IMAGE:$SHA -t $IMAGE:latest .
+
+          docker push $IMAGE:$SHA
+          docker push $IMAGE:latest
