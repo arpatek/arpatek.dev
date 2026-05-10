@@ -15,15 +15,15 @@ _STYLES = """
 ul { list-style-type: none; }
 
 :root {
-    --c1: #df6d2d;   /* orange     - links        */
-    --c2: #638c6d;   /* sage       - accents      */
-    --c3: #c84c05;   /* burnt      - highlights   */
-    --c4: #3d5c44;   /* dim sage                  */
-    --c5: #e7fbb4;   /* lime       - body text    */
+    --c1: #6adae7;   /* cyan    - links       */
+    --c2: #a3d97c;   /* green   - accents     */
+    --c3: #ff6583;   /* pink    - highlights  */
+    --c4: #4a4a5a;   /* dim                   */
+    --c5: #ffd56c;   /* yellow  - body text   */
 }
 
 body {
-    background: #080a07;
+    background: #1a1b1e;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
@@ -43,17 +43,17 @@ h2 { color: var(--c4); font-size: 0.85rem; text-transform: uppercase;
      letter-spacing: 0.08em; margin: 1.4rem 0 0.4rem; }
 
 /* nav */
-#nav { border-bottom: 1px solid #638c6d55; margin-bottom: 20px; overflow: hidden; }
+#nav { border-bottom: 1px solid #6adae744; margin-bottom: 20px; overflow: hidden; }
 #nav a { display: block; float: left; padding: 12px 14px; color: var(--c5); }
-#nav a:hover { background: #0f1a10; text-decoration: none; }
-#nav a.active { color: var(--c1); }
+#nav a:hover { background: #252630; text-decoration: none; }
+#nav a.active { color: var(--c3); }
 #nav a.right { float: right; }
 
 /* terminal block */
 pre.terminal {
-    background: #050805;
-    border: 1px solid #638c6d44;
-    box-shadow: 0 0 160px #638c6d18, 0 0 60px #c84c050a;
+    background: #141416;
+    border: 1px solid #a3d97c33;
+    box-shadow: 0 0 160px #a3d97c12, 0 0 60px #ff658308;
     padding: 8px;
     min-height: 380px;
     overflow-x: auto;
@@ -67,7 +67,7 @@ pre.terminal > code::after {
     content: "";
     width: 6px;
     height: 12px;
-    background: var(--c5);
+    background: var(--c1);
     display: inline-block;
     animation: blink 1.5s step-start infinite;
 }
@@ -80,7 +80,6 @@ pre.terminal > code::after {
     pre.terminal { min-height: 260px; }
     pre.terminal > code { font-size: 10px; }
     #nav a { padding: 10px 8px; }
-    img.profile { display: none; }
 }
 
 /* footer */
@@ -105,15 +104,15 @@ pre.terminal > code::after {
 
 # ──[ Terminal commands shown in the browser ]───────────────────────────────────────────
 _COMMANDS_JS = r"""
-const G0 = '<span style="color:#c84c05">';
-const G1 = '<span style="color:#d05a10">';
-const G2 = '<span style="color:#df6d2d">';
-const G3 = '<span style="color:#9a8840">';
-const G4 = '<span style="color:#638c6d">';
-const G5 = '<span style="color:#9abf9a">';
-const G6 = '<span style="color:#e7fbb4">';
-const C1 = '<span style="color:#df6d2d">';
-const C2 = '<span style="color:#638c6d">';
+const G0 = '<span style="color:#ff6583">';
+const G1 = '<span style="color:#e870a0">';
+const G2 = '<span style="color:#c87cc0">';
+const G3 = '<span style="color:#aa9eef">';
+const G4 = '<span style="color:#88c4ef">';
+const G5 = '<span style="color:#6adae7">';
+const G6 = '<span style="color:#a3d97c">';
+const C1 = '<span style="color:#6adae7">';
+const C2 = '<span style="color:#a3d97c">';
 const DM = '<span style="opacity:0.45">';
 const BD = '<span style="font-weight:700">';
 const R  = '</span>';
@@ -240,10 +239,10 @@ function ssFrame(cols) {
         for (let c = 0; c < cols; c++) {
             const trail = (ssColumns[c].pos - r + SS_ROWS) % SS_ROWS;
             let color, opacity;
-            if (trail === 0)     { color = '#e7fbb4'; opacity = '1.00'; }
-            else if (trail < 4)  { color = '#df6d2d'; opacity = (1 - trail / 6).toFixed(2); }
-            else if (trail < 10) { color = '#638c6d'; opacity = (0.35 - (trail - 4) / 30).toFixed(2); }
-            else                 { color = '#0f1a10'; opacity = '0.05'; }
+            if (trail === 0)     { color = '#ffd56c'; opacity = '1.00'; }
+            else if (trail < 4)  { color = '#6adae7'; opacity = (1 - trail / 6).toFixed(2); }
+            else if (trail < 10) { color = '#aa9eef'; opacity = (0.35 - (trail - 4) / 30).toFixed(2); }
+            else                 { color = '#1e1e24'; opacity = '0.05'; }
             html += `<span style="color:${color};opacity:${opacity}">${ssGrid[r][c]}</span>`;
         }
         html += '\n';
@@ -302,13 +301,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>{_STYLES}
-img.profile {{
-  float: right;
-  width: 96px;
-  height: 96px;
-  margin: 0 0 12px 16px;
-  image-rendering: pixelated;
-}}</style>
+</style>
 </head>
 <body>
   <div id="container">
@@ -318,7 +311,6 @@ img.profile {{
       <a href="https://codeberg.org/arpatek" class="right">codeberg</a>
     </div>
 
-    <img src="/static/profile.png" class="profile" alt="arpatek">
     <h1>&gt; arpatek.dev</h1>
 
     <pre class="terminal" id="term"><code></code></pre>
