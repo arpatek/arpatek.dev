@@ -131,48 +131,6 @@ ${C2}└────────────────────────
   ${C1}$ curl arpatek.dev/man${R}    Full resume in manpage format
 `.trim().split('\n')
     },
-    {
-        cmd: 'curl man.arpatek.dev',
-        lines: `
-ARPATEK(1)                    Personal Manual                    ARPATEK(1)
-
-NAME
-       arpatek -- Juan Garcia, Linux technologist &amp; automation engineer
-
-DESCRIPTION
-       Systems automation engineer with production experience building
-       hardware validation tooling at scale. Hands-on with Ansible,
-       Terraform, Kubernetes, and self-hosted infrastructure stacks.
-       Pursuing RHCSA. Roadmap: RHCE, Terraform Associate, CKA, CKS.
-
-EXPERIENCE
-       Senior Test Technician - TrueNAS | 2021-2024
-
-              * Built 22,000+ line Bash/Python QC automation suite
-              * Automated BIOS/firmware validation via IPMI &amp; Redfish API
-              * Developed Python Redfish clients for liquid immersion platforms
-              * Integrated PostgreSQL for burn-in parsing and reporting
-
-       Computer Hardware Technician - EMR CPR/Corovan | 2021
-       Post Production Specialist - Freelance | 2016-2021
-       Passenger Service Supervisor - Pacific Aviation | 2019-2021
-
-PROJECTS
-       home.arpa   k3s, FreeIPA, WireGuard, Prometheus/Grafana/Loki
-       terraform-xo, ansible-baseline, puppet-modules, snaputil
-
-EDUCATION
-       RHCSA In Progress | Google IT Automation (Completed)
-
-SEE ALSO
-       arpatek.dev   codeberg.org/arpatek   linkedin.com/in/arpatek
-
-NOTES
-       if [ "$task" = "manual" ]; then automate; fi  01001010 01000111
-
-ARPATEK(1)                    California, USA                    ARPATEK(1)
-`.trim().split('\n')
-    },
 ];
 """
 
@@ -211,13 +169,17 @@ function runCommand(idx, done) {
     tick();
 }
 
-(function loop(i, delay) {
-    setTimeout(function () {
-        const next = (i + 1) % COMMANDS.length;
-        const cb = COMMANDS.length === 1 ? () => {} : () => loop(next, LOOP_DELAY);
-        runCommand(i, cb);
-    }, delay);
-})(0, INIT_DELAY);
+setTimeout(function () {
+    const cb = COMMANDS.length === 1 ? () => {} : function() {
+        setTimeout(() => {
+            let i = 1 % COMMANDS.length;
+            (function loop(i) {
+                setTimeout(() => { runCommand(i, () => loop((i + 1) % COMMANDS.length)); }, LOOP_DELAY);
+            })(i);
+        }, LOOP_DELAY);
+    };
+    runCommand(0, cb);
+}, INIT_DELAY);
 """
 
 # ──[ Portfolio ]───────────────────────────────────────────────────────────────────────
@@ -384,10 +346,6 @@ MANPAGE = f"""<!DOCTYPE html>
 
     <div class="man-footer">
       <span>ARPATEK(1)</span><span>California, USA</span><span>ARPATEK(1)</span>
-    </div>
-
-    <div class="footer" style="margin-top: 8px;">
-      <code>if [ &quot;$task&quot; = &quot;manual&quot; ]; then automate; fi &nbsp; 01001010 01000111</code>
     </div>
   </div>
 </body>

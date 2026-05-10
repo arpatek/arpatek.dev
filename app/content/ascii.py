@@ -136,10 +136,6 @@ f"""
 {C2}SEE ALSO{R}
        {C1}arpatek.dev{R}   {C1}codeberg.org/arpatek{R}   {C1}linkedin.com/in/arpatek{R}
 
-{C2}NOTES{R}
-       {DM}if [ "$task" = "manual" ]; then automate; fi{R}
-       {DM}01001010 01000111{R}
-
 {C2}ARPATEK(1){R}                    California, USA                    {C2}ARPATEK(1){R}
 """
 )
