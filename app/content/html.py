@@ -80,7 +80,7 @@ pre.terminal > code::after {
     pre.terminal { min-height: 260px; }
     pre.terminal > code { font-size: 10px; }
     #nav a { padding: 10px 8px; }
-    img.profile { width: 64px; height: 64px; }
+    img.profile { display: none; }
 }
 
 /* footer */
