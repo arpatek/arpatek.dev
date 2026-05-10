@@ -15,15 +15,15 @@ _STYLES = """
 ul { list-style-type: none; }
 
 :root {
-    --c1: #00ffff;   /* neon cyan  - links        */
-    --c2: #ff00aa;   /* hot pink   - accents      */
-    --c3: #ff00ff;   /* magenta    - highlights   */
-    --c4: #664466;   /* dim purple                */
-    --c5: #ffaa00;   /* amber      - body text    */
+    --c1: #df6d2d;   /* orange     - links        */
+    --c2: #638c6d;   /* sage       - accents      */
+    --c3: #c84c05;   /* burnt      - highlights   */
+    --c4: #3d5c44;   /* dim sage                  */
+    --c5: #e7fbb4;   /* lime       - body text    */
 }
 
 body {
-    background: #0d0015;
+    background: #080a07;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
@@ -43,17 +43,17 @@ h2 { color: var(--c4); font-size: 0.85rem; text-transform: uppercase;
      letter-spacing: 0.08em; margin: 1.4rem 0 0.4rem; }
 
 /* nav */
-#nav { border-bottom: 1px solid #ff00aa44; margin-bottom: 20px; overflow: hidden; }
+#nav { border-bottom: 1px solid #638c6d55; margin-bottom: 20px; overflow: hidden; }
 #nav a { display: block; float: left; padding: 12px 14px; color: var(--c5); }
-#nav a:hover { background: #1a0025; text-decoration: none; }
-#nav a.active { color: var(--c2); }
+#nav a:hover { background: #0f1a10; text-decoration: none; }
+#nav a.active { color: var(--c1); }
 #nav a.right { float: right; }
 
 /* terminal block */
 pre.terminal {
-    background: #080010;
-    border: 1px solid #ff00aa33;
-    box-shadow: 0 0 160px #ff00aa18, 0 0 40px #00ffff0a;
+    background: #050805;
+    border: 1px solid #638c6d44;
+    box-shadow: 0 0 160px #638c6d18, 0 0 60px #c84c050a;
     padding: 8px;
     min-height: 380px;
     overflow-x: auto;
@@ -67,7 +67,7 @@ pre.terminal > code::after {
     content: "";
     width: 6px;
     height: 12px;
-    background: var(--c1);
+    background: var(--c5);
     display: inline-block;
     animation: blink 1.5s step-start infinite;
 }
@@ -105,15 +105,15 @@ pre.terminal > code::after {
 
 # ──[ Terminal commands shown in the browser ]───────────────────────────────────────────
 _COMMANDS_JS = r"""
-const G0 = '<span style="color:#ff00ff">';
-const G1 = '<span style="color:#df00ff">';
-const G2 = '<span style="color:#aa00ff">';
-const G3 = '<span style="color:#7700ff">';
-const G4 = '<span style="color:#0055ff">';
-const G5 = '<span style="color:#00aaff">';
-const G6 = '<span style="color:#00ffff">';
-const C1 = '<span style="color:#00ffff">';
-const C2 = '<span style="color:#ff00aa">';
+const G0 = '<span style="color:#c84c05">';
+const G1 = '<span style="color:#d05a10">';
+const G2 = '<span style="color:#df6d2d">';
+const G3 = '<span style="color:#9a8840">';
+const G4 = '<span style="color:#638c6d">';
+const G5 = '<span style="color:#9abf9a">';
+const G6 = '<span style="color:#e7fbb4">';
+const C1 = '<span style="color:#df6d2d">';
+const C2 = '<span style="color:#638c6d">';
 const DM = '<span style="opacity:0.45">';
 const BD = '<span style="font-weight:700">';
 const R  = '</span>';
@@ -198,40 +198,53 @@ function runCommand(idx, done) {
 }
 
 // ── Screensaver (falling rain) ────────────────────────────────────────────────
-const SS_COLS  = 80;
 const SS_ROWS  = 22;
 const SS_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*<>[]{}';
 
-const columns = Array.from({length: SS_COLS}, () => ({
-    pos:   Math.floor(Math.random() * SS_ROWS),
-    speed: 1 + Math.random() * 2,
-    timer: Math.random() * 10,
-}));
+function getSSCols() {
+    const testSpan = document.createElement('span');
+    testSpan.style.cssText = 'visibility:hidden;position:absolute;white-space:pre';
+    testSpan.textContent = 'x';
+    term.appendChild(testSpan);
+    const cw = testSpan.getBoundingClientRect().width || 9;
+    testSpan.remove();
+    return Math.floor((term.clientWidth - 16) / cw);
+}
 
-const grid = Array.from({length: SS_ROWS}, () =>
-    Array.from({length: SS_COLS}, () => SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)])
-);
+let ssColumns = [];
+let ssGrid    = [];
 
-function ssFrame() {
-    columns.forEach((col, c) => {
+function initSS(cols) {
+    ssColumns = Array.from({length: cols}, () => ({
+        pos:   Math.floor(Math.random() * SS_ROWS),
+        speed: 1 + Math.random() * 2,
+        timer: Math.random() * 10,
+    }));
+    ssGrid = Array.from({length: SS_ROWS}, () =>
+        Array.from({length: cols}, () => SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)])
+    );
+}
+
+function ssFrame(cols) {
+    ssColumns.forEach((col, c) => {
         col.timer += 0.15;
         if (col.timer >= col.speed) {
             col.timer = 0;
             col.pos = (col.pos + 1) % SS_ROWS;
-            grid[col.pos][c] = SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)];
+            ssGrid[col.pos][c] = SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)];
         }
     });
 
     let html = '';
     for (let r = 0; r < SS_ROWS; r++) {
-        for (let c = 0; c < SS_COLS; c++) {
-            const trail = (columns[c].pos - r + SS_ROWS) % SS_ROWS;
+        for (let c = 0; c < cols; c++) {
+            const trail = (ssColumns[c].pos - r + SS_ROWS) % SS_ROWS;
             let color, opacity;
-            if (trail === 0)      { color = '#ffffff'; opacity = 1.00; }
-            else if (trail < 4)   { color = '#00ffff'; opacity = (1 - trail / 6).toFixed(2); }
-            else if (trail < 10)  { color = '#ff00aa'; opacity = (0.35 - (trail - 4) / 30).toFixed(2); }
-            else                  { color = '#220022'; opacity = '0.05'; }
-            html += `<span style="color:${color};opacity:${opacity}">${grid[r][c]}</span>`;
+            if (trail === 0)     { color = '#e7fbb4'; opacity = '1.00'; }
+            else if (trail < 4)  { color = '#df6d2d'; opacity = (1 - trail / 6).toFixed(2); }
+            else if (trail < 10) { color = '#638c6d'; opacity = (0.35 - (trail - 4) / 30).toFixed(2); }
+            else                 { color = '#0f1a10'; opacity = '0.05'; }
+            html += `<span style="color:${color};opacity:${opacity}">${ssGrid[r][c]}</span>`;
         }
         html += '\n';
     }
@@ -239,11 +252,13 @@ function ssFrame() {
 }
 
 function runScreensaver(done) {
+    const cols = getSSCols();
+    initSS(cols);
     setCursor(false);
     const start = Date.now();
     function frame() {
         if (Date.now() - start >= SCREENSAVER_DURATION) { done(); return; }
-        term.innerHTML = ssFrame();
+        term.innerHTML = ssFrame(cols);
         setTimeout(frame, SCREENSAVER_FPS);
     }
     frame();

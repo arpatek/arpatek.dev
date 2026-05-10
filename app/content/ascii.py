@@ -10,20 +10,20 @@ Author: Juan Garcia (arpatek)
 
 # ──[ ANSI Codes ]──────────────────────────────────────────────────────────────────────
 R  = '\033[0m'          # reset
-C1 = '\033[38;5;51m'    # neon cyan   — links, accents
-C2 = '\033[38;5;198m'   # hot pink    — boxes, legend labels
-C3 = '\033[38;5;214m'   # amber       — body text
+C1 = '\033[38;5;208m'   # orange      — links (#df6d2d)
+C2 = '\033[38;5;65m'    # sage green  — boxes, legend labels (#638c6d)
+C3 = '\033[38;5;193m'   # lime        — body text (#e7fbb4)
 DM = '\033[2m'          # dim         — decorative lines
 BD = '\033[1m'          # bold
 
-# gradient rows: magenta → purple → blue → cyan
-G0 = '\033[38;5;201m'
-G1 = '\033[38;5;171m'
-G2 = '\033[38;5;141m'
-G3 = '\033[38;5;99m'
-G4 = '\033[38;5;63m'
-G5 = '\033[38;5;45m'
-G6 = '\033[38;5;51m'
+# gradient rows: burnt orange → orange → sage → lime
+G0 = '\033[38;5;166m'   # #c84c05 burnt orange
+G1 = '\033[38;5;172m'   # warm orange
+G2 = '\033[38;5;208m'   # #df6d2d orange
+G3 = '\033[38;5;107m'   # yellow-green transition
+G4 = '\033[38;5;65m'    # #638c6d sage green
+G5 = '\033[38;5;114m'   # lighter sage
+G6 = '\033[38;5;193m'   # #e7fbb4 lime
 
 # ──[ Portfolio ]───────────────────────────────────────────────────────────────────────
 PORTFOLIO = (
