@@ -27,49 +27,48 @@ router = APIRouter()
 
 
 # ──[ ANSI Helpers ]────────────────────────────────────────────────────────────────────
-CLEAR        = '\033[2J\033[H'
-HIDE_CURSOR  = '\033[?25l'
-SHOW_CURSOR  = '\033[?25h'
-RESET        = '\033[0m'
+CLEAR       = '\033[2J\033[H'
+HIDE_CURSOR = '\033[?25l'
+SHOW_CURSOR = '\033[?25h'
+RESET       = '\033[0m'
 
-def _color(code: str, text: str) -> str:
-    return f'\033[{code}m{text}{RESET}'
+def _c(code: str, text: str) -> str:
+    return '\033[' + code + 'm' + text + RESET
 
 def _rgb(r: int, g: int, b: int, text: str) -> str:
-    return f'\033[38;2;{r};{g};{b}m{text}{RESET}'
+    return '\033[38;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm' + text + RESET
 
 
 # ──[ /gif — Trippy rotating circle ]──────────────────────────────────────────────────
-_GIF_CHARS  = ' .:-=+*#%@'
-_GIF_W      = 60
-_GIF_H      = 28
+_GIF_CHARS = ' .:-=+*#%@'
+_GIF_W     = 60
+_GIF_H     = 28
 
 async def _gif_stream():
     yield HIDE_CURSOR
     t = 0.0
     try:
         while True:
-            buf = [CLEAR]
+            rows = [CLEAR]
             cx, cy = _GIF_W, _GIF_H / 2
             for y in range(_GIF_H):
                 line = ''
                 for x in range(_GIF_W * 2):
                     dx = (x / 2 - cx) * 0.6
-                    dy =  y    - cy
+                    dy = y - cy
                     r  = math.sqrt(dx * dx + dy * dy)
                     th = math.atan2(dy, dx)
                     v  = math.sin(r * 0.7 - t) + math.cos(th * 4 + t * 0.8)
                     idx = int((v + 2) / 4 * (len(_GIF_CHARS) - 1))
                     idx = max(0, min(len(_GIF_CHARS) - 1, idx))
-                    c   = _GIF_CHARS[idx]
-                    # colour based on angle + time
+                    ch  = _GIF_CHARS[idx]
                     hue = (th + math.pi) / (2 * math.pi) + t * 0.05
                     ri  = int(127 + 127 * math.sin(hue * 6.28))
                     gi  = int(127 + 127 * math.sin(hue * 6.28 + 2.09))
                     bi  = int(127 + 127 * math.sin(hue * 6.28 + 4.19))
-                    line += _rgb(ri, gi, bi, c)
-                buf.append(line)
-            yield '\n'.join(buf) + '\n'
+                    line += _rgb(ri, gi, bi, ch)
+                rows.append(line)
+            yield '\n'.join(rows) + '\n'
             await asyncio.sleep(0.07)
             t += 0.22
     finally:
@@ -82,67 +81,37 @@ async def gif():
 
 
 # ──[ /boo — Ghost ]───────────────────────────────────────────────────────────────────
-_TEAL  = '38;5;109'
-_GREEN = '38;5;115'
-_RED   = '38;5;138'
-_DIM   = '2'
+_TEAL = '38;5;109'
+_RED  = '38;5;138'
+
+def _ghost(eyes: str, mouth: list, extra: str = '') -> str:
+    bs = '\\'
+    lines = [
+        '',
+        _c(_TEAL, '       .---.'),
+        _c(_TEAL, '      /     ' + bs),
+        _c(_TEAL, '     | ' + eyes + ' |'),
+    ] + [_c(_TEAL, '     ' + m) for m in mouth] + [
+        _c(_TEAL, '      ' + bs + '_____/'),
+        _c(_TEAL, '      /|   |' + bs),
+        _c(_TEAL, '     / |   | ' + bs),
+        extra,
+        '',
+    ]
+    return '\n'.join(lines)
 
 _BOO_FRAMES = [
-    # frame 0 — quiet
-    f"""
-{_color(_TEAL, '       .---.')}
-{_color(_TEAL, '      /     \\')}
-{_color(_TEAL, '     | -   - |')}
-{_color(_TEAL, '     |   ^   |')}
-{_color(_TEAL, '     |  ___  |')}
-{_color(_TEAL, '      \\_____/')}
-{_color(_TEAL, '      /|   |\\')}
-{_color(_TEAL, '     / |   | \\')}
-    """,
-    # frame 1 — eyes widen
-    f"""
-{_color(_TEAL, '       .---.')}
-{_color(_TEAL, '      /     \\')}
-{_color(_TEAL, '     | o   o |')}
-{_color(_TEAL, '     |   ^   |')}
-{_color(_TEAL, '     |  ___  |')}
-{_color(_TEAL, '      \\_____/')}
-{_color(_TEAL, '      /|   |\\')}
-{_color(_TEAL, '     / |   | \\')}
-    """,
-    # frame 2 — BOO!
-    f"""
-{_color(_TEAL, '       .---.')}
-{_color(_TEAL, '      /     \\')}
-{_color(_TEAL, '     | O   O |')}
-{_color(_TEAL, '     |  ___  |')}
-{_color(_TEAL, '     | |   | |')}
-{_color(_TEAL, '      \\_____/')}
-{_color(_TEAL, '      /|   |\\')}
-{_color(_TEAL, '     / |   | \\')}
-
-{_color(_RED,   '         BOO!')}
-    """,
-    # frame 3 — back to quiet
-    f"""
-{_color(_TEAL, '       .---.')}
-{_color(_TEAL, '      /     \\')}
-{_color(_TEAL, '     | -   - |')}
-{_color(_TEAL, '     |   v   |')}
-{_color(_TEAL, '     |  ___  |')}
-{_color(_TEAL, '      \\_____/')}
-{_color(_TEAL, '      /|   |\\')}
-{_color(_TEAL, '     / |   | \\')}
-    """,
+    (_ghost('- . -', ['|   ^   |', '|  ___  |']),            1.2),
+    (_ghost('o . o', ['|   ^   |', '|  ___  |']),            0.4),
+    (_ghost('O . O', ['|  ___  |', '| |   | |'], _c(_RED, '      BOO!')), 1.5),
+    (_ghost('- . -', ['|   v   |', '|  ___  |']),            0.8),
 ]
-
-_BOO_DELAYS = [1.2, 0.4, 1.5, 0.8]
 
 async def _boo_stream():
     yield HIDE_CURSOR
     try:
         while True:
-            for frame, delay in zip(_BOO_FRAMES, _BOO_DELAYS):
+            for frame, delay in _BOO_FRAMES:
                 yield CLEAR + frame
                 await asyncio.sleep(delay)
     finally:
@@ -155,37 +124,37 @@ async def boo():
 
 
 # ──[ /xmas — Christmas tree ]─────────────────────────────────────────────────────────
-_STAR   = '38;5;221'  # yellow
-_TREE   = '38;5;115'  # sage green
-_TRUNK  = '38;5;138'  # muted brown
-_L1     = '38;5;204'  # pink/red light
-_L2     = '38;5;109'  # teal light
-_L3     = '38;5;221'  # yellow light
+_STAR  = '38;5;221'
+_GREEN = '38;5;115'
+_TRUNK = '38;5;138'
+_LIGHTS = ['38;5;204', '38;5;109', '38;5;221']
 
 def _xmas_frame(tick: int) -> str:
-    lights = [_L1, _L2, _L3]
     def L(i: int) -> str:
-        return _color(lights[(i + tick) % 3], '*')
+        return _c(_LIGHTS[(i + tick) % 3], '*')
 
-    return f"""
-{_color(_STAR,  '          ★')}
-{_color(_TREE,  '          /\\')}
-{_color(_TREE,  '         /  \\')}
-{_color(_TREE,  '        / ') + L(0) + _color(_TREE, '  \\')}
-{_color(_TREE,  '       /      \\')}
-{_color(_TREE,  '      / ') + L(1) + _color(_TREE, '  ') + L(2) + _color(_TREE, '  \\')}
-{_color(_TREE,  '     /          \\')}
-{_color(_TREE,  '    / ') + L(2) + _color(_TREE, '    ') + L(0) + _color(_TREE, '   \\')}
-{_color(_TREE,  '   /              \\')}
-{_color(_TREE,  '  / ') + L(1) + _color(_TREE, '  ') + L(2) + _color(_TREE, '   ') + L(0) + _color(_TREE, '  \\')}
-{_color(_TREE,  ' /                  \\')}
-{_color(_TREE,  '/____________________\\')}
-{_color(_TRUNK, '         ||||')}
-{_color(_TRUNK, '         ||||')}
-{_color(_TRUNK, '       [______]')}
-
-{_color(_STAR,  '     Happy Holidays! 🎄')}
-    """
+    sl = '\\'
+    rows = [
+        '',
+        '          ' + _c(_STAR,  'star'),
+        '          ' + _c(_GREEN, '/') + _c(_STAR, '*') + _c(_GREEN, sl),
+        '         ' + _c(_GREEN, '/   ' + sl),
+        '        ' + _c(_GREEN, '/ ') + L(0) + _c(_GREEN, '  ' + sl),
+        '       ' + _c(_GREEN, '/      ' + sl),
+        '      ' + _c(_GREEN, '/ ') + L(1) + _c(_GREEN, '  ') + L(2) + _c(_GREEN, '  ' + sl),
+        '     ' + _c(_GREEN, '/          ' + sl),
+        '    ' + _c(_GREEN, '/ ') + L(2) + _c(_GREEN, '    ') + L(0) + _c(_GREEN, '   ' + sl),
+        '   ' + _c(_GREEN, '/              ' + sl),
+        '  ' + _c(_GREEN, '/ ') + L(1) + _c(_GREEN, '  ') + L(2) + _c(_GREEN, '   ') + L(0) + _c(_GREEN, '  ' + sl),
+        ' ' + _c(_GREEN, '/____________________' + sl),
+        '         ' + _c(_TRUNK, '||||'),
+        '         ' + _c(_TRUNK, '||||'),
+        '       ' + _c(_TRUNK, '[______]'),
+        '',
+        '     ' + _c(_STAR, 'Happy Holidays!'),
+        '',
+    ]
+    return '\n'.join(rows)
 
 async def _xmas_stream():
     yield HIDE_CURSOR
