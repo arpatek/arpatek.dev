@@ -160,9 +160,13 @@ ${C2}└────────────────────────
 
 # ──[ Terminal JS logic ]───────────────────────────────────────────────────────────────
 _TERMINAL_JS = r"""
-const SPEED = 90;
+const SPEED      = 90;
 const INIT_DELAY = 1800;
 const LOOP_DELAY = 6000;
+
+const SCREENSAVER_DELAY    = 10 * 60 * 1000;  // 10 minutes
+const SCREENSAVER_DURATION = 20 * 1000;        // 20 seconds
+const SCREENSAVER_FPS      = 80;               // ms per frame
 
 const term = document.getElementById('term').children[0];
 
@@ -193,6 +197,59 @@ function runCommand(idx, done) {
     tick();
 }
 
+// ── Screensaver (falling rain) ────────────────────────────────────────────────
+const SS_COLS  = 80;
+const SS_ROWS  = 22;
+const SS_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*<>[]{}';
+
+const columns = Array.from({length: SS_COLS}, () => ({
+    pos:   Math.floor(Math.random() * SS_ROWS),
+    speed: 1 + Math.random() * 2,
+    timer: Math.random() * 10,
+}));
+
+const grid = Array.from({length: SS_ROWS}, () =>
+    Array.from({length: SS_COLS}, () => SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)])
+);
+
+function ssFrame() {
+    columns.forEach((col, c) => {
+        col.timer += 0.15;
+        if (col.timer >= col.speed) {
+            col.timer = 0;
+            col.pos = (col.pos + 1) % SS_ROWS;
+            grid[col.pos][c] = SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)];
+        }
+    });
+
+    let html = '';
+    for (let r = 0; r < SS_ROWS; r++) {
+        for (let c = 0; c < SS_COLS; c++) {
+            const trail = (columns[c].pos - r + SS_ROWS) % SS_ROWS;
+            let color, opacity;
+            if (trail === 0)      { color = '#ffffff'; opacity = 1.00; }
+            else if (trail < 4)   { color = '#00ffff'; opacity = (1 - trail / 6).toFixed(2); }
+            else if (trail < 10)  { color = '#ff00aa'; opacity = (0.35 - (trail - 4) / 30).toFixed(2); }
+            else                  { color = '#220022'; opacity = '0.05'; }
+            html += `<span style="color:${color};opacity:${opacity}">${grid[r][c]}</span>`;
+        }
+        html += '\n';
+    }
+    return html;
+}
+
+function runScreensaver(done) {
+    setCursor(false);
+    const start = Date.now();
+    function frame() {
+        if (Date.now() - start >= SCREENSAVER_DURATION) { done(); return; }
+        term.innerHTML = ssFrame();
+        setTimeout(frame, SCREENSAVER_FPS);
+    }
+    frame();
+}
+
+// ── Boot sequence ─────────────────────────────────────────────────────────────
 setTimeout(function () {
     const cb = COMMANDS.length === 1 ? () => {} : function() {
         setTimeout(() => {
@@ -204,6 +261,18 @@ setTimeout(function () {
     };
     runCommand(0, cb);
 }, INIT_DELAY);
+
+// ── Screensaver trigger ───────────────────────────────────────────────────────
+setTimeout(function kick() {
+    runScreensaver(function() {
+        term.innerHTML = '$ ';
+        setCursor(true);
+        setTimeout(() => {
+            runCommand(0, () => {});
+            setTimeout(kick, SCREENSAVER_DELAY);
+        }, 1000);
+    });
+}, SCREENSAVER_DELAY);
 """
 
 # ──[ Portfolio ]───────────────────────────────────────────────────────────────────────
