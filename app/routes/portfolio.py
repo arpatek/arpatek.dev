@@ -4,9 +4,8 @@ portfolio.py - Portfolio route handlers
 
 Handles GET / and GET /man for arpatek.dev.
 
-  GET /      arpatek.dev      → curl: ASCII portfolio  | browser: HTML portfolio
-             man.arpatek.dev  → plain-text manpage (always)
-  GET /man   arpatek.dev/man  → HTML manpage (always)
+  GET /      curl → ASCII portfolio  | browser → HTML portfolio
+  GET /man   curl → ASCII manpage    | browser → HTML manpage
 
 Author: Juan Garcia (arpatek)
 
@@ -34,23 +33,15 @@ router = APIRouter()
 # ──[ Route Handlers ]──────────────────────────────────────────────────────────────────
 @router.get("/")
 async def root(request: Request) -> Response:
-    """Serve the portfolio or manpage depending on hostname and User-Agent.
-
-    - Requests to man.arpatek.dev always return the plain-text manpage.
-    - Requests from curl return the ASCII portfolio.
-    - All other requests return the HTML portfolio.
+    """Serve the portfolio based on User-Agent.
 
     Args:
         request (Request): Incoming HTTP request.
 
     Returns:
-        Response: PlainTextResponse or HTMLResponse.
+        Response: PlainTextResponse for curl, HTMLResponse for browsers.
     """
-    host = request.headers.get("host", "")
-    ua   = request.headers.get("user-agent", "")
-
-    if host.startswith("man."):
-        return PlainTextResponse(ASCII_MANPAGE)
+    ua = request.headers.get("user-agent", "")
     if ua.lower().startswith("curl"):
         return PlainTextResponse(ASCII_PORTFOLIO)
     return HTMLResponse(HTML_PORTFOLIO)
@@ -58,12 +49,15 @@ async def root(request: Request) -> Response:
 
 @router.get("/man")
 async def manpage(request: Request) -> Response:
-    """Serve the HTML manpage resume for browser clients at arpatek.dev/man.
+    """Serve the resume based on User-Agent.
 
     Args:
         request (Request): Incoming HTTP request.
 
     Returns:
-        HTMLResponse: Rendered HTML manpage.
+        Response: PlainTextResponse for curl, HTMLResponse for browsers.
     """
+    ua = request.headers.get("user-agent", "")
+    if ua.lower().startswith("curl"):
+        return PlainTextResponse(ASCII_MANPAGE)
     return HTMLResponse(HTML_MANPAGE)

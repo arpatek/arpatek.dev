@@ -25,7 +25,7 @@ ul { list-style-type: none; }
 body {
     background: #000;
     color: var(--c5);
-    font-family: 'Fira Mono', 'Courier New', monospace;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
 }
 
@@ -96,34 +96,39 @@ pre.terminal > code::after {
 
 # ──[ Terminal commands shown in the browser ]───────────────────────────────────────────
 _COMMANDS_JS = r"""
+const C1 = '<span style="color:#5fffff">';
+const C2 = '<span style="color:#87ff87">';
+const DM = '<span style="opacity:0.45">';
+const BD = '<span style="font-weight:700">';
+const R  = '</span>';
+
 const COMMANDS = [
     {
         cmd: 'curl arpatek.dev',
         lines: `
-  ▄▄  ██████  ██████   ▄▄  ██████ ▄████▄ ██  ██
- █  █ ██  ██ ██   ██  █  █   ██  ██    █ ██ ██
- ████ ██████ ██████   ████   ██  ████████ █████       Juan Garcia
- █  █ ██  ██ ██       █  █   ██  ██    █ ██ ██        Linux technologist &amp; automation engineer
- ██ █  █   █  ██       ██    ██  ██    █ ██  ██        https://arpatek.dev | https://codeberg.org/arpatek
-  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+  ${C1}▄▄  ██████  ██████   ▄▄  ██████ ▄████▄ ██  ██${R}
+ ${C1}█  █ ██  ██ ██   ██  █  █   ██  ██    █ ██ ██${R}
+ ${C1}████ ██████ ██████   ████   ██  ████████ █████${R}       ${BD}Juan Garcia${R}
+ ${C1}█  █ ██  ██ ██       █  █   ██  ██    █ ██ ██${R}        Linux technologist &amp; automation engineer
+ ${C1}██ █  █   █  ██       ██    ██  ██    █ ██  ██${R}        ${C1}https://arpatek.dev${R} | ${C1}https://codeberg.org/arpatek${R}
+  ${DM}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄${R}
 
 
-┌─About───────────────────────────┐ ┌─Links────┬────────────────────────────────┐
-│                                 │ │          │                                │
-│  Systems automation engineer    │ │ Codeberg │ codeberg.org/arpatek           │
-│  based in California. 3 years   │ │ LinkedIn │ linkedin.com/in/arpatek        │
-│  of hardware &amp; UNIX lab work at │ │          │                                │
-│  TrueNAS. Now building a        │ └──────────┴────────────────────────────────┘
-│  self-hosted homelab using IaC. │
-│  RHCSA in progress.             │
-│                                 │
-└─────────────────────────────────┘
+${C2}┌─About───────────────────────────┐${R} ${C2}┌─Links────┬────────────────────────────────┐${R}
+${C2}│${R}                                 ${C2}│${R} ${C2}│${R}          ${C2}│${R}                                ${C2}│${R}
+${C2}│${R}  Systems automation engineer    ${C2}│${R} ${C2}│${R} Codeberg ${C2}│${R} ${C1}codeberg.org/arpatek${R}           ${C2}│${R}
+${C2}│${R}  based in California. 3 years   ${C2}│${R} ${C2}│${R} LinkedIn ${C2}│${R} ${C1}linkedin.com/in/arpatek${R}        ${C2}│${R}
+${C2}│${R}  of hardware &amp; UNIX lab work at ${C2}│${R} ${C2}│${R}          ${C2}│${R}                                ${C2}│${R}
+${C2}│${R}  TrueNAS. Now building a        ${C2}│${R} ${C2}└──────────┴────────────────────────────────┘${R}
+${C2}│${R}  self-hosted homelab using IaC. ${C2}│${R}
+${C2}│${R}  RHCSA in progress.             ${C2}│${R}
+${C2}│${R}                                 ${C2}│${R}
+${C2}└─────────────────────────────────┘${R}
 
-  Legend
+  ${C2}Legend${R}
 
-  $ curl arpatek.dev        Get this page
-  $ curl arpatek.dev/man    Full resume in manpage format
-  $ curl man.arpatek.dev    Same as above — designed for curl
+  ${C1}$ curl arpatek.dev${R}        Get this page
+  ${C1}$ curl arpatek.dev/man${R}    Full resume in manpage format
 `.trim().split('\n')
     },
     {
@@ -224,14 +229,14 @@ PORTFOLIO = f"""<!DOCTYPE html>
   <title>arpatek</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>{_STYLES}</style>
 </head>
 <body>
   <div id="container">
     <div id="nav">
       <a href="/" class="active">~</a>
-      <a href="/man">man arpatek</a>
+      <a href="/man">man arpatek(1)</a>
       <a href="https://codeberg.org/arpatek" class="right">codeberg</a>
     </div>
 
@@ -260,7 +265,7 @@ MANPAGE = f"""<!DOCTYPE html>
   <title>arpatek(1)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>{_STYLES}</style>
 </head>
 <body>

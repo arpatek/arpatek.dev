@@ -3,51 +3,61 @@ ascii.py - Plain-text content for curl clients
 ========================================================================================
 
 ASCII portfolio and manpage strings returned when the request comes from curl or
-from the man.arpatek.dev hostname.
+from the man.arpatek.dev hostname. ANSI escape codes add color in supporting terminals.
 
 Author: Juan Garcia (arpatek)
 """
 
+# ──[ ANSI Codes ]──────────────────────────────────────────────────────────────────────
+R  = '\033[0m'          # reset
+C1 = '\033[38;5;87m'    # cyan   — logo, links
+C2 = '\033[38;5;120m'   # green  — boxes, legend labels
+C3 = '\033[38;5;223m'   # cream  — body text
+DM = '\033[2m'          # dim    — decorative lines
+BD = '\033[1m'          # bold
+
 # ──[ Portfolio ]───────────────────────────────────────────────────────────────────────
-PORTFOLIO = r"""
-  ▄▄  ██████  ██████   ▄▄  ██████ ▄████▄ ██  ██
- █  █ ██  ██ ██   ██  █  █   ██  ██    █ ██ ██
- ████ ██████ ██████   ████   ██  ████████ █████       Juan Garcia
- █  █ ██  ██ ██       █  █   ██  ██    █ ██ ██        Linux technologist & automation engineer
- ██ █  █   █  ██       ██    ██  ██    █ ██  ██        https://arpatek.dev | https://codeberg.org/arpatek
-  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+PORTFOLIO = (
+f"""
+  {C1}▄▄  ██████  ██████   ▄▄  ██████ ▄████▄ ██  ██{R}
+ {C1}█  █ ██  ██ ██   ██  █  █   ██  ██    █ ██ ██{R}
+ {C1}████ ██████ ██████   ████   ██  ████████ █████{R}       {BD}Juan Garcia{R}
+ {C1}█  █ ██  ██ ██       █  █   ██  ██    █ ██ ██{R}        Linux technologist & automation engineer
+ {C1}██ █  █   █  ██       ██    ██  ██    █ ██  ██{R}        {C1}https://arpatek.dev{R} | {C1}https://codeberg.org/arpatek{R}
+  {DM}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄{R}
 
 
-┌─About───────────────────────────┐ ┌─Links────┬────────────────────────────────┐
-│                                 │ │          │                                │
-│  Systems automation engineer    │ │ Codeberg │ codeberg.org/arpatek           │
-│  based in California. 3 years   │ │ LinkedIn │ linkedin.com/in/arpatek        │
-│  of hardware & UNIX lab work at │ │          │                                │
-│  TrueNAS. Now building a        │ └──────────┴────────────────────────────────┘
-│  self-hosted homelab using IaC. │
-│  RHCSA in progress.             │
-│                                 │
-└─────────────────────────────────┘
+{C2}┌─About───────────────────────────┐{R} {C2}┌─Links────┬────────────────────────────────┐{R}
+{C2}│{R}                                 {C2}│{R} {C2}│{R}          {C2}│{R}                                {C2}│{R}
+{C2}│{R}  Systems automation engineer    {C2}│{R} {C2}│{R} Codeberg {C2}│{R} {C1}codeberg.org/arpatek{R}           {C2}│{R}
+{C2}│{R}  based in California. 3 years   {C2}│{R} {C2}│{R} LinkedIn {C2}│{R} {C1}linkedin.com/in/arpatek{R}        {C2}│{R}
+{C2}│{R}  of hardware & UNIX lab work at {C2}│{R} {C2}│{R}          {C2}│{R}                                {C2}│{R}
+{C2}│{R}  TrueNAS. Now building a        {C2}│{R} {C2}└──────────┴────────────────────────────────┘{R}
+{C2}│{R}  self-hosted homelab using IaC. {C2}│{R}
+{C2}│{R}  RHCSA in progress.             {C2}│{R}
+{C2}│{R}                                 {C2}│{R}
+{C2}└─────────────────────────────────┘{R}
 
-  Legend
+  {C2}Legend{R}
 
-  $ curl arpatek.dev        Get this page
-  $ curl arpatek.dev/man    Full resume in manpage format
-  $ curl man.arpatek.dev    Same as above — designed for curl
+  {C1}$ curl arpatek.dev{R}        Get this page
+  {C1}$ curl arpatek.dev/man{R}    Full resume in manpage format
 
 """
+)
 
 # ──[ Manpage / Resume ]────────────────────────────────────────────────────────────────
-MANPAGE = r"""
-ARPATEK(1)                    Personal Manual                    ARPATEK(1)
+MANPAGE = (
+f"""
+{C2}ARPATEK(1){R}                    Personal Manual                    {C2}ARPATEK(1){R}
 
-NAME
-       arpatek -- Juan Garcia, Linux technologist & automation engineer
+{C2}NAME{R}
+       arpatek -- {BD}Juan Garcia{R}, Linux technologist & automation engineer
 
-SYNOPSIS
+{C2}SYNOPSIS{R}
        juan [--automate] [--build] [--break-then-fix]
 
-DESCRIPTION
+{C2}DESCRIPTION{R}
        Systems automation engineer with production experience building
        hardware validation tooling at scale. Strong background in Linux,
        Bash, Python, and infrastructure-as-code. Hands-on with Ansible,
@@ -56,11 +66,11 @@ DESCRIPTION
        Associate, CKA, CKS, and AWS.
 
        Location: California, USA
-       Email:    juang.sh@proton.me
+       Email:    {C1}juang.sh@proton.me{R}
 
-EXPERIENCE
-       Senior Test Technician
-       TrueNAS | 2021 – 2024
+{C2}EXPERIENCE{R}
+       {BD}Senior Test Technician{R}
+       {C1}TrueNAS{R} | 2021 – 2024
 
               * Built a 22,000+ line Bash/Python automation suite (CC &
                 SWQC) for TrueNAS manufacturing QC
@@ -75,70 +85,61 @@ EXPERIENCE
               * Automated multi-node HA pair diffing and generated diff
                 sheets for QC traceability
 
-       Computer Hardware Technician
-       EMR CPR/Corovan | 2021
+       {BD}Computer Hardware Technician{R}
+       {C1}EMR CPR/Corovan{R} | 2021
 
               * Reconfigured and relocated desktop/server systems
-                post-migration
               * Troubleshot hardware/software issues and blueprinted
                 workstation layouts
 
-       Post Production Specialist
-       Freelance | 2016 – 2021
+       {BD}Post Production Specialist{R}
+       {C1}Freelance{R} | 2016 – 2021
 
-              * Managed AV setup, live audio/video services, and video
-                editing
+              * Managed AV setup, live audio/video services, and video editing
               * Designed and executed digital marketing strategies for SMBs
 
-       Passenger Service Supervisor
-       Pacific Aviation | 2019 – 2021
+       {BD}Passenger Service Supervisor{R}
+       {C1}Pacific Aviation{R} | 2019 – 2021
 
-              * Coordinated airline operations and communicated between
-                international teams
+              * Coordinated airline operations between international teams
 
-SKILLS
-       Languages       Bash, Python, HCL
+{C2}SKILLS{R}
+       {C1}Languages{R}       Bash, Python, HCL
+       {C1}Systems{R}         Linux (RHEL, Ubuntu, TrueNAS/FreeBSD), TCP/IP,
+                       VLANs, ZFS, SAS/HBA, BIOS, IPMI, Redfish API
+       {C1}IaC{R}             Terraform, Ansible, Puppet
+       {C1}Containers{R}      Docker, Kubernetes (k3s)
+       {C1}Observability{R}   Prometheus, Grafana, Loki, Alloy, node_exporter
+       {C1}Services{R}        FreeIPA, Gitea, WireGuard, Pi-hole
+       {C1}Tools{R}           Git, Vim, tmux, SSH
 
-       Systems         Linux (RHEL, Ubuntu, TrueNAS/FreeBSD), UNIX,
-                       TCP/IP, VLANs, LAGG, RAID, PXE Boot,
-                       ZFS, SAS/HBA, BIOS Firmware, IPMI, Redfish API
-
-       IaC             Terraform, Ansible, Puppet
-
-       Containers      Docker, Kubernetes (k3s)
-
-       Observability   Prometheus, Grafana, Loki, Alloy, node_exporter
-
-       Services        FreeIPA, Gitea, WireGuard, Pi-hole
-
-       Tools           Git, Vim, tmux, SSH
-
-PROJECTS
-       home.arpa        Self-hosted homelab — IaC, monitoring, identity,
+{C2}PROJECTS{R}
+       {C1}home.arpa{R}        Self-hosted homelab — IaC, monitoring, identity,
                         DNS, VPN, and container orchestration
-       terraform-xo     XCP-ng VM provisioning via Terraform + XO API
-       ansible-baseline Post-provisioning automation for Debian VMs
-       puppet-modules   Puppet module collection for homelab VM hardening
-       snaputil         Modular system snapshot tool
-       citadel          Pattern-based password generator
-       portal-22        SSH key & config generator from YAML
+       {C1}terraform-xo{R}     XCP-ng VM provisioning via Terraform + XO API
+       {C1}ansible-baseline{R} Post-provisioning automation for Debian VMs
+       {C1}puppet-modules{R}   Puppet module collection for homelab VM hardening
+       {C1}snaputil{R}         Modular system snapshot tool
+       {C1}citadel{R}          Pattern-based password generator
+       {C1}portal-22{R}        SSH key & config generator from YAML
 
-EDUCATION
-       Red Hat Certified System Administrator          In Progress
+{C2}EDUCATION{R}
+       Red Hat Certified System Administrator          {C1}In Progress{R}
        Google IT Automation with Python Professional   Completed
        Google IT Support Professional Certificate      Completed
        IT Support & Services / Advanced IT             JobTrain & StreetCode Academy
 
-LANGUAGES
+{C2}LANGUAGES{R}
        English   Fluent
        Spanish   Fluent
 
-SEE ALSO
-       arpatek.dev(1), codeberg.org/arpatek(1), linkedin.com/in/arpatek(1)
+{C2}SEE ALSO{R}
+       {C1}arpatek.dev{R}   {C1}codeberg.org/arpatek{R}   {C1}linkedin.com/in/arpatek{R}
 
-NOTES
-       if [ "$task" = "manual" ]; then automate; fi
-       01001010 01000111
+{C2}NOTES{R}
+       {DM}if [ "$task" = "manual" ]; then automate; fi{R}
+       {DM}01001010 01000111{R}
 
-ARPATEK(1)                    California, USA                    ARPATEK(1)
+{C2}ARPATEK(1){R}                    California, USA                    {C2}ARPATEK(1){R}
 """
+)
