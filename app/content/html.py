@@ -196,53 +196,64 @@ function runCommand(idx, done) {
     tick();
 }
 
-// ── Screensaver (falling rain) ────────────────────────────────────────────────
-const SS_ROWS  = 22;
-const SS_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*<>[]{}';
+// ── Screensaver (cmatrix) ─────────────────────────────────────────────────────
+const SS_ROWS  = 24;
+const SS_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*<>[]{}|';
 
 function getSSCols() {
-    const testSpan = document.createElement('span');
-    testSpan.style.cssText = 'visibility:hidden;position:absolute;white-space:pre';
-    testSpan.textContent = 'x';
-    term.appendChild(testSpan);
-    const cw = testSpan.getBoundingClientRect().width || 9;
-    testSpan.remove();
+    const s = document.createElement('span');
+    s.style.cssText = 'visibility:hidden;position:absolute;white-space:pre';
+    s.textContent = 'x';
+    term.appendChild(s);
+    const cw = s.getBoundingClientRect().width || 9;
+    s.remove();
     return Math.floor((term.clientWidth - 16) / cw);
 }
 
 let ssColumns = [];
 let ssGrid    = [];
 
+function randChar() { return SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)]; }
+
 function initSS(cols) {
     ssColumns = Array.from({length: cols}, () => ({
-        pos:   Math.floor(Math.random() * SS_ROWS),
-        speed: 1 + Math.random() * 2,
-        timer: Math.random() * 10,
+        pos:    -Math.floor(Math.random() * SS_ROWS),
+        speed:  0.3 + Math.random() * 0.8,
+        timer:  0,
+        length: 5 + Math.floor(Math.random() * 14),
     }));
     ssGrid = Array.from({length: SS_ROWS}, () =>
-        Array.from({length: cols}, () => SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)])
+        Array.from({length: cols}, () => randChar())
     );
 }
 
 function ssFrame(cols) {
     ssColumns.forEach((col, c) => {
-        col.timer += 0.15;
-        if (col.timer >= col.speed) {
+        col.timer += col.speed;
+        if (col.timer >= 1) {
             col.timer = 0;
-            col.pos = (col.pos + 1) % SS_ROWS;
-            ssGrid[col.pos][c] = SS_CHARS[Math.floor(Math.random() * SS_CHARS.length)];
+            col.pos++;
+            if (col.pos > SS_ROWS + col.length) {
+                col.pos    = -Math.floor(Math.random() * SS_ROWS);
+                col.speed  = 0.3 + Math.random() * 0.8;
+                col.length = 5 + Math.floor(Math.random() * 14);
+            }
+            if (col.pos >= 0 && col.pos < SS_ROWS)
+                ssGrid[col.pos][c] = randChar();
         }
     });
 
     let html = '';
     for (let r = 0; r < SS_ROWS; r++) {
         for (let c = 0; c < cols; c++) {
-            const trail = (ssColumns[c].pos - r + SS_ROWS) % SS_ROWS;
+            const col   = ssColumns[c];
+            const trail = col.pos - r;
             let color, opacity;
-            if (trail === 0)     { color = '#dcd6d6'; opacity = '1.00'; }
-            else if (trail < 4)  { color = '#9db9b2'; opacity = (1 - trail / 6).toFixed(2); }
-            else if (trail < 10) { color = '#877887'; opacity = (0.35 - (trail - 4) / 30).toFixed(2); }
-            else                 { color = '#1e1b1e'; opacity = '0.05'; }
+            if      (trail === 0)            { color = '#ffffff'; opacity = '1.00'; }
+            else if (trail === 1)            { color = '#00ff41'; opacity = '1.00'; }
+            else if (trail < 5)              { color = '#00dd33'; opacity = (0.90 - trail * 0.05).toFixed(2); }
+            else if (trail < col.length)     { color = '#008f11'; opacity = Math.max(0, 0.55 - (trail - 5) / col.length).toFixed(2); }
+            else                             { color = '#003300'; opacity = '0.00'; }
             html += `<span style="color:${color};opacity:${opacity}">${ssGrid[r][c]}</span>`;
         }
         html += '\n';
