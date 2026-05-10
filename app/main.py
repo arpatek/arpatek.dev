@@ -31,7 +31,8 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
-from app.routes.portfolio import router as portfolio_router
+from app.routes.portfolio  import router as portfolio_router
+from app.routes.animations import router as animations_router
 
 
 # ──[ App ]─────────────────────────────────────────────────────────────────────────────
@@ -49,3 +50,4 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 # ──[ Routers ]─────────────────────────────────────────────────────────────────────────
 app.include_router(portfolio_router)
+app.include_router(animations_router)

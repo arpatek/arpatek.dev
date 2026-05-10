@@ -22,7 +22,7 @@ from fastapi.requests  import Request
 from fastapi.responses import HTMLResponse, PlainTextResponse, Response
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
-from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE
+from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP
 from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE
 
 
@@ -45,6 +45,19 @@ async def root(request: Request) -> Response:
     if ua.lower().startswith("curl"):
         return PlainTextResponse(ASCII_PORTFOLIO)
     return HTMLResponse(HTML_PORTFOLIO)
+
+
+@router.get("/help")
+async def help(request: Request) -> Response:
+    """Serve the full endpoint list — curl only.
+
+    Args:
+        request (Request): Incoming HTTP request.
+
+    Returns:
+        Response: PlainTextResponse with endpoint list.
+    """
+    return PlainTextResponse(ASCII_HELP)
 
 
 @router.get("/man")

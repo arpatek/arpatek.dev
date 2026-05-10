@@ -56,6 +56,7 @@ f"""
 
   {C1}$ curl arpatek.dev{R}        Get this page
   {C1}$ curl arpatek.dev/man{R}    Full resume in manpage format
+  {C1}$ curl arpatek.dev/help{R}   All available endpoints
 
 
 
@@ -153,5 +154,23 @@ f"""
        {C1}arpatek.dev{R}   {C1}codeberg.org/arpatek{R}   {C1}linkedin.com/in/arpatek{R}
 
 {C2}ARPATEK(1){R}                    California, USA                    {C2}ARPATEK(1){R}
+"""
+)
+
+# ──[ Help ]────────────────────────────────────────────────────────────────────────────
+HELP = (
+f"""
+  {C2}arpatek.dev — available endpoints{R}
+
+  {C1}$ curl arpatek.dev{R}          This page
+  {C1}$ curl arpatek.dev/man{R}       Full resume in manpage format
+  {C1}$ curl arpatek.dev/help{R}      This list
+
+  {C2}hidden{R}
+
+  {C1}$ curl arpatek.dev/gif{R}       Trippy circle animation
+  {C1}$ curl arpatek.dev/boo{R}       👻
+  {C1}$ curl arpatek.dev/xmas{R}      🎄
+
 """
 )
