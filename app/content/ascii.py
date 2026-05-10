@@ -10,20 +10,20 @@ Author: Juan Garcia (arpatek)
 
 # ──[ ANSI Codes ]──────────────────────────────────────────────────────────────────────
 R  = '\033[0m'          # reset
-C1 = '\033[38;5;87m'    # cyan   — links, accents
-C2 = '\033[38;5;120m'   # green  — boxes, legend labels
-C3 = '\033[38;5;223m'   # cream  — body text
-DM = '\033[2m'          # dim    — decorative lines
+C1 = '\033[38;5;51m'    # neon cyan   — links, accents
+C2 = '\033[38;5;198m'   # hot pink    — boxes, legend labels
+C3 = '\033[38;5;214m'   # amber       — body text
+DM = '\033[2m'          # dim         — decorative lines
 BD = '\033[1m'          # bold
 
-# gradient rows: cyan (#5fffff) → cyan-green → green (#87ff87)
-G0 = '\033[38;5;87m'
-G1 = '\033[38;5;86m'
-G2 = '\033[38;5;85m'
-G3 = '\033[38;5;84m'
-G4 = '\033[38;5;83m'
-G5 = '\033[38;5;82m'
-G6 = '\033[38;5;120m'
+# gradient rows: magenta → purple → blue → cyan
+G0 = '\033[38;5;201m'
+G1 = '\033[38;5;171m'
+G2 = '\033[38;5;141m'
+G3 = '\033[38;5;99m'
+G4 = '\033[38;5;63m'
+G5 = '\033[38;5;45m'
+G6 = '\033[38;5;51m'
 
 # ──[ Portfolio ]───────────────────────────────────────────────────────────────────────
 PORTFOLIO = (

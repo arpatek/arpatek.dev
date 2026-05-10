@@ -15,15 +15,15 @@ _STYLES = """
 ul { list-style-type: none; }
 
 :root {
-    --c1: #5fffff;   /* cyan  - links          */
-    --c2: #ff87af;   /* pink  - accents        */
-    --c3: #87ff87;   /* green - highlights     */
-    --c4: #666;      /* dim                   */
-    --c5: #ffd7af;   /* cream - body text      */
+    --c1: #00ffff;   /* neon cyan  - links        */
+    --c2: #ff00aa;   /* hot pink   - accents      */
+    --c3: #ff00ff;   /* magenta    - highlights   */
+    --c4: #664466;   /* dim purple                */
+    --c5: #ffaa00;   /* amber      - body text    */
 }
 
 body {
-    background: #000;
+    background: #0d0015;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
@@ -38,22 +38,22 @@ body {
 a, a:visited { color: var(--c1); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-h1 { color: var(--c3); margin-bottom: 20px; }
+h1 { color: var(--c2); margin-bottom: 20px; }
 h2 { color: var(--c4); font-size: 0.85rem; text-transform: uppercase;
      letter-spacing: 0.08em; margin: 1.4rem 0 0.4rem; }
 
 /* nav */
-#nav { border-bottom: 1px solid #87ff8740; margin-bottom: 20px; overflow: hidden; }
+#nav { border-bottom: 1px solid #ff00aa44; margin-bottom: 20px; overflow: hidden; }
 #nav a { display: block; float: left; padding: 12px 14px; color: var(--c5); }
-#nav a:hover { background: #1a1a1a; text-decoration: none; }
-#nav a.active { color: var(--c3); }
+#nav a:hover { background: #1a0025; text-decoration: none; }
+#nav a.active { color: var(--c2); }
 #nav a.right { float: right; }
 
 /* terminal block */
 pre.terminal {
-    background: #0a0a0a;
-    border: 1px solid #87ff8730;
-    box-shadow: 0 0 160px #87ff8718;
+    background: #080010;
+    border: 1px solid #ff00aa33;
+    box-shadow: 0 0 160px #ff00aa18, 0 0 40px #00ffff0a;
     padding: 8px;
     min-height: 380px;
     overflow-x: auto;
@@ -67,7 +67,7 @@ pre.terminal > code::after {
     content: "";
     width: 6px;
     height: 12px;
-    background: var(--c5);
+    background: var(--c1);
     display: inline-block;
     animation: blink 1.5s step-start infinite;
 }
@@ -105,15 +105,15 @@ pre.terminal > code::after {
 
 # ──[ Terminal commands shown in the browser ]───────────────────────────────────────────
 _COMMANDS_JS = r"""
-const G0 = '<span style="color:#5fffff">';
-const G1 = '<span style="color:#00ffd7">';
-const G2 = '<span style="color:#00ffaf">';
-const G3 = '<span style="color:#00ff87">';
-const G4 = '<span style="color:#00ff5f">';
-const G5 = '<span style="color:#00ff00">';
-const G6 = '<span style="color:#87ff87">';
-const C1 = '<span style="color:#5fffff">';
-const C2 = '<span style="color:#87ff87">';
+const G0 = '<span style="color:#ff00ff">';
+const G1 = '<span style="color:#df00ff">';
+const G2 = '<span style="color:#aa00ff">';
+const G3 = '<span style="color:#7700ff">';
+const G4 = '<span style="color:#0055ff">';
+const G5 = '<span style="color:#00aaff">';
+const G6 = '<span style="color:#00ffff">';
+const C1 = '<span style="color:#00ffff">';
+const C2 = '<span style="color:#ff00aa">';
 const DM = '<span style="opacity:0.45">';
 const BD = '<span style="font-weight:700">';
 const R  = '</span>';
