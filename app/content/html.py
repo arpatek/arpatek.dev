@@ -113,6 +113,7 @@ const COMMANDS = [
     {
         cmd: 'curl arpatek.dev',
         lines: `
+
 ${G0}         :::     :::::::::  :::::::::     ::: ::::::::::: :::::::::: :::    :::${R}
 ${G1}       :+: :+:   :+:    :+: :+:    :+:  :+: :+:   :+:     :+:        :+:   :+:${R}
 ${G2}     +:+   +:+  +:+    +:+ +:+    +:+ +:+   +:+  +:+     +:+        +:+  +:+${R}
@@ -140,7 +141,8 @@ ${C2}└────────────────────────
 
   ${C1}$ curl arpatek.dev${R}        Get this page
   ${C1}$ curl arpatek.dev/man${R}    Full resume in manpage format
-`.trim().split('\n')
+
+`.split('\n')
     },
 ];
 
