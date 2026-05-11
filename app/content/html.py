@@ -163,8 +163,8 @@ const SPEED      = 90;
 const INIT_DELAY = 1800;
 const LOOP_DELAY = 6000;
 
-const SCREENSAVER_DELAY    = 30 * 1000;  // 30 seconds
-const SCREENSAVER_DURATION = 20 * 1000;        // 20 seconds
+const SCREENSAVER_DELAY    = 90 * 1000;  // 1.5 minutes
+const SCREENSAVER_DURATION = 10 * 1000;  // 10 seconds
 const SCREENSAVER_FPS      = 80;               // ms per frame
 
 const term = document.getElementById('term').children[0];
