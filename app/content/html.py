@@ -260,7 +260,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/" class="active">home</a>
       <a href="/man">manpage</a>
-      <a href="/static/jgarcia.cv.pdf" target="_blank" class="right">contact</a>
+      <a href="/resume" target="_blank" class="right">contact</a>
     </div>
 
     <h1>&gt; arpatek.dev</h1>
@@ -285,7 +285,7 @@ MANPAGE = f"""<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume</title>
+  <title>manpage</title>
   <link rel="icon" href="/static/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -297,7 +297,7 @@ MANPAGE = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man" class="active">manpage</a>
-      <a href="/static/jgarcia.cv.pdf" target="_blank" class="right">contact</a>
+      <a href="/resume" target="_blank" class="right">contact</a>
     </div>
 
     <div class="man-header">

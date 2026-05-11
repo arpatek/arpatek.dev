@@ -2,7 +2,7 @@
 portfolio.py - Portfolio route handlers
 ========================================================================================
 
-Handles GET /, GET /man for arpatek.dev.
+Handles GET /, GET /man, GET /resume for arpatek.dev.
 
 Author: Juan Garcia (arpatek)
 """
@@ -10,7 +10,7 @@ Author: Juan Garcia (arpatek)
 # ──[ Imports ]─────────────────────────────────────────────────────────────────────────
 from fastapi import APIRouter
 from fastapi.requests  import Request
-from fastapi.responses import HTMLResponse, PlainTextResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, Response
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
 from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP
@@ -41,3 +41,12 @@ async def manpage(request: Request) -> Response:
     if ua.lower().startswith("curl"):
         return PlainTextResponse(ASCII_MANPAGE)
     return HTMLResponse(HTML_MANPAGE)
+
+
+@router.get("/resume")
+async def resume() -> Response:
+    return FileResponse(
+        "app/static/jgarcia.cv.pdf",
+        media_type="application/pdf",
+        headers={"Content-Disposition": 'inline; filename="Resume.pdf"'},
+    )
