@@ -38,7 +38,7 @@ f"""
 {G6}###     ### ###    ### ###       ###     ### ###     ########## ###    ###{R}
 
   {BD}Juan Garcia{R} — Linux technologist & automation engineer
-  {C1}https://arpatek.dev{R} | {DM}"The system persists. The operator is temporary."{R}
+  {C1}https://arpatek.dev{R} | {DM}"I do not control systems. I compel them."{R}
 
 
 {C2}┌─About───────────────────────────┐{R} {C2}┌─Links────┬────────────────────────────────┐{R}

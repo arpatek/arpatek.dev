@@ -30,7 +30,7 @@ body {
 }
 
 #container {
-    max-width: 800px;
+    max-width: 790px;
     margin: 10px auto;
     padding: 0 8px;
 }
@@ -131,7 +131,7 @@ ${G5} #+#     #+# #+#    #+# #+#       #+#     #+# #+#     #+#        #+#   #+#$
 ${G6}###     ### ###    ### ###       ###     ### ###     ########## ###    ###${R}
 
   ${BD}Juan Garcia${R} — Linux technologist &amp; automation engineer
-  ${C1}https://arpatek.dev${R} | ${DM}"The system persists. The operator is temporary."${R}
+  ${C1}https://arpatek.dev${R} | ${DM}"I do not control systems. I compel them."${R}
 
 
 ${C2}┌─About───────────────────────────┐${R} ${C2}┌─Links────┬────────────────────────────────┐${R}
@@ -285,7 +285,7 @@ MANPAGE = f"""<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>arpatek(1)</title>
+  <title>Resume</title>
   <link rel="icon" href="/static/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
