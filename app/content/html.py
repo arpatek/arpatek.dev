@@ -55,7 +55,7 @@ pre.terminal {
     border: 1px solid #79be9a33;
     box-shadow: 0 0 160px #79be9a10, 0 0 60px #b9746f08;
     padding: 8px;
-    min-height: 380px;
+    min-height: 560px;
     overflow-x: auto;
     line-height: 16px;
     margin: 16px 0;
