@@ -48,5 +48,5 @@ async def resume() -> Response:
     return FileResponse(
         "app/static/jgarcia.cv.pdf",
         media_type="application/pdf",
-        headers={"Content-Disposition": 'inline; filename="Resume.pdf"'},
+        headers={"Content-Disposition": 'inline; filename="jgarcia.cv.pdf"'},
     )
