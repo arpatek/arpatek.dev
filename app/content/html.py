@@ -131,8 +131,7 @@ ${G5} #+#     #+# #+#    #+# #+#       #+#     #+# #+#     #+#        #+#   #+#$
 ${G6}###     ### ###    ### ###       ###     ### ###     ########## ###    ###${R}
 
   ${BD}Juan Garcia${R} — Linux technologist &amp; automation engineer
-  ${C1}https://arpatek.dev${R} |
-  ${DM}"The system persists. The operator is temporary."${R}
+  ${C1}https://arpatek.dev${R} | ${DM}"The system persists. The operator is temporary."${R}
 
 
 ${C2}┌─About───────────────────────────┐${R} ${C2}┌─Links────┬────────────────────────────────┐${R}
