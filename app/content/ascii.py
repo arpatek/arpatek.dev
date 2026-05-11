@@ -55,7 +55,10 @@ f"""
 
   {C1}$ curl arpatek.dev{R}        Get this page
   {C1}$ curl arpatek.dev/man{R}    Full resume in manpage format
-  {C1}$ curl arpatek.dev/help{R}   All available endpoints
+  {C1}$ curl arpatek.dev/gif{R}    Trippy animation
+  {C1}$ curl arpatek.dev/boo{R}    Ghost
+  {C1}$ curl arpatek.dev/xmas{R}   Christmas tree
+  {C1}$ curl arpatek.dev/help{R}   All endpoints
 
 
 
