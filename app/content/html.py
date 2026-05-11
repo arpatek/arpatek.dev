@@ -117,6 +117,8 @@ const DM = '<span style="opacity:0.45">';
 const BD = '<span style="font-weight:700">';
 const R  = '</span>';
 
+const QUOTE = '__QUOTE__';
+
 const COMMANDS = [
     {
         cmd: 'curl arpatek.dev',
@@ -131,7 +133,7 @@ ${G5} #+#     #+# #+#    #+# #+#       #+#     #+# #+#     #+#        #+#   #+#$
 ${G6}###     ### ###    ### ###       ###     ### ###     ########## ###    ###${R}
 
   ${BD}Juan Garcia${R} — Linux technologist &amp; automation engineer
-  ${C1}https://arpatek.dev${R} | ${C1}https://codeberg.org/arpatek${R}
+  ${DM}${QUOTE}${R}
 
 
 ${C2}┌─About───────────────────────────┐${R} ${C2}┌─Links────┬────────────────────────────────┐${R}
@@ -140,9 +142,9 @@ ${C2}│${R}  Systems automation engineer    ${C2}│${R} ${C2}│${R} Codeberg 
 ${C2}│${R}  based in California. 3 years   ${C2}│${R} ${C2}│${R} LinkedIn ${C2}│${R} ${C1}linkedin.com/in/arpatek${R}        ${C2}│${R}
 ${C2}│${R}  of hardware &amp; UNIX lab work at ${C2}│${R} ${C2}│${R}          ${C2}│${R}                                ${C2}│${R}
 ${C2}│${R}  TrueNAS. Now building a        ${C2}│${R} ${C2}└──────────┴────────────────────────────────┘${R}
-${C2}│${R}  self-hosted homelab using IaC. ${C2}│${R} ${C2}┌─Certs──────────────────────────────────────┐${R}
-${C2}│${R}                                 ${C2}│${R} ${C2}│${R}  RHCSA                        ${C1}in progress${R} ${C2}│${R}
-${C2}└─────────────────────────────────┘${R} ${C2}└────────────────────────────────────────────┘${R}
+${C2}│${R}  self-hosted homelab using IaC. ${C2}│${R} ${C2}┌─Certs─────────────────────────────────────┐${R}
+${C2}│${R}                                 ${C2}│${R} ${C2}│${R}  RHCSA                      ${C1}in progress${R} ${C2}│${R}
+${C2}└─────────────────────────────────┘${R} ${C2}└───────────────────────────────────────────┘${R}
 
   ${C2}Legend${R}
 
@@ -258,9 +260,8 @@ PORTFOLIO = f"""<!DOCTYPE html>
 <body>
   <div id="container">
     <div id="nav">
-      <a href="/" class="active">~</a>
-      <a href="/man">man arpatek(1)</a>
-      <a href="https://codeberg.org/arpatek" class="right">codeberg</a>
+      <a href="/" class="active">home</a>
+      <a href="/man">manpage</a>
     </div>
 
     <h1>&gt; arpatek.dev</h1>
@@ -295,9 +296,8 @@ MANPAGE = f"""<!DOCTYPE html>
 <body>
   <div id="container">
     <div id="nav">
-      <a href="/">~</a>
-      <a href="/man" class="active">man arpatek</a>
-      <a href="https://codeberg.org/arpatek" class="right">codeberg</a>
+      <a href="/">home</a>
+      <a href="/man" class="active">manpage</a>
     </div>
 
     <div class="man-header">

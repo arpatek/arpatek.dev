@@ -8,16 +8,14 @@ Handles GET / and GET /man for arpatek.dev.
   GET /man   curl → ASCII manpage    | browser → HTML manpage
 
 Author: Juan Garcia (arpatek)
-
-Dependencies:
--------------
-- `fastapi` for routing and request/response types
-- `app.content.ascii` for plain-text content
-- `app.content.html`  for HTML content
 """
 
 # ──[ Imports ]─────────────────────────────────────────────────────────────────────────
+import asyncio
+import json
 import random
+import time
+import urllib.request
 
 from fastapi import APIRouter
 from fastapi.requests  import Request
@@ -32,13 +30,40 @@ from app.content.html  import PORTFOLIO as HTML_PORTFOLIO, MANPAGE as HTML_MANPA
 router = APIRouter()
 
 
+# ──[ Quote Fetcher ]───────────────────────────────────────────────────────────────────
+_quote_cache: tuple[str, float] | None = None
+_CACHE_TTL = 30  # seconds
+
+
+def _fetch_from_api() -> str:
+    url = "https://zenquotes.io/api/random"
+    with urllib.request.urlopen(url, timeout=2) as resp:
+        data = json.loads(resp.read())
+    q, a = data[0]["q"], data[0]["a"]
+    return f'"{q}" — {a}'
+
+
+async def fetch_quote() -> str:
+    global _quote_cache
+    if _quote_cache and time.monotonic() - _quote_cache[1] < _CACHE_TTL:
+        return _quote_cache[0]
+    try:
+        quote = await asyncio.wait_for(asyncio.to_thread(_fetch_from_api), timeout=3.0)
+        _quote_cache = (quote, time.monotonic())
+        return quote
+    except Exception:
+        return random.choice(QUOTES)
+
+
 # ──[ Route Handlers ]──────────────────────────────────────────────────────────────────
 @router.get("/")
 async def root(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
+    ua    = request.headers.get("user-agent", "")
+    quote = await fetch_quote()
     if ua.lower().startswith("curl"):
-        return PlainTextResponse(get_portfolio(random.choice(QUOTES)))
-    return HTMLResponse(HTML_PORTFOLIO)
+        return PlainTextResponse(get_portfolio(quote))
+    html = HTML_PORTFOLIO.replace("'__QUOTE__'", json.dumps(quote))
+    return HTMLResponse(html)
 
 
 @router.get("/help")
