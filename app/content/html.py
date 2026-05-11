@@ -467,9 +467,7 @@ CONTACT = f"""<!DOCTYPE html>
       <a class="dl-btn" href="/static/jgarcia.cv.pdf" download="jgarcia.cv.pdf">&#8659; Download</a>
     </div>
 
-    <iframe class="cv-frame" src="/static/jgarcia.cv.pdf" title="Juan Garcia CV">
-      <p>PDF viewer not supported. <a href="/static/jgarcia.cv.pdf">Download directly.</a></p>
-    </iframe>
+    <embed class="cv-frame" src="/static/jgarcia.cv.pdf" type="application/pdf">
 
   </div>
 </body>
