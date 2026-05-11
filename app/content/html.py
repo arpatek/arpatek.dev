@@ -241,6 +241,9 @@ setTimeout(function kick() {
 }, SCREENSAVER_DELAY);
 """
 
+# ──[ Animated Favicon ]──────────────────────────────────────────────────────────────
+_FAVICON_JS = '<script>(function(){var c=document.createElement(\'canvas\'),ctx,fl=document.querySelector(\'link[rel="icon"]\');c.width=c.height=32;ctx=c.getContext("2d");var f=[\'>\',\'_\'],i=0;setInterval(function(){ctx.fillStyle="#292329";ctx.fillRect(0,0,32,32);ctx.fillStyle="#79be9a";ctx.font="bold 22px monospace";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(f[i++%f.length],16,16);if(fl)fl.href=c.toDataURL();},700);})();</script>'
+
 # ──[ Portfolio ]───────────────────────────────────────────────────────────────────────
 PORTFOLIO = f"""<!DOCTYPE html>
 <html lang="en">
@@ -276,6 +279,8 @@ PORTFOLIO = f"""<!DOCTYPE html>
   </div>
   <script>{_COMMANDS_JS}</script>
   <script>{_TERMINAL_JS}</script>
+  {_FAVICON_JS}
+  {_FAVICON_JS}
 </body>
 </html>"""
 

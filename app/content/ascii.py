@@ -26,8 +26,18 @@ G5 = '\033[38;5;151m'   # #a2d2b9 mint
 G6 = '\033[38;5;188m'   # #dcd6d6 near-white
 
 # ──[ Portfolio ]───────────────────────────────────────────────────────────────────────
-PORTFOLIO = (
-f"""
+QUOTES = [
+    '"Make it work, make it right, make it fast." — Kent Beck',
+    '"Simplicity is prerequisite for reliability." — Dijkstra',
+    '"First, solve the problem. Then, write the code."',
+    '"The best tool is the one you already know."',
+    '"Automate what you do repeatedly."',
+    '"It\'s not a bug, it\'s an undocumented feature."',
+]
+
+
+def get_portfolio(quote: str) -> str:
+    return f"""
 
 {G0}         :::     :::::::::  :::::::::     ::: ::::::::::: :::::::::: :::    :::{R}
 {G1}       :+: :+:   :+:    :+: :+:    :+:  :+: :+:   :+:     :+:        :+:   :+:{R}
@@ -38,7 +48,7 @@ f"""
 {G6}###     ### ###    ### ###       ###     ### ###     ########## ###    ###{R}
 
   {BD}Juan Garcia{R} — Linux technologist & automation engineer
-  {C1}https://arpatek.dev{R} | {C1}https://codeberg.org/arpatek{R}
+  {DM}{quote}{R}
 
 
 {C2}┌─About───────────────────────────┐{R} {C2}┌─Links────┬────────────────────────────────┐{R}
@@ -47,9 +57,9 @@ f"""
 {C2}│{R}  based in California. 3 years   {C2}│{R} {C2}│{R} LinkedIn {C2}│{R} {C1}linkedin.com/in/arpatek{R}        {C2}│{R}
 {C2}│{R}  of hardware & UNIX lab work at {C2}│{R} {C2}│{R}          {C2}│{R}                                {C2}│{R}
 {C2}│{R}  TrueNAS. Now building a        {C2}│{R} {C2}└──────────┴────────────────────────────────┘{R}
-{C2}│{R}  self-hosted homelab using IaC. {C2}│{R} {C2}┌─Certs─────────────────────────────────┐{R}
+{C2}│{R}  self-hosted homelab using IaC. {C2}│{R} {C2}┌─Latest────────────────────────────────────┐{R}
 {C2}│{R}                                 {C2}│{R} {C2}│{R}  RHCSA                        {C1}in progress{R} {C2}│{R}
-{C2}└─────────────────────────────────┘{R} {C2}└─────────────────────────────────────────┘{R}
+{C2}└─────────────────────────────────┘{R} {C2}└───────────────────────────────────────────┘{R}
 
   {C2}Legend{R}
 
@@ -60,7 +70,7 @@ f"""
 
 
 """
-)
+
 
 # ──[ Manpage / Resume ]────────────────────────────────────────────────────────────────
 MANPAGE = (
