@@ -131,7 +131,7 @@ ${G5} #+#     #+# #+#    #+# #+#       #+#     #+# #+#     #+#        #+#   #+#$
 ${G6}###     ### ###    ### ###       ###     ### ###     ########## ###    ###${R}
 
   ${BD}Juan Garcia${R} — Linux technologist &amp; automation engineer
-  ${C1}https://arpatek.dev${R} | ${DM}"I do not control systems. I compel them."${R}
+  ${C1}https://arpatek.dev${R} | ${DM}"No future. Only uptime."${R}
 
 
 ${C2}┌─About───────────────────────────┐${R} ${C2}┌─Links────┬────────────────────────────────┐${R}
