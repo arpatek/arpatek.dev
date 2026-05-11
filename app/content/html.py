@@ -140,7 +140,7 @@ ${C2}│${R}  Systems automation engineer    ${C2}│${R} ${C2}│${R} Codeberg 
 ${C2}│${R}  based in California. 3 years   ${C2}│${R} ${C2}│${R} LinkedIn ${C2}│${R} ${C1}linkedin.com/in/arpatek${R}        ${C2}│${R}
 ${C2}│${R}  of hardware &amp; UNIX lab work at ${C2}│${R} ${C2}│${R}          ${C2}│${R}                                ${C2}│${R}
 ${C2}│${R}  TrueNAS. Now building a        ${C2}│${R} ${C2}└──────────┴────────────────────────────────┘${R}
-${C2}│${R}  self-hosted homelab using IaC. ${C2}│${R} ${C2}┌─Certs─────────────────────────────────────┐${R}
+${C2}│${R}  self-hosted homelab using IaC. ${C2}│${R} ${C2}┌─Latest────────────────────────────────────┐${R}
 ${C2}│${R}                                 ${C2}│${R} ${C2}│${R}  RHCSA                        ${C1}in progress${R} ${C2}│${R}
 ${C2}└─────────────────────────────────┘${R} ${C2}└───────────────────────────────────────────┘${R}
 
@@ -260,7 +260,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/" class="active">home</a>
       <a href="/man">manpage</a>
-      <a href="/contact" class="right">contact</a>
+      <a href="/static/jgarcia.cv.pdf" target="_blank" class="right">contact</a>
     </div>
 
     <h1>&gt; arpatek.dev</h1>
@@ -297,7 +297,7 @@ MANPAGE = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man" class="active">manpage</a>
-      <a href="/contact" class="right">contact</a>
+      <a href="/static/jgarcia.cv.pdf" target="_blank" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -414,61 +414,3 @@ MANPAGE = f"""<!DOCTYPE html>
 </html>"""
 
 
-# ──[ Contact / CV ]───────────────────────────────────────────────────────────────────
-CONTACT = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>arpatek — contact</title>
-  <link rel="icon" href="/static/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <style>{{_STYLES}}
-  .cv-bar {{
-    display: flex; justify-content: space-between; align-items: center;
-    margin: 16px 0 8px;
-  }}
-  .dl-btn {{
-    background: var(--c2); color: #1a1a1e; padding: 6px 14px;
-    text-decoration: none; font-weight: 700; font-size: 12px;
-    border: none; cursor: pointer;
-  }}
-  .dl-btn:hover {{ background: var(--c1); color: #1a1a1e; text-decoration: none; }}
-  .cv-frame {{
-    width: 100%; height: calc(100vh - 220px); min-height: 500px;
-    border: 1px solid #79be9a33;
-  }}
-  </style>
-</head>
-<body>
-  <div id="container">
-    <div id="nav">
-      <a href="/">home</a>
-      <a href="/man">manpage</a>
-      <a href="/contact" class="active right">contact</a>
-    </div>
-
-    <h1>&gt; contact</h1>
-
-    <div class="section">
-      <p>
-        <a href="mailto:juang.sh@proton.me">juang.sh@proton.me</a>
-        &nbsp;|&nbsp;
-        <a href="https://linkedin.com/in/arpatek">linkedin.com/in/arpatek</a>
-        &nbsp;|&nbsp;
-        <a href="https://codeberg.org/arpatek">codeberg.org/arpatek</a>
-      </p>
-    </div>
-
-    <div class="cv-bar">
-      <span>jgarcia.cv.pdf</span>
-      <a class="dl-btn" href="/static/jgarcia.cv.pdf" download="jgarcia.cv.pdf">&#8659; Download</a>
-    </div>
-
-    <embed class="cv-frame" src="/static/jgarcia.cv.pdf" type="application/pdf">
-
-  </div>
-</body>
-</html>"""

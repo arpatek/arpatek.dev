@@ -2,7 +2,7 @@
 portfolio.py - Portfolio route handlers
 ========================================================================================
 
-Handles GET /, GET /man, GET /contact for arpatek.dev.
+Handles GET /, GET /man for arpatek.dev.
 
 Author: Juan Garcia (arpatek)
 """
@@ -14,7 +14,7 @@ from fastapi.responses import HTMLResponse, PlainTextResponse, Response
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
 from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP
-from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, CONTACT as HTML_CONTACT
+from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE
 
 
 # ──[ Router ]──────────────────────────────────────────────────────────────────────────
@@ -41,8 +41,3 @@ async def manpage(request: Request) -> Response:
     if ua.lower().startswith("curl"):
         return PlainTextResponse(ASCII_MANPAGE)
     return HTMLResponse(HTML_MANPAGE)
-
-
-@router.get("/contact")
-async def contact(request: Request) -> Response:
-    return HTMLResponse(HTML_CONTACT)
