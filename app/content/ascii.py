@@ -157,20 +157,117 @@ f"""
 """
 )
 
+# ──[ Uses ]────────────────────────────────────────────────────────────────────────────
+USES = (
+f"""
+{C2}USES(1){R}                    Hardware & Software                    {C2}USES(1){R}
+
+{C2}HARDWARE{R}
+       {BD}M1 Mac Mini{R}
+       {C1}Main workstation{R} | macOS
+
+       {BD}M1 MacBook Air{R}
+       {C1}Laptop{R} | Asahi Linux
+
+       {BD}ASUS PN51 — Ryzen 7 5700U{R}
+       {C1}Proxmox hypervisor{R} | devstem
+
+       {BD}Raspberry Pi{R}
+       {C1}DNS / DHCP / VPN{R} | netrunner-rpi
+
+{C2}SOFTWARE{R}
+       {C1}Shell{R}       zsh (Mac, Asahi)  |  bash (servers)
+       {C1}Editor{R}      Neovim + LazyVim (Mac, MacBook)  |  Vim (RHEL)
+       {C1}Terminal{R}    iTerm2 (Mac)  |  Ghostty (MacBook)
+       {C1}OS{R}          macOS  |  Asahi Linux  |  Rocky Linux 9  |  Debian 13
+
+{C2}USES(1){R}                    California, USA                    {C2}USES(1){R}
+"""
+)
+
+# ──[ Lab ]─────────────────────────────────────────────────────────────────────────────
+LAB = (
+f"""
+{C2}LAB(1){R}                         home.arpa                         {C2}LAB(1){R}
+
+{C2}INFRASTRUCTURE{R}
+       {BD}Proxmox VE 9{R}
+       {C1}devstem{R} | ASUS PN51 (Ryzen 7 5700U) | pve.arpatek.dev
+              Single-node hypervisor. All VMs run here. No cluster, no HA.
+
+       {BD}k3s — 3-node cluster{R}
+       {C1}prod-k3s-master-0 + 2 workers{R} | Debian 13
+              Traefik ingress, cert-manager wildcard TLS (Let's Encrypt).
+              Runs arpatek.dev and proxies all internal service UIs publicly.
+
+{C2}IDENTITY & NETWORK{R}
+       {BD}FreeIPA{R}
+       {C1}prod-ipa-0{R} | Rocky Linux 9
+              Central identity, SSH auth, sudo policy, DNS for home.arpa.
+
+       {BD}Pi-hole{R}
+       {C1}netrunner-rpi{R} | Raspberry Pi | pi.arpatek.dev
+              Network-wide DNS, DHCP, content filter. Upstream for FreeIPA.
+
+       {BD}WireGuard{R}
+       {C1}netrunner-rpi{R} | Raspberry Pi
+              VPN into 10.33.111.0/24. Clients use Pi-hole for DNS.
+
+{C2}DEV & OBSERVABILITY{R}
+       {BD}Gitea + act_runner{R}
+       {C1}prod-git-0{R} | Debian 13 | git.arpatek.dev
+              Self-hosted Git, container registry, and CI/CD.
+              Push-to-deploy pipeline for arpatek.dev.
+
+       {BD}PLG Stack — Prometheus, Loki, Grafana{R}
+       {C1}prod-mon-0{R} | Debian 13 | gf.arpatek.dev | pm.arpatek.dev
+              Hub-and-spoke observability. node_exporter + cAdvisor + Alloy
+              agents ship metrics and logs from every host.
+
+{C2}LAB(1){R}                         home.arpa                         {C2}LAB(1){R}
+"""
+)
+
+# ──[ Changelog ]───────────────────────────────────────────────────────────────────────
+CHANGELOG = (
+f"""
+{C2}CHANGELOG(1){R}                    arpatek                    {C2}CHANGELOG(1){R}
+
+{C2}2026-05{R}
+       {BD}site{R}     /uses, /lab, /changelog pages added
+       {BD}lab{R}      Traefik ingresses for all internal services
+                (pve, pi, gf, pm.arpatek.dev via k3s + Cloudflare)
+       {BD}site{R}     Styling pass — dark background, underscore cursor,
+                viewport fill, box-shadow cleanup
+       {BD}site{R}     Initial launch — terminal animation, screensaver,
+                ASCII art banner, easter eggs (/gif /boo /xmas)
+       {BD}lab{R}      k3s cluster provisioned, arpatek.dev on Kubernetes,
+                wildcard TLS via cert-manager + Let's Encrypt
+       {BD}lab{R}      Gitea + act_runner CI/CD pipeline (push-to-deploy)
+       {BD}lab{R}      PLG observability stack (Prometheus, Loki, Grafana)
+       {BD}lab{R}      Identity and network layer — FreeIPA, Pi-hole, WireGuard
+
+{C2}CHANGELOG(1){R}                    arpatek                    {C2}CHANGELOG(1){R}
+"""
+)
+
 # ──[ Help ]────────────────────────────────────────────────────────────────────────────
 HELP = (
 f"""
   {C2}arpatek.dev — available endpoints{R}
 
-  {C1}$ curl arpatek.dev{R}          This page
-  {C1}$ curl arpatek.dev/man{R}       Full resume in manpage format
-  {C1}$ curl arpatek.dev/help{R}      This list
+  {C1}$ curl arpatek.dev{R}             This page
+  {C1}$ curl arpatek.dev/man{R}          Full resume in manpage format
+  {C1}$ curl arpatek.dev/uses{R}         Hardware & software setup
+  {C1}$ curl arpatek.dev/lab{R}          Homelab services (home.arpa)
+  {C1}$ curl arpatek.dev/changelog{R}    Site and project history
+  {C1}$ curl arpatek.dev/help{R}         This list
 
   {C2}hidden{R}
 
-  {C1}$ curl arpatek.dev/gif{R}       Trippy circle animation
-  {C1}$ curl arpatek.dev/boo{R}       👻
-  {C1}$ curl arpatek.dev/xmas{R}      🎄
+  {C1}$ curl arpatek.dev/gif{R}          Trippy circle animation
+  {C1}$ curl arpatek.dev/boo{R}          👻
+  {C1}$ curl arpatek.dev/xmas{R}         🎄
 
 """
 )

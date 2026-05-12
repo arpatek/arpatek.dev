@@ -13,8 +13,8 @@ from fastapi.requests  import Request
 from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, Response
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
-from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP
-from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE
+from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, USES as ASCII_USES, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG
+from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, USES as HTML_USES, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG
 
 
 # ──[ Router ]──────────────────────────────────────────────────────────────────────────
@@ -41,6 +41,30 @@ async def manpage(request: Request) -> Response:
     if ua.lower().startswith("curl"):
         return PlainTextResponse(ASCII_MANPAGE)
     return HTMLResponse(HTML_MANPAGE)
+
+
+@router.get("/uses")
+async def uses(request: Request) -> Response:
+    ua = request.headers.get("user-agent", "")
+    if ua.lower().startswith("curl"):
+        return PlainTextResponse(ASCII_USES)
+    return HTMLResponse(HTML_USES)
+
+
+@router.get("/lab")
+async def lab(request: Request) -> Response:
+    ua = request.headers.get("user-agent", "")
+    if ua.lower().startswith("curl"):
+        return PlainTextResponse(ASCII_LAB)
+    return HTMLResponse(HTML_LAB)
+
+
+@router.get("/changelog")
+async def changelog(request: Request) -> Response:
+    ua = request.headers.get("user-agent", "")
+    if ua.lower().startswith("curl"):
+        return PlainTextResponse(ASCII_CHANGELOG)
+    return HTMLResponse(HTML_CHANGELOG)
 
 
 @router.get("/resume")

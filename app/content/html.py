@@ -257,6 +257,9 @@ PORTFOLIO = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/" class="active">home</a>
       <a href="/man">manpage</a>
+      <a href="/uses">uses</a>
+      <a href="/lab">lab</a>
+      <a href="/changelog">changelog</a>
       <a href="/resume" target="_blank" class="right">contact</a>
     </div>
 
@@ -294,6 +297,9 @@ MANPAGE = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man" class="active">manpage</a>
+      <a href="/uses">uses</a>
+      <a href="/lab">lab</a>
+      <a href="/changelog">changelog</a>
       <a href="/resume" target="_blank" class="right">contact</a>
     </div>
 
@@ -405,6 +411,225 @@ MANPAGE = f"""<!DOCTYPE html>
 
     <div class="man-footer">
       <span>ARPATEK(1)</span><span>California, USA</span><span>ARPATEK(1)</span>
+    </div>
+  </div>
+</body>
+</html>"""
+
+# ──[ Uses ]────────────────────────────────────────────────────────────────────────────
+USES = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>uses — arpatek</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>{_STYLES}</style>
+</head>
+<body>
+  <div id="container">
+    <div id="nav">
+      <a href="/">home</a>
+      <a href="/man">manpage</a>
+      <a href="/uses" class="active">uses</a>
+      <a href="/lab">lab</a>
+      <a href="/changelog">changelog</a>
+      <a href="/resume" target="_blank" class="right">contact</a>
+    </div>
+
+    <div class="man-header">
+      <span>USES(1)</span><span>Hardware &amp; Software</span><span>USES(1)</span>
+    </div>
+
+    <div class="section">
+      <h2>Hardware</h2>
+      <div class="entry">
+        <div class="entry-title">M1 Mac Mini</div>
+        <div class="entry-org">Main workstation &mdash; macOS</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">M1 MacBook Air</div>
+        <div class="entry-org">Laptop &mdash; Asahi Linux</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">ASUS PN51 &mdash; Ryzen 7 5700U</div>
+        <div class="entry-org">Proxmox hypervisor (devstem)</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Raspberry Pi</div>
+        <div class="entry-org">DNS / DHCP / VPN (netrunner-rpi)</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Software</h2>
+      <p><span class="label">Shell</span> zsh (Mac, Asahi) &nbsp;&bull;&nbsp; bash (servers)</p>
+      <p><span class="label">Editor</span> Neovim + LazyVim (Mac, MacBook) &nbsp;&bull;&nbsp; Vim (RHEL)</p>
+      <p><span class="label">Terminal</span> iTerm2 (Mac) &nbsp;&bull;&nbsp; Ghostty (MacBook)</p>
+      <p><span class="label">OS</span> macOS &nbsp;&bull;&nbsp; Asahi Linux &nbsp;&bull;&nbsp; Rocky Linux 9 &nbsp;&bull;&nbsp; Debian 13</p>
+    </div>
+
+    <div class="man-footer">
+      <span>arpatek</span><span>California, USA</span><span>arpatek.dev/uses</span>
+    </div>
+  </div>
+</body>
+</html>"""
+
+# ──[ Lab ]─────────────────────────────────────────────────────────────────────────────
+LAB = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lab — arpatek</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>{_STYLES}</style>
+</head>
+<body>
+  <div id="container">
+    <div id="nav">
+      <a href="/">home</a>
+      <a href="/man">manpage</a>
+      <a href="/uses">uses</a>
+      <a href="/lab" class="active">lab</a>
+      <a href="/changelog">changelog</a>
+      <a href="/resume" target="_blank" class="right">contact</a>
+    </div>
+
+    <div class="man-header">
+      <span>LAB(1)</span><span>home.arpa</span><span>LAB(1)</span>
+    </div>
+
+    <div class="section">
+      <h2>Infrastructure</h2>
+      <div class="entry">
+        <div class="entry-title">Proxmox VE 9</div>
+        <div class="entry-org">devstem &nbsp;&bull;&nbsp; ASUS PN51 (Ryzen 7 5700U) &nbsp;&bull;&nbsp; <a href="https://pve.arpatek.dev">pve.arpatek.dev</a></div>
+        <ul><li>Single-node hypervisor running all VMs. No cluster, no HA — intentional.</li></ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">k3s &mdash; 3-node cluster</div>
+        <div class="entry-org">prod-k3s-master-0 + 2 workers &nbsp;&bull;&nbsp; Debian 13</div>
+        <ul>
+          <li>Lightweight Kubernetes for public workloads. Traefik ingress, cert-manager TLS.</li>
+          <li>Runs arpatek.dev and proxies git.arpatek.dev, gf.arpatek.dev, pm.arpatek.dev, pi.arpatek.dev, pve.arpatek.dev</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Identity &amp; Network</h2>
+      <div class="entry">
+        <div class="entry-title">FreeIPA</div>
+        <div class="entry-org">prod-ipa-0 &nbsp;&bull;&nbsp; Rocky Linux 9</div>
+        <ul><li>Central identity, SSH auth, sudo policy, and DNS authority for home.arpa. Every VM is an IPA client.</li></ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Pi-hole</div>
+        <div class="entry-org">netrunner-rpi &nbsp;&bull;&nbsp; Raspberry Pi &nbsp;&bull;&nbsp; <a href="https://pi.arpatek.dev">pi.arpatek.dev</a></div>
+        <ul><li>Network-wide DNS resolver, DHCP server, and content filter. Upstream for FreeIPA queries.</li></ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">WireGuard</div>
+        <div class="entry-org">netrunner-rpi &nbsp;&bull;&nbsp; Raspberry Pi</div>
+        <ul><li>VPN into the 10.33.111.0/24 network. Connected clients use Pi-hole for DNS, matching LAN behavior.</li></ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Dev &amp; Observability</h2>
+      <div class="entry">
+        <div class="entry-title">Gitea + act_runner</div>
+        <div class="entry-org">prod-git-0 &nbsp;&bull;&nbsp; Debian 13 &nbsp;&bull;&nbsp; <a href="https://git.arpatek.dev">git.arpatek.dev</a></div>
+        <ul><li>Self-hosted Git, container registry, and CI/CD. Pushes built images to k3s on every commit.</li></ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">PLG Stack &mdash; Prometheus, Loki, Grafana</div>
+        <div class="entry-org">prod-mon-0 &nbsp;&bull;&nbsp; Debian 13 &nbsp;&bull;&nbsp; <a href="https://gf.arpatek.dev">gf.arpatek.dev</a> &nbsp;&bull;&nbsp; <a href="https://pm.arpatek.dev">pm.arpatek.dev</a></div>
+        <ul><li>Hub-and-spoke observability. node_exporter + cAdvisor + Alloy agents on every host.</li></ul>
+      </div>
+    </div>
+
+    <div class="man-footer">
+      <span>LAB(1)</span><span>home.arpa</span><span>LAB(1)</span>
+    </div>
+  </div>
+</body>
+</html>"""
+
+# ──[ Changelog ]───────────────────────────────────────────────────────────────────────
+CHANGELOG = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>changelog — arpatek</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>{_STYLES}</style>
+</head>
+<body>
+  <div id="container">
+    <div id="nav">
+      <a href="/">home</a>
+      <a href="/man">manpage</a>
+      <a href="/uses">uses</a>
+      <a href="/lab">lab</a>
+      <a href="/changelog" class="active">changelog</a>
+      <a href="/resume" target="_blank" class="right">contact</a>
+    </div>
+
+    <div class="man-header">
+      <span>CHANGELOG(1)</span><span>arpatek</span><span>CHANGELOG(1)</span>
+    </div>
+
+    <div class="section">
+      <h2>2026-05</h2>
+      <div class="entry">
+        <div class="entry-title">Site: /uses, /lab, /changelog pages</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Homelab: Traefik ingresses for all internal services</div>
+        <div class="entry-org">pve.arpatek.dev, pi.arpatek.dev, gf.arpatek.dev, pm.arpatek.dev via k3s + Cloudflare</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Site: styling pass &mdash; dark background, underscore cursor, viewport fill</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Site: initial launch &mdash; terminal animation, screensaver, ASCII art, easter eggs</div>
+        <div class="entry-org">arpatek.dev &mdash; /man, /gif, /boo, /xmas, /help</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Homelab: k3s cluster, arpatek.dev on Kubernetes, wildcard TLS via cert-manager</div>
+        <div class="entry-org">home.arpa</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Homelab: Gitea + act_runner CI/CD pipeline</div>
+        <div class="entry-org">git.arpatek.dev &mdash; push-to-deploy for arpatek.dev</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Homelab: PLG observability stack</div>
+        <div class="entry-org">Prometheus, Loki, Grafana on prod-mon-0</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Homelab: identity, DNS, and network layer</div>
+        <div class="entry-org">FreeIPA (prod-ipa-0), Pi-hole + WireGuard (netrunner-rpi)</div>
+      </div>
+    </div>
+
+    <div class="man-footer">
+      <span>CHANGELOG(1)</span><span>arpatek</span><span>CHANGELOG(1)</span>
     </div>
   </div>
 </body>
