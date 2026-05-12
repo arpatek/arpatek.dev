@@ -233,22 +233,34 @@ CHANGELOG = (
 f"""
 {C2}CHANGELOG(1){R}                    arpatek                    {C2}CHANGELOG(1){R}
 
-{C2}2026-05{R}
+{C2}2026-05-12{R}
        {BD}site{R}     /contact page, /cv PDF download, footer links redesign
-       {BD}site{R}     Syntax-highlighted terminal, λ title, animated favicon,
-                screensaver removed, /lambda easter egg
-       {BD}site{R}     /uses, /lab, /changelog pages added
-       {BD}lab{R}      Traefik ingresses for all internal services
-                (pve, pi, gf, pm.arpatek.dev via k3s + Cloudflare)
-       {BD}site{R}     Styling pass — dark background, underscore cursor,
-                viewport fill, box-shadow cleanup
+       {BD}site{R}     /uses, /lab, /changelog pages; syntax-highlighted terminal,
+                λ title, animated favicon, /lambda, screensaver removed
+       {BD}lab{R}      Traefik ingresses — pve, gf, pm, pi.arpatek.dev
+                publicly exposed via k3s + Cloudflare
+
+{C2}2026-05-10{R}
        {BD}site{R}     Initial launch — terminal animation, ASCII art banner,
-                easter eggs (/lambda /boo /xmas)
-       {BD}lab{R}      k3s cluster provisioned, arpatek.dev on Kubernetes,
-                wildcard TLS via cert-manager + Let's Encrypt
+                easter eggs (/lambda /boo /xmas), /man resume
+       {BD}lab{R}      k3s cluster, arpatek.dev on Kubernetes, wildcard TLS,
+                cert-manager + Let's Encrypt, Gitea ingress
+
+{C2}2026-04-30{R}
+       {BD}lab{R}      PLG observability stack — Prometheus, Loki, Grafana
+                central server + Debian & RHEL agents
+
+{C2}2026-03-28{R}
        {BD}lab{R}      Gitea + act_runner CI/CD pipeline (push-to-deploy)
-       {BD}lab{R}      PLG observability stack (Prometheus, Loki, Grafana)
-       {BD}lab{R}      Identity and network layer — FreeIPA, Pi-hole, WireGuard
+
+{C2}2026-03-01{R}
+       {BD}lab{R}      FreeIPA — identity, SSH policy, HBAC, DNS for home.arpa
+
+{C2}2026-02-21{R}
+       {BD}lab{R}      WireGuard VPN — remote access into 10.33.111.0/24
+
+{C2}2026-01-11{R}
+       {BD}lab{R}      Pi-hole — DNS, DHCP, content filter (netrunner-rpi)
 
 {C2}CHANGELOG(1){R}                    arpatek                    {C2}CHANGELOG(1){R}
 """

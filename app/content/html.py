@@ -595,46 +595,70 @@ CHANGELOG = f"""<!DOCTYPE html>
     </div>
 
     <div class="section">
-      <h2>2026-05</h2>
+      <h2>2026-05-12</h2>
       <div class="entry">
-        <div class="entry-title">Site: /contact page, /cv PDF download, footer links</div>
+        <div class="entry-title">Site: /contact page, /cv PDF download, footer links redesign</div>
         <div class="entry-org">arpatek.dev &mdash; source code, linkedin, resume in footer</div>
       </div>
       <div class="entry">
-        <div class="entry-title">Site: syntax-highlighted terminal, λ title, animated favicon</div>
-        <div class="entry-org">arpatek.dev &mdash; /lambda easter egg, screensaver removed</div>
-      </div>
-      <div class="entry">
-        <div class="entry-title">Site: /uses, /lab, /changelog pages</div>
-        <div class="entry-org">arpatek.dev</div>
+        <div class="entry-title">Site: /uses, /lab, /changelog pages; syntax-highlighted terminal</div>
+        <div class="entry-org">arpatek.dev &mdash; λ title, animated favicon, /lambda, screensaver removed</div>
       </div>
       <div class="entry">
         <div class="entry-title">Homelab: Traefik ingresses for all internal services</div>
-        <div class="entry-org">pve.arpatek.dev, pi.arpatek.dev, gf.arpatek.dev, pm.arpatek.dev via k3s + Cloudflare</div>
+        <div class="entry-org">pve, gf, pm, pi.arpatek.dev publicly exposed via k3s + Cloudflare</div>
       </div>
-      <div class="entry">
-        <div class="entry-title">Site: styling pass &mdash; dark background, underscore cursor, viewport fill</div>
-        <div class="entry-org">arpatek.dev</div>
-      </div>
+    </div>
+
+    <div class="section">
+      <h2>2026-05-10</h2>
       <div class="entry">
         <div class="entry-title">Site: initial launch &mdash; terminal animation, ASCII art, easter eggs</div>
         <div class="entry-org">arpatek.dev &mdash; /man, /lambda, /boo, /xmas, /help</div>
       </div>
       <div class="entry">
-        <div class="entry-title">Homelab: k3s cluster, arpatek.dev on Kubernetes, wildcard TLS via cert-manager</div>
-        <div class="entry-org">home.arpa</div>
+        <div class="entry-title">Homelab: k3s cluster, arpatek.dev on Kubernetes, wildcard TLS</div>
+        <div class="entry-org">home.arpa &mdash; cert-manager + Let's Encrypt, Gitea ingress</div>
       </div>
-      <div class="entry">
-        <div class="entry-title">Homelab: Gitea + act_runner CI/CD pipeline</div>
-        <div class="entry-org">git.arpatek.dev &mdash; push-to-deploy for arpatek.dev</div>
-      </div>
+    </div>
+
+    <div class="section">
+      <h2>2026-04-30</h2>
       <div class="entry">
         <div class="entry-title">Homelab: PLG observability stack</div>
-        <div class="entry-org">Prometheus, Loki, Grafana on prod-mon-0</div>
+        <div class="entry-org">Prometheus, Loki, Grafana &mdash; central server + Debian &amp; RHEL agents</div>
       </div>
+    </div>
+
+    <div class="section">
+      <h2>2026-03-28</h2>
       <div class="entry">
-        <div class="entry-title">Homelab: identity, DNS, and network layer</div>
-        <div class="entry-org">FreeIPA (prod-ipa-0), Pi-hole + WireGuard (netrunner-rpi)</div>
+        <div class="entry-title">Homelab: Gitea + act_runner CI/CD</div>
+        <div class="entry-org">git.arpatek.dev &mdash; self-hosted Git, container registry, push-to-deploy</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>2026-03-01</h2>
+      <div class="entry">
+        <div class="entry-title">Homelab: FreeIPA &mdash; identity, auth, DNS</div>
+        <div class="entry-org">prod-ipa-0 &mdash; SSH policy, HBAC, BIND for home.arpa</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>2026-02-21</h2>
+      <div class="entry">
+        <div class="entry-title">Homelab: WireGuard VPN</div>
+        <div class="entry-org">netrunner-rpi &mdash; remote access into 10.33.111.0/24</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>2026-01-11</h2>
+      <div class="entry">
+        <div class="entry-title">Homelab: Pi-hole &mdash; DNS, DHCP, content filter</div>
+        <div class="entry-org">netrunner-rpi &mdash; network-wide resolver, upstream for FreeIPA</div>
       </div>
     </div>
 
