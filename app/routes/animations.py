@@ -118,7 +118,7 @@ async def _boo_stream():
     i = 0
     try:
         while True:
-            yield CLEAR + _BOO_GREEN + '\n\n\n' + _BOO_FRAMES[i % len(_BOO_FRAMES)] + RESET
+            yield CLEAR + _BOO_GREEN + _BOO_FRAMES[i % len(_BOO_FRAMES)] + RESET
             await asyncio.sleep(0.1)
             i += 1
     finally:
