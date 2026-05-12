@@ -160,7 +160,7 @@ f"""
 # ──[ Uses ]────────────────────────────────────────────────────────────────────────────
 USES = (
 f"""
-{C2}USES(1){R}                    Hardware & Software                    {C2}USES(1){R}
+{C2}USES(7){R}                    Hardware & Software                    {C2}USES(7){R}
 
 {C2}HARDWARE{R}
        {BD}M1 Mac Mini{R}
@@ -181,14 +181,14 @@ f"""
        {C1}Terminal{R}    iTerm2 (Mac)  |  Ghostty (MacBook)
        {C1}OS{R}          macOS  |  Asahi Linux  |  Rocky Linux 9  |  Debian 13
 
-{C2}USES(1){R}                    California, USA                    {C2}USES(1){R}
+{C2}USES(7){R}                    California, USA                    {C2}USES(7){R}
 """
 )
 
 # ──[ Lab ]─────────────────────────────────────────────────────────────────────────────
 LAB = (
 f"""
-{C2}LAB(1){R}                         home.arpa                         {C2}LAB(1){R}
+{C2}LAB(8){R}                         home.arpa                         {C2}LAB(8){R}
 
 {C2}INFRASTRUCTURE{R}
        {BD}Proxmox VE 9{R}
@@ -224,14 +224,14 @@ f"""
               Hub-and-spoke observability. node_exporter + cAdvisor + Alloy
               agents ship metrics and logs from every host.
 
-{C2}LAB(1){R}                         home.arpa                         {C2}LAB(1){R}
+{C2}LAB(8){R}                         home.arpa                         {C2}LAB(8){R}
 """
 )
 
 # ──[ Changelog ]───────────────────────────────────────────────────────────────────────
 CHANGELOG = (
 f"""
-{C2}CHANGELOG(1){R}                    arpatek                    {C2}CHANGELOG(1){R}
+{C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
 
 {C2}2026-05-12{R}
        {BD}site{R}     /contact page, /cv PDF download, footer links redesign
@@ -262,14 +262,14 @@ f"""
 {C2}2026-01-11{R}
        {BD}lab{R}      Pi-hole — DNS, DHCP, content filter (netrunner-rpi)
 
-{C2}CHANGELOG(1){R}                    arpatek                    {C2}CHANGELOG(1){R}
+{C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
 """
 )
 
 # ──[ Now ]─────────────────────────────────────────────────────────────────────────────
 NOW = (
 f"""
-{C2}NOW(1){R}                          2026-05-12                          {C2}NOW(1){R}
+{C2}NOW(7){R}                          2026-05-12                          {C2}NOW(7){R}
 
 {C2}WORK{R}
        Building out the homelab — k3s, IaC, observability. This site.
@@ -295,7 +295,7 @@ f"""
 {C2}DAILY DRIVER{R}
        Testing Asahi Linux on the M1 MacBook Air. Mostly works.
 
-{C2}NOW(1){R}                       California, USA                       {C2}NOW(1){R}
+{C2}NOW(7){R}                       California, USA                       {C2}NOW(7){R}
 """
 )
 
@@ -325,7 +325,7 @@ f"""
 # ──[ Contact ]─────────────────────────────────────────────────────────────────────────
 CONTACT = (
 f"""
-{C2}CONTACT(1){R}                       arpatek                       {C2}CONTACT(1){R}
+{C2}CONTACT(7){R}                       arpatek                       {C2}CONTACT(7){R}
 
 {C2}NAME{R}
        {BD}Juan Garcia{R} — Linux technologist & automation engineer
@@ -343,6 +343,6 @@ f"""
 {C2}RESUME{R}
        {G6}${R} {G2}curl{R} {C1}-OJ arpatek.dev/cv{R}
 
-{C2}CONTACT(1){R}                    California, USA                    {C2}CONTACT(1){R}
+{C2}CONTACT(7){R}                    California, USA                    {C2}CONTACT(7){R}
 """
 )

@@ -444,7 +444,7 @@ USES = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-header">
-      <span>USES(1)</span><span>Hardware &amp; Software</span><span>USES(1)</span>
+      <span>USES(7)</span><span>Hardware &amp; Software</span><span>USES(7)</span>
     </div>
 
     <div class="section">
@@ -509,7 +509,7 @@ LAB = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-header">
-      <span>LAB(1)</span><span>home.arpa</span><span>LAB(1)</span>
+      <span>LAB(8)</span><span>home.arpa</span><span>LAB(8)</span>
     </div>
 
     <div class="section">
@@ -563,7 +563,7 @@ LAB = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-footer">
-      <span>LAB(1)</span><span>home.arpa</span><span>LAB(1)</span>
+      <span>LAB(8)</span><span>home.arpa</span><span>LAB(8)</span>
     </div>
   </div>
   <script>{_FAVICON_JS}</script>
@@ -595,7 +595,7 @@ CHANGELOG = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-header">
-      <span>CHANGELOG(1)</span><span>arpatek</span><span>CHANGELOG(1)</span>
+      <span>CHANGELOG(7)</span><span>arpatek</span><span>CHANGELOG(7)</span>
     </div>
 
     <div class="section">
@@ -667,7 +667,7 @@ CHANGELOG = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-footer">
-      <span>CHANGELOG(1)</span><span>arpatek</span><span>CHANGELOG(1)</span>
+      <span>CHANGELOG(7)</span><span>arpatek</span><span>CHANGELOG(7)</span>
     </div>
   </div>
   <script>{_FAVICON_JS}</script>
@@ -699,7 +699,7 @@ CONTACT = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-header">
-      <span>CONTACT(1)</span><span>arpatek</span><span>CONTACT(1)</span>
+      <span>CONTACT(7)</span><span>arpatek</span><span>CONTACT(7)</span>
     </div>
 
     <div class="section">
@@ -724,7 +724,7 @@ CONTACT = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-footer">
-      <span>CONTACT(1)</span><span>California, USA</span><span>CONTACT(1)</span>
+      <span>CONTACT(7)</span><span>California, USA</span><span>CONTACT(7)</span>
     </div>
   </div>
   <script>{_FAVICON_JS}</script>
@@ -757,7 +757,7 @@ NOW = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-header">
-      <span>NOW(1)</span><span>2026-05-12</span><span>NOW(1)</span>
+      <span>NOW(7)</span><span>2026-05-12</span><span>NOW(7)</span>
     </div>
 
     <div class="section">
@@ -799,7 +799,7 @@ NOW = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-footer">
-      <span>NOW(1)</span><span>California, USA</span><span>NOW(1)</span>
+      <span>NOW(7)</span><span>California, USA</span><span>NOW(7)</span>
     </div>
   </div>
   <script>{_FAVICON_JS}</script>
