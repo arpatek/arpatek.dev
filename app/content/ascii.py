@@ -240,7 +240,7 @@ f"""
        {BD}site{R}     Styling pass — dark background, underscore cursor,
                 viewport fill, box-shadow cleanup
        {BD}site{R}     Initial launch — terminal animation, screensaver,
-                ASCII art banner, easter eggs (/gif /boo /xmas)
+                ASCII art banner, easter eggs (/lambda /boo /xmas)
        {BD}lab{R}      k3s cluster provisioned, arpatek.dev on Kubernetes,
                 wildcard TLS via cert-manager + Let's Encrypt
        {BD}lab{R}      Gitea + act_runner CI/CD pipeline (push-to-deploy)
@@ -265,7 +265,7 @@ f"""
 
   {C2}hidden{R}
 
-  {C1}$ curl arpatek.dev/gif{R}          Trippy circle animation
+  {C1}$ curl arpatek.dev/lambda{R}        Trippy circle animation
   {C1}$ curl arpatek.dev/boo{R}          Spooky
   {C1}$ curl arpatek.dev/xmas{R}         Festive
   {C1}$ curl -OJ arpatek.dev/cv{R}       Download resume PDF

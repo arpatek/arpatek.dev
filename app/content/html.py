@@ -263,7 +263,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
       <a href="/resume" class="right">contact</a>
     </div>
 
-    <h1><a href="/gif" target="_blank" style="color:inherit;text-decoration:none;font-size:1.3em;vertical-align:middle">λ</a> arpatek.dev</h1>
+    <h1><a href="/lambda" target="_blank" style="color:inherit;text-decoration:none;font-size:1.3em;vertical-align:middle">λ</a> arpatek.dev</h1>
 
     <pre class="terminal" id="term"><code></code></pre>
 
@@ -610,7 +610,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       </div>
       <div class="entry">
         <div class="entry-title">Site: initial launch &mdash; terminal animation, screensaver, ASCII art, easter eggs</div>
-        <div class="entry-org">arpatek.dev &mdash; /man, /gif, /boo, /xmas, /help</div>
+        <div class="entry-org">arpatek.dev &mdash; /man, /lambda, /boo, /xmas, /help</div>
       </div>
       <div class="entry">
         <div class="entry-title">Homelab: k3s cluster, arpatek.dev on Kubernetes, wildcard TLS via cert-manager</div>

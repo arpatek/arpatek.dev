@@ -79,7 +79,7 @@ async def _gif_stream():
         yield SHOW_CURSOR + CLEAR
 
 
-@router.get('/gif')
+@router.get('/lambda')
 async def gif(request: Request):
     ua = request.headers.get('user-agent', '')
     if not ua.lower().startswith('curl'):
