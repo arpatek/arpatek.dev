@@ -205,16 +205,12 @@ function setCursor(on) {
     else    term.classList.add('no-cursor');
 }
 
-function htmlChars(str) {
-    return str.match(/(<[^>]+>|&[^;]+;|[\s\S])/g) || [];
-}
-
 function runCommand(idx, done) {
     const { cmd, lines } = COMMANDS[idx];
-    const chars = [BLINK_OFF, ...htmlChars(cmd), '\n', ...lines.map(l => l + '\n'), `${G6}$${R} `, BLINK_ON];
+    const chars = [...lines.map(l => l + '\n'), `${G6}$${R} `, BLINK_ON];
 
-    setCursor(true);
-    term.innerHTML = `${G6}$${R} `;
+    setCursor(false);
+    term.innerHTML = `${G6}$${R} ` + cmd + '\n';
 
     let i = 0;
     function tick() {
