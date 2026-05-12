@@ -53,7 +53,7 @@ h2 { color: var(--c4); font-size: 0.85rem; text-transform: uppercase;
 pre.terminal {
     background: #1e1b1e;
     border: 1px solid #79be9a33;
-    box-shadow: 0 0 160px #79be9a10, 0 0 60px #b9746f08;
+    box-shadow: 0 0 40px #79be9a18;
     padding: 8px;
     min-height: 544px;
     overflow-x: auto;
