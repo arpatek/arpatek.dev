@@ -13,8 +13,8 @@ from fastapi.requests  import Request
 from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, Response
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
-from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, USES as ASCII_USES, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG
-from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, USES as HTML_USES, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG
+from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, USES as ASCII_USES, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG, CONTACT as ASCII_CONTACT
+from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, USES as HTML_USES, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG, CONTACT as HTML_CONTACT
 
 
 # ──[ Router ]──────────────────────────────────────────────────────────────────────────
@@ -68,9 +68,17 @@ async def changelog(request: Request) -> Response:
 
 
 @router.get("/resume")
-async def resume() -> Response:
+async def resume(request: Request) -> Response:
+    ua = request.headers.get("user-agent", "")
+    if ua.lower().startswith("curl"):
+        return PlainTextResponse(ASCII_CONTACT)
+    return HTMLResponse(HTML_CONTACT)
+
+
+@router.get("/cv")
+async def cv() -> Response:
     return FileResponse(
         "app/static/jgarcia.cv.pdf",
         media_type="application/pdf",
-        headers={"Content-Disposition": 'inline; filename="jgarcia.cv.pdf"'},
+        headers={"Content-Disposition": 'attachment; filename="jgarcia.cv.pdf"'},
     )

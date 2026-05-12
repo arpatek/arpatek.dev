@@ -107,6 +107,11 @@ pre.terminal > code::after {
           margin-top: 16px; padding-bottom: 16px; }
 .footer a { color: var(--c4); }
 
+/* button */
+.btn { display: inline-block; padding: 5px 16px; border: 1px solid var(--c2);
+       color: var(--c2); font-size: 12px; margin-top: 12px; }
+.btn:hover { background: var(--c2); color: #1c1a16; text-decoration: none; }
+
 /* manpage styles */
 .man-header { display: flex; justify-content: space-between;
               color: var(--c4); margin-bottom: 20px; }
@@ -166,12 +171,12 @@ ${C2}└────────────────────────
 
   ${C2}Legend${R}
 
-  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev${R}              This page
-  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/man${R}          Full resume in manpage format
-  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/uses${R}         Hardware &amp; software setup
-  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/lab${R}          Homelab services (home.arpa)
-  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/changelog${R}    Site and project history
-  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/help${R}         All available endpoints
+  ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev${R}              This page
+  ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/man${R}          Full resume in manpage format
+  ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/uses${R}         Hardware &amp; software setup
+  ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/lab${R}          Homelab services (home.arpa)
+  ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/changelog${R}    Site and project history
+  ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/help${R}         All available endpoints
 
 `.split('\n')
     },
@@ -287,7 +292,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" target="_blank" class="right">contact</a>
+      <a href="/resume" class="right">contact</a>
     </div>
 
     <h1><a href="/gif" target="_blank" style="color:inherit;text-decoration:none">λ</a> arpatek.dev</h1>
@@ -299,6 +304,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
         <a href="https://codeberg.org/arpatek">codeberg.org/arpatek</a> &nbsp;|&nbsp;
         <a href="https://linkedin.com/in/arpatek">linkedin.com/in/arpatek</a>
       </code>
+      <div><a href="/cv" class="btn" download>Resume</a></div>
     </div>
   </div>
   <script>{_COMMANDS_JS}</script>
@@ -328,7 +334,7 @@ MANPAGE = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" target="_blank" class="right">contact</a>
+      <a href="/resume" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -345,9 +351,6 @@ MANPAGE = f"""<!DOCTYPE html>
       <p>Systems automation engineer with production experience building hardware validation
       tooling at scale. Strong background in Linux, Bash, Python, and infrastructure-as-code.
       Pursuing RHCSA; roadmap includes RHCE, Terraform Associate, CKA, CKS, and AWS.</p>
-      <br>
-      <p><span class="label">Email</span> <a href="mailto:juang.sh@proton.me">juang.sh@proton.me</a></p>
-      <p><span class="label">Location</span> California, USA</p>
     </div>
 
     <div class="section">
@@ -466,7 +469,7 @@ USES = f"""<!DOCTYPE html>
       <a href="/uses" class="active">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" target="_blank" class="right">contact</a>
+      <a href="/resume" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -530,7 +533,7 @@ LAB = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab" class="active">lab</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" target="_blank" class="right">contact</a>
+      <a href="/resume" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -616,7 +619,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog" class="active">changelog</a>
-      <a href="/resume" target="_blank" class="right">contact</a>
+      <a href="/resume" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -667,4 +670,65 @@ CHANGELOG = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
+# ──[ Contact ]─────────────────────────────────────────────────────────────────────────
+CONTACT = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>contact — arpatek</title>
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>{_STYLES}</style>
+</head>
+<body>
+  <div id="container">
+    <div id="nav">
+      <a href="/">home</a>
+      <a href="/man">manpage</a>
+      <a href="/uses">uses</a>
+      <a href="/lab">lab</a>
+      <a href="/changelog">changelog</a>
+      <a href="/resume" class="active right">contact</a>
+    </div>
+
+    <div class="man-header">
+      <span>CONTACT(1)</span><span>arpatek</span><span>CONTACT(1)</span>
+    </div>
+
+    <div class="section">
+      <h2>Name</h2>
+      <p>Juan Garcia &mdash; Linux technologist &amp; automation engineer</p>
+    </div>
+
+    <div class="section">
+      <h2>Location</h2>
+      <p>California, USA</p>
+    </div>
+
+    <div class="section">
+      <h2>Contact</h2>
+      <p><span class="label">Email</span> <a href="mailto:juang.sh@proton.me">juang.sh@proton.me</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Links</h2>
+      <p><span class="label">Codeberg</span> <a href="https://codeberg.org/arpatek">codeberg.org/arpatek</a></p>
+      <p><span class="label">LinkedIn</span> <a href="https://linkedin.com/in/arpatek">linkedin.com/in/arpatek</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Resume</h2>
+      <p><a href="/cv" class="btn" download>Download Resume</a></p>
+    </div>
+
+    <div class="man-footer">
+      <span>CONTACT(1)</span><span>California, USA</span><span>CONTACT(1)</span>
+    </div>
+  </div>
+  <script>{_FAVICON_JS}</script>
+</body>
+</html>"""
 

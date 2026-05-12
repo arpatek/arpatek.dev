@@ -53,12 +53,12 @@ f"""
 
   {C2}Legend{R}
 
-  {DM}${R} {C2}curl{R} {C1}arpatek.dev{R}              This page
-  {DM}${R} {C2}curl{R} {C1}arpatek.dev/man{R}          Full resume in manpage format
-  {DM}${R} {C2}curl{R} {C1}arpatek.dev/uses{R}         Hardware & software setup
-  {DM}${R} {C2}curl{R} {C1}arpatek.dev/lab{R}          Homelab services (home.arpa)
-  {DM}${R} {C2}curl{R} {C1}arpatek.dev/changelog{R}    Site and project history
-  {DM}${R} {C2}curl{R} {C1}arpatek.dev/help{R}         All available endpoints
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev{R}              This page
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/man{R}          Full resume in manpage format
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/uses{R}         Hardware & software setup
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/lab{R}          Homelab services (home.arpa)
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/changelog{R}    Site and project history
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/help{R}         All available endpoints
 
 
 
@@ -84,9 +84,6 @@ f"""
        Terraform, Kubernetes, and self-hosted infrastructure monitoring
        stacks. Pursuing RHCSA cert; roadmap includes RHCE, Terraform
        Associate, CKA, CKS, and AWS.
-
-       Location: California, USA
-       Email:    {C1}juang.sh@proton.me{R}
 
 {C2}EXPERIENCE{R}
        {BD}Senior Test Technician{R}
@@ -271,6 +268,32 @@ f"""
   {C1}$ curl arpatek.dev/gif{R}          Trippy circle animation
   {C1}$ curl arpatek.dev/boo{R}          Spooky
   {C1}$ curl arpatek.dev/xmas{R}         Festive
+  {C1}$ curl -OJ arpatek.dev/cv{R}       Download resume PDF
 
+"""
+)
+
+# ──[ Contact ]─────────────────────────────────────────────────────────────────────────
+CONTACT = (
+f"""
+{C2}CONTACT(1){R}                       arpatek                       {C2}CONTACT(1){R}
+
+{C2}NAME{R}
+       {BD}Juan Garcia{R} — Linux technologist & automation engineer
+
+{C2}LOCATION{R}
+       California, USA
+
+{C2}CONTACT{R}
+       {C1}Email{R}      juang.sh@proton.me
+
+{C2}LINKS{R}
+       {C1}Codeberg{R}   codeberg.org/arpatek
+       {C1}LinkedIn{R}   linkedin.com/in/arpatek
+
+{C2}RESUME{R}
+       {G6}${R} {G2}curl{R} {C1}-OJ arpatek.dev/cv{R}
+
+{C2}CONTACT(1){R}                    California, USA                    {C2}CONTACT(1){R}
 """
 )
