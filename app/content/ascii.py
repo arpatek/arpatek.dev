@@ -314,7 +314,7 @@ f"""
 
   {C2}hidden{R}
 
-  {C1}$ curl arpatek.dev/lambda{R}        Trippy circle animation
+  {C1}$ curl arpatek.dev/lambda{R}       Trippy circle animation
   {C1}$ curl arpatek.dev/boo{R}          Spooky
   {C1}$ curl arpatek.dev/xmas{R}         Festive
   {C1}$ curl -OJ arpatek.dev/cv{R}       Download resume PDF
