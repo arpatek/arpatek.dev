@@ -54,7 +54,7 @@ body {
 }
 
 #container {
-    max-width: 765px;
+    max-width: 770px;
     margin: 10px auto;
     padding: 0 8px;
     min-height: calc(100vh - 20px);
