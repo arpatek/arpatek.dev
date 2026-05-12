@@ -9,6 +9,16 @@ types out commands and output to simulate a live shell session.
 Author: Juan Garcia (arpatek)
 """
 
+# ──[ Favicon JS ]──────────────────────────────────────────────────────────────────────
+_FAVICON_JS = """
+(function() {
+    var link = document.querySelector("link[rel='icon']");
+    document.addEventListener('visibilitychange', function() {
+        link.href = document.hidden ? '/static/favicon.ico' : '/static/favicon.gif';
+    });
+})();
+"""
+
 # ──[ Shared Theme ]────────────────────────────────────────────────────────────────────
 _STYLES = """
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -55,7 +65,7 @@ pre.terminal {
     background: #1c1a16;
     border: 1px solid #79be9a33;
     padding: 8px;
-    min-height: 624px;
+    min-height: 640px;
     overflow-x: auto;
     line-height: 16px;
     margin: 16px 0;
@@ -248,7 +258,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>arpatek</title>
-  <link rel="icon" href="/static/favicon.ico">
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -279,6 +289,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
   </div>
   <script>{_COMMANDS_JS}</script>
   <script>{_TERMINAL_JS}</script>
+  <script>{_FAVICON_JS}</script>
 </body>
 </html>"""
 
@@ -289,7 +300,7 @@ MANPAGE = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>manpage</title>
-  <link rel="icon" href="/static/favicon.ico">
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -416,6 +427,7 @@ MANPAGE = f"""<!DOCTYPE html>
       <span>ARPATEK(1)</span><span>California, USA</span><span>ARPATEK(1)</span>
     </div>
   </div>
+  <script>{_FAVICON_JS}</script>
 </body>
 </html>"""
 
@@ -426,7 +438,7 @@ USES = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>uses — arpatek</title>
-  <link rel="icon" href="/static/favicon.ico">
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -479,6 +491,7 @@ USES = f"""<!DOCTYPE html>
       <span>arpatek</span><span>California, USA</span><span>arpatek.dev/uses</span>
     </div>
   </div>
+  <script>{_FAVICON_JS}</script>
 </body>
 </html>"""
 
@@ -489,7 +502,7 @@ LAB = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>lab — arpatek</title>
-  <link rel="icon" href="/static/favicon.ico">
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -564,6 +577,7 @@ LAB = f"""<!DOCTYPE html>
       <span>LAB(1)</span><span>home.arpa</span><span>LAB(1)</span>
     </div>
   </div>
+  <script>{_FAVICON_JS}</script>
 </body>
 </html>"""
 
@@ -574,7 +588,7 @@ CHANGELOG = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>changelog — arpatek</title>
-  <link rel="icon" href="/static/favicon.ico">
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -635,6 +649,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <span>CHANGELOG(1)</span><span>arpatek</span><span>CHANGELOG(1)</span>
     </div>
   </div>
+  <script>{_FAVICON_JS}</script>
 </body>
 </html>"""
 
