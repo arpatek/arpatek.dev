@@ -290,7 +290,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
       <a href="/resume" target="_blank" class="right">contact</a>
     </div>
 
-    <h1><a href="/gif" target="_blank" style="color:inherit;text-decoration:none">&gt;</a> arpatek.dev</h1>
+    <h1><a href="/gif" target="_blank" style="color:inherit;text-decoration:none">λ</a> arpatek.dev</h1>
 
     <pre class="terminal" id="term"><code></code></pre>
 
