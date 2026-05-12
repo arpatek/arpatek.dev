@@ -232,13 +232,16 @@ function runScreensaver(done) {
     term.style.color = '#00ff00';
     let i = 0;
     const start = Date.now();
+    const termRows = Math.floor((term.parentElement.clientHeight - 16) / 16);
     function frame() {
         if (Date.now() - start >= SCREENSAVER_DURATION) {
             term.style.color = '';
             done();
             return;
         }
-        term.textContent = SS_FRAMES[i++ % SS_FRAMES.length];
+        const lines = SS_FRAMES[i++ % SS_FRAMES.length].split('\n');
+        while (lines.length < termRows) lines.push('');
+        term.textContent = lines.join('\n');
         setTimeout(frame, 50);
     }
     frame();
