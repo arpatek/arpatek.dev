@@ -144,7 +144,7 @@ const R  = '</span>';
 
 const COMMANDS = [
     {
-        cmd: 'curl arpatek.dev',
+        cmd: `${G2}curl${R} ${C1}arpatek.dev${R}`,
         lines: `
 
 ${G0}         :::     :::::::::  :::::::::     ::: ::::::::::: :::::::::: :::    :::${R}
@@ -205,12 +205,16 @@ function setCursor(on) {
     else    term.classList.add('no-cursor');
 }
 
+function htmlChars(str) {
+    return str.match(/(<[^>]+>|&[^;]+;|[\s\S])/g) || [];
+}
+
 function runCommand(idx, done) {
     const { cmd, lines } = COMMANDS[idx];
-    const chars = [BLINK_OFF, ...cmd.split(''), '\n', ...lines.map(l => l + '\n'), '$ ', BLINK_ON];
+    const chars = [BLINK_OFF, ...htmlChars(cmd), '\n', ...lines.map(l => l + '\n'), `${G6}$${R} `, BLINK_ON];
 
     setCursor(true);
-    term.innerHTML = '$ ';
+    term.innerHTML = `${G6}$${R} `;
 
     let i = 0;
     function tick() {
@@ -301,10 +305,10 @@ PORTFOLIO = f"""<!DOCTYPE html>
 
     <div class="footer">
       <code>
-        <a href="https://codeberg.org/arpatek">codeberg.org/arpatek</a> &nbsp;|&nbsp;
-        <a href="https://linkedin.com/in/arpatek">linkedin.com/in/arpatek</a>
+        <a href="https://codeberg.org/arpatek">source code</a> &nbsp;|&nbsp;
+        <a href="https://linkedin.com/in/arpatek">linkedin</a> &nbsp;|&nbsp;
+        <a href="/cv" download>resume</a>
       </code>
-      <div><a href="/cv" class="btn" download>Resume</a></div>
     </div>
   </div>
   <script>{_COMMANDS_JS}</script>
@@ -717,11 +721,6 @@ CONTACT = f"""<!DOCTYPE html>
       <h2>Links</h2>
       <p><span class="label">Codeberg</span> <a href="https://codeberg.org/arpatek">codeberg.org/arpatek</a></p>
       <p><span class="label">LinkedIn</span> <a href="https://linkedin.com/in/arpatek">linkedin.com/in/arpatek</a></p>
-    </div>
-
-    <div class="section">
-      <h2>Resume</h2>
-      <p><a href="/cv" class="btn" download>Download Resume</a></p>
     </div>
 
     <div class="man-footer">
