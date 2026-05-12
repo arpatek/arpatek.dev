@@ -54,7 +54,7 @@ pre.terminal {
     background: #1c1a16;
     border: 1px solid #79be9a33;
     padding: 8px;
-    min-height: 544px;
+
     overflow-x: auto;
     line-height: 16px;
     margin: 16px 0;
@@ -76,7 +76,6 @@ pre.terminal > code::after {
 /* mobile */
 @media (max-width: 600px) {
     body { font-size: 11px; padding: 0 4px; }
-    pre.terminal { min-height: 260px; }
     pre.terminal > code { font-size: 10px; }
     #nav a { padding: 10px 8px; }
 }
