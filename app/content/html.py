@@ -269,7 +269,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
 
     <div class="footer">
       <code>
-        <a href="https://codeberg.org/arpatek">source code</a> &nbsp;|&nbsp;
+        <a href="https://codeberg.org/arpatek/arpatek.dev">source code</a> &nbsp;|&nbsp;
         <a href="https://linkedin.com/in/arpatek">linkedin</a> &nbsp;|&nbsp;
         <a href="/cv" download>resume</a>
       </code>
