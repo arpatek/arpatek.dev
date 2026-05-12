@@ -155,10 +155,9 @@ ${C2}└────────────────────────
 
 # ──[ Terminal JS logic ]───────────────────────────────────────────────────────────────
 _TERMINAL_JS = r"""
-const SPEED         = 90;
-const OUTPUT_SPEED  = 8;
-const INIT_DELAY    = 1800;
-const LOOP_DELAY    = 6000;
+const SPEED      = 90;
+const INIT_DELAY = 1800;
+const LOOP_DELAY = 6000;
 
 const SCREENSAVER_DELAY    = 60 * 1000;  // 1 minute
 const SCREENSAVER_DURATION = 10 * 1000;  // 10 seconds
@@ -166,14 +165,8 @@ const SCREENSAVER_FPS      = 80;               // ms per frame
 
 const term = document.getElementById('term').children[0];
 
-const BLINK_ON   = 1;
-const BLINK_OFF  = 2;
-const FAST_MODE  = 3;
-const SLOW_MODE  = 4;
-
-function htmlChars(str) {
-    return str.match(/(<[^>]+>|&[^;]+;|[\s\S])/g) || [];
-}
+const BLINK_ON  = 1;
+const BLINK_OFF = 2;
 
 function setCursor(on) {
     if (on) term.classList.remove('no-cursor');
@@ -182,26 +175,19 @@ function setCursor(on) {
 
 function runCommand(idx, done) {
     const { cmd, lines } = COMMANDS[idx];
-    const chars = [
-        BLINK_OFF, ...cmd.split(''), '\n',
-        FAST_MODE, ...lines.flatMap(l => htmlChars(l + '\n')), '$ ',
-        SLOW_MODE, BLINK_ON
-    ];
+    const chars = [BLINK_OFF, ...cmd.split(''), '\n', ...lines.map(l => l + '\n'), '$ ', BLINK_ON];
 
     setCursor(true);
     term.innerHTML = '$ ';
 
     let i = 0;
-    let speed = SPEED;
     function tick() {
         if (i === chars.length) { done(); return; }
         const c = chars[i++];
-        if      (c === BLINK_ON)  { setCursor(true);  setTimeout(tick, speed); return; }
-        else if (c === BLINK_OFF) { setCursor(false);  setTimeout(tick, speed); return; }
-        else if (c === FAST_MODE) { speed = OUTPUT_SPEED; setTimeout(tick, 0); return; }
-        else if (c === SLOW_MODE) { speed = SPEED;        setTimeout(tick, 0); return; }
-        else                      { term.innerHTML += c; }
-        setTimeout(tick, speed);
+        if      (c === BLINK_ON)  setCursor(true);
+        else if (c === BLINK_OFF) setCursor(false);
+        else                      term.innerHTML += c;
+        setTimeout(tick, SPEED);
     }
     tick();
 }
