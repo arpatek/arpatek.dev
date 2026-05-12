@@ -597,6 +597,14 @@ CHANGELOG = f"""<!DOCTYPE html>
     <div class="section">
       <h2>2026-05</h2>
       <div class="entry">
+        <div class="entry-title">Site: /contact page, /cv PDF download, footer links</div>
+        <div class="entry-org">arpatek.dev &mdash; source code, linkedin, resume in footer</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Site: syntax-highlighted terminal, λ title, animated favicon</div>
+        <div class="entry-org">arpatek.dev &mdash; /lambda easter egg, screensaver removed</div>
+      </div>
+      <div class="entry">
         <div class="entry-title">Site: /uses, /lab, /changelog pages</div>
         <div class="entry-org">arpatek.dev</div>
       </div>
@@ -609,7 +617,7 @@ CHANGELOG = f"""<!DOCTYPE html>
         <div class="entry-org">arpatek.dev</div>
       </div>
       <div class="entry">
-        <div class="entry-title">Site: initial launch &mdash; terminal animation, screensaver, ASCII art, easter eggs</div>
+        <div class="entry-title">Site: initial launch &mdash; terminal animation, ASCII art, easter eggs</div>
         <div class="entry-org">arpatek.dev &mdash; /man, /lambda, /boo, /xmas, /help</div>
       </div>
       <div class="entry">

@@ -234,13 +234,16 @@ f"""
 {C2}CHANGELOG(1){R}                    arpatek                    {C2}CHANGELOG(1){R}
 
 {C2}2026-05{R}
+       {BD}site{R}     /contact page, /cv PDF download, footer links redesign
+       {BD}site{R}     Syntax-highlighted terminal, λ title, animated favicon,
+                screensaver removed, /lambda easter egg
        {BD}site{R}     /uses, /lab, /changelog pages added
        {BD}lab{R}      Traefik ingresses for all internal services
                 (pve, pi, gf, pm.arpatek.dev via k3s + Cloudflare)
        {BD}site{R}     Styling pass — dark background, underscore cursor,
                 viewport fill, box-shadow cleanup
-       {BD}site{R}     Initial launch — terminal animation, screensaver,
-                ASCII art banner, easter eggs (/lambda /boo /xmas)
+       {BD}site{R}     Initial launch — terminal animation, ASCII art banner,
+                easter eggs (/lambda /boo /xmas)
        {BD}lab{R}      k3s cluster provisioned, arpatek.dev on Kubernetes,
                 wildcard TLS via cert-manager + Let's Encrypt
        {BD}lab{R}      Gitea + act_runner CI/CD pipeline (push-to-deploy)
