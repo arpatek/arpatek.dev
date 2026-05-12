@@ -23,7 +23,7 @@ ul { list-style-type: none; }
 }
 
 body {
-    background: #c4bdb5;
+    background: #1c1a16;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
@@ -33,7 +33,6 @@ body {
     max-width: 765px;
     margin: 10px auto;
     padding: 0 8px;
-    background: #1e1b1e;
 }
 
 a, a:visited { color: var(--c1); text-decoration: none; }
@@ -52,7 +51,7 @@ h2 { color: var(--c4); font-size: 0.85rem; text-transform: uppercase;
 
 /* terminal block */
 pre.terminal {
-    background: #1e1b1e;
+    background: #1c1a16;
     border: 1px solid #79be9a33;
     padding: 8px;
     min-height: 544px;
