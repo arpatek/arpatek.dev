@@ -33,6 +33,7 @@ body {
     max-width: 765px;
     margin: 10px auto;
     padding: 0 8px;
+    min-height: calc(100vh - 20px);
 }
 
 a, a:visited { color: var(--c1); text-decoration: none; }
@@ -54,7 +55,7 @@ pre.terminal {
     background: #1c1a16;
     border: 1px solid #79be9a33;
     padding: 8px;
-
+    min-height: 544px;
     overflow-x: auto;
     line-height: 16px;
     margin: 16px 0;
