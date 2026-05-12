@@ -13,9 +13,23 @@ Author: Juan Garcia (arpatek)
 _FAVICON_JS = """
 (function() {
     var link = document.querySelector("link[rel='icon']");
+    var interval = null;
+    function startAnim() {
+        if (interval) return;
+        link.href = '/static/favicon.gif?t=' + Date.now();
+        interval = setInterval(function() {
+            link.href = '/static/favicon.gif?t=' + Date.now();
+        }, 520);
+    }
+    function stopAnim() {
+        clearInterval(interval);
+        interval = null;
+        link.href = '/static/favicon.ico';
+    }
     document.addEventListener('visibilitychange', function() {
-        link.href = document.hidden ? '/static/favicon.ico' : '/static/favicon.gif';
+        document.hidden ? stopAnim() : startAnim();
     });
+    startAnim();
 })();
 """
 
@@ -152,12 +166,12 @@ ${C2}└────────────────────────
 
   ${C2}Legend${R}
 
-  ${C1}$ curl arpatek.dev${R}              This page
-  ${C1}$ curl arpatek.dev/man${R}          Full resume in manpage format
-  ${C1}$ curl arpatek.dev/uses${R}         Hardware &amp; software setup
-  ${C1}$ curl arpatek.dev/lab${R}          Homelab services (home.arpa)
-  ${C1}$ curl arpatek.dev/changelog${R}    Site and project history
-  ${C1}$ curl arpatek.dev/help${R}         All available endpoints
+  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev${R}              This page
+  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/man${R}          Full resume in manpage format
+  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/uses${R}         Hardware &amp; software setup
+  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/lab${R}          Homelab services (home.arpa)
+  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/changelog${R}    Site and project history
+  ${DM}$${R} ${C2}curl${R} ${C1}arpatek.dev/help${R}         All available endpoints
 
 `.split('\n')
     },
