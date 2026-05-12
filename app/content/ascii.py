@@ -53,9 +53,12 @@ f"""
 
   {C2}Legend{R}
 
-  {C1}$ curl arpatek.dev{R}        Get this page
-  {C1}$ curl arpatek.dev/man{R}    Full resume in manpage format
-  {C1}$ curl arpatek.dev/help{R}   All available endpoints
+  {C1}$ curl arpatek.dev{R}              This page
+  {C1}$ curl arpatek.dev/man{R}          Full resume in manpage format
+  {C1}$ curl arpatek.dev/uses{R}         Hardware & software setup
+  {C1}$ curl arpatek.dev/lab{R}          Homelab services (home.arpa)
+  {C1}$ curl arpatek.dev/changelog{R}    Site and project history
+  {C1}$ curl arpatek.dev/help{R}         All available endpoints
 
 
 
@@ -256,7 +259,7 @@ HELP = (
 f"""
   {C2}arpatek.dev — available endpoints{R}
 
-  {C1}$ curl arpatek.dev{R}             This page
+  {C1}$ curl arpatek.dev{R}              This page
   {C1}$ curl arpatek.dev/man{R}          Full resume in manpage format
   {C1}$ curl arpatek.dev/uses{R}         Hardware & software setup
   {C1}$ curl arpatek.dev/lab{R}          Homelab services (home.arpa)
@@ -266,8 +269,8 @@ f"""
   {C2}hidden{R}
 
   {C1}$ curl arpatek.dev/gif{R}          Trippy circle animation
-  {C1}$ curl arpatek.dev/boo{R}          👻
-  {C1}$ curl arpatek.dev/xmas{R}         🎄
+  {C1}$ curl arpatek.dev/boo{R}          Spooky
+  {C1}$ curl arpatek.dev/xmas{R}         Festive
 
 """
 )
