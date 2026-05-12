@@ -144,7 +144,8 @@ const R  = '</span>';
 
 const COMMANDS = [
     {
-        cmd: `${G2}curl${R} ${C1}arpatek.dev${R}`,
+        cmd: 'curl arpatek.dev',
+        coloredCmd: `${G2}curl${R} ${C1}arpatek.dev${R}`,
         lines: `
 
 ${G0}         :::     :::::::::  :::::::::     ::: ::::::::::: :::::::::: :::    :::${R}
@@ -197,8 +198,9 @@ const SCREENSAVER_FPS      = 80;               // ms per frame
 
 const term = document.getElementById('term').children[0];
 
-const BLINK_ON  = 1;
-const BLINK_OFF = 2;
+const BLINK_ON      = 1;
+const BLINK_OFF     = 2;
+const HIGHLIGHT_CMD = 3;
 
 function setCursor(on) {
     if (on) term.classList.remove('no-cursor');
@@ -206,19 +208,20 @@ function setCursor(on) {
 }
 
 function runCommand(idx, done) {
-    const { cmd, lines } = COMMANDS[idx];
-    const chars = [...lines.map(l => l + '\n'), `${G6}$${R} `, BLINK_ON];
+    const { cmd, coloredCmd, lines } = COMMANDS[idx];
+    const chars = [BLINK_OFF, ...cmd.split(''), HIGHLIGHT_CMD, '\n', ...lines.map(l => l + '\n'), `${G6}$${R} `, BLINK_ON];
 
-    setCursor(false);
-    term.innerHTML = `${G6}$${R} ` + cmd + '\n';
+    setCursor(true);
+    term.innerHTML = `${G6}$${R} `;
 
     let i = 0;
     function tick() {
         if (i === chars.length) { done(); return; }
         const c = chars[i++];
-        if      (c === BLINK_ON)  setCursor(true);
-        else if (c === BLINK_OFF) setCursor(false);
-        else                      term.innerHTML += c;
+        if      (c === BLINK_ON)      { setCursor(true);                                          }
+        else if (c === BLINK_OFF)     { setCursor(false);                                         }
+        else if (c === HIGHLIGHT_CMD) { term.innerHTML = `${G6}$${R} ` + (coloredCmd || cmd);    }
+        else                          { term.innerHTML += c;                                       }
         setTimeout(tick, SPEED);
     }
     tick();
