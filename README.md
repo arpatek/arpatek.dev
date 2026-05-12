@@ -10,17 +10,22 @@ curl arpatek.dev
 
 | Endpoint | curl | browser |
 |----------|------|---------|
-| `/` | ASCII portfolio | Terminal emulator with typing animation |
+| `/` | ASCII portfolio with banner | Terminal emulator with typing animation |
 | `/man` | Manpage-formatted resume | Styled HTML manpage |
-| `/resume` | — | Opens CV PDF inline |
+| `/uses` | Hardware & software setup | Styled page |
+| `/lab` | Homelab services (home.arpa) | Styled page |
+| `/changelog` | Site and project history | Styled page |
+| `/now` | What I'm up to | Styled page |
+| `/resume` | Contact info | Styled contact page |
+| `/cv` | — | Downloads resume PDF |
 | `/help` | All available endpoints | — |
 
 ### Hidden
 
 ```bash
-curl arpatek.dev/gif    # Trippy rotating circle animation
-curl arpatek.dev/boo    # Morphing ASCII animation
-curl arpatek.dev/xmas   # Christmas tree with cycling lights
+curl arpatek.dev/lambda   # Trippy rotating circle animation
+curl arpatek.dev/boo      # Morphing ASCII animation
+curl arpatek.dev/xmas     # Christmas tree with cycling lights
 ```
 
 ## Stack
@@ -43,12 +48,13 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 app/
 ├── main.py
 ├── routes/
-│   ├── portfolio.py     # /, /man, /resume, /help
-│   └── animations.py    # /gif, /boo, /xmas
+│   ├── portfolio.py     # /, /man, /uses, /lab, /changelog, /now, /resume, /cv, /help
+│   └── animations.py    # /lambda, /boo, /xmas
 ├── content/
 │   ├── ascii.py         # ANSI-colored curl output
 │   └── html.py          # Browser templates
 └── static/
+    ├── favicon.gif
     ├── favicon.ico
     └── jgarcia.cv.pdf
 ```

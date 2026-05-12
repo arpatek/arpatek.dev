@@ -591,6 +591,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog" class="active">changelog</a>
+      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -695,6 +696,7 @@ CONTACT = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog">changelog</a>
+      <a href="/now">now</a>
       <a href="/resume" class="active right">contact</a>
     </div>
 
