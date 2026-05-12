@@ -260,6 +260,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog">changelog</a>
+      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -302,6 +303,7 @@ MANPAGE = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog">changelog</a>
+      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -437,6 +439,7 @@ USES = f"""<!DOCTYPE html>
       <a href="/uses" class="active">uses</a>
       <a href="/lab">lab</a>
       <a href="/changelog">changelog</a>
+      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -501,6 +504,7 @@ LAB = f"""<!DOCTYPE html>
       <a href="/uses">uses</a>
       <a href="/lab" class="active">lab</a>
       <a href="/changelog">changelog</a>
+      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -721,6 +725,81 @@ CONTACT = f"""<!DOCTYPE html>
 
     <div class="man-footer">
       <span>CONTACT(1)</span><span>California, USA</span><span>CONTACT(1)</span>
+    </div>
+  </div>
+  <script>{_FAVICON_JS}</script>
+</body>
+</html>"""
+
+# ──[ Now ]─────────────────────────────────────────────────────────────────────────────
+NOW = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>now — arpatek</title>
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>{_STYLES}</style>
+</head>
+<body>
+  <div id="container">
+    <div id="nav">
+      <a href="/">home</a>
+      <a href="/man">manpage</a>
+      <a href="/uses">uses</a>
+      <a href="/lab">lab</a>
+      <a href="/changelog">changelog</a>
+      <a href="/now" class="active">now</a>
+      <a href="/resume" class="right">contact</a>
+    </div>
+
+    <div class="man-header">
+      <span>NOW(1)</span><span>2026-05-12</span><span>NOW(1)</span>
+    </div>
+
+    <div class="section">
+      <h2>Work</h2>
+      <p>Building out the homelab &mdash; k3s, IaC, observability. This site.</p>
+    </div>
+
+    <div class="section">
+      <h2>Reading</h2>
+      <ul>
+        <li>The Bible (RSVCE)</li>
+        <li>Behold a Pale Horse &mdash; William Cooper</li>
+        <li>The Alchemist &mdash; Paulo Coelho</li>
+        <li>The Four Agreements &mdash; Don Miguel Ruiz</li>
+        <li>Metamorphosis &mdash; Kafka</li>
+        <li>Crime and Punishment &mdash; Dostoevsky</li>
+        <li>The Plague &mdash; Camus</li>
+        <li>The Stranger &mdash; Camus</li>
+        <li>Learning Modern Linux &mdash; Michael Hausenblas</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Watching</h2>
+      <ul>
+        <li>Catholic theology debates</li>
+        <li>Roast of Kevin Hart &mdash; Netflix &nbsp;<span style="color:var(--c4)">pretty funny</span></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Playing</h2>
+      <p>Pok&eacute;mon Champions &mdash; copying meta teams, not sorry.</p>
+    </div>
+
+    <div class="section">
+      <h2>Daily Driver</h2>
+      <p>Testing Asahi Linux on the M1 MacBook Air. Mostly works.</p>
+    </div>
+
+    <div class="man-footer">
+      <span>NOW(1)</span><span>California, USA</span><span>NOW(1)</span>
     </div>
   </div>
   <script>{_FAVICON_JS}</script>

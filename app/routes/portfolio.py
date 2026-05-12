@@ -13,8 +13,8 @@ from fastapi.requests  import Request
 from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, Response
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
-from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, USES as ASCII_USES, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG, CONTACT as ASCII_CONTACT
-from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, USES as HTML_USES, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG, CONTACT as HTML_CONTACT
+from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, USES as ASCII_USES, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG, CONTACT as ASCII_CONTACT, NOW as ASCII_NOW
+from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, USES as HTML_USES, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG, CONTACT as HTML_CONTACT, NOW as HTML_NOW
 
 
 # ──[ Router ]──────────────────────────────────────────────────────────────────────────
@@ -65,6 +65,14 @@ async def changelog(request: Request) -> Response:
     if ua.lower().startswith("curl"):
         return PlainTextResponse(ASCII_CHANGELOG)
     return HTMLResponse(HTML_CHANGELOG)
+
+
+@router.get("/now")
+async def now(request: Request) -> Response:
+    ua = request.headers.get("user-agent", "")
+    if ua.lower().startswith("curl"):
+        return PlainTextResponse(ASCII_NOW)
+    return HTMLResponse(HTML_NOW)
 
 
 @router.get("/resume")

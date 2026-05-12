@@ -266,6 +266,39 @@ f"""
 """
 )
 
+# ──[ Now ]─────────────────────────────────────────────────────────────────────────────
+NOW = (
+f"""
+{C2}NOW(1){R}                          2026-05-12                          {C2}NOW(1){R}
+
+{C2}WORK{R}
+       Building out the homelab — k3s, IaC, observability. This site.
+
+{C2}READING{R}
+       The Bible (RSVCE)
+       Behold a Pale Horse — William Cooper
+       The Alchemist — Paulo Coelho
+       The Four Agreements — Don Miguel Ruiz
+       Metamorphosis — Kafka
+       Crime and Punishment — Dostoevsky
+       The Plague — Camus
+       The Stranger — Camus
+       Learning Modern Linux — Michael Hausenblas
+
+{C2}WATCHING{R}
+       Catholic theology debates.
+       Roast of Kevin Hart — Netflix  (pretty funny)
+
+{C2}PLAYING{R}
+       Pokemon Champions — copying meta teams, not sorry.
+
+{C2}DAILY DRIVER{R}
+       Testing Asahi Linux on the M1 MacBook Air. Mostly works.
+
+{C2}NOW(1){R}                       California, USA                       {C2}NOW(1){R}
+"""
+)
+
 # ──[ Help ]────────────────────────────────────────────────────────────────────────────
 HELP = (
 f"""
@@ -276,6 +309,7 @@ f"""
   {C1}$ curl arpatek.dev/uses{R}         Hardware & software setup
   {C1}$ curl arpatek.dev/lab{R}          Homelab services (home.arpa)
   {C1}$ curl arpatek.dev/changelog{R}    Site and project history
+  {C1}$ curl arpatek.dev/now{R}          What I'm up to
   {C1}$ curl arpatek.dev/help{R}         This list
 
   {C2}hidden{R}
