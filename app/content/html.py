@@ -23,7 +23,7 @@ ul { list-style-type: none; }
 }
 
 body {
-    background: #1e1b1e;
+    background: #c4bdb5;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
@@ -33,6 +33,7 @@ body {
     max-width: 765px;
     margin: 10px auto;
     padding: 0 8px;
+    background: #1e1b1e;
 }
 
 a, a:visited { color: var(--c1); text-decoration: none; }
