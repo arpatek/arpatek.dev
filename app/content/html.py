@@ -235,7 +235,7 @@ function runScreensaver(done) {
     term.style.color = '#00ff00';
     let i = 0;
     const start = Date.now();
-    const termRows = Math.floor((term.parentElement.clientHeight - 16) / 16);
+    const termRows = Math.ceil((term.parentElement.clientHeight - 16) / 16);
     function frame() {
         if (Date.now() - start >= SCREENSAVER_DURATION) {
             term.style.color = '';
