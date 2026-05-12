@@ -23,7 +23,7 @@ ul { list-style-type: none; }
 }
 
 body {
-    background: #292329;
+    background: #1e1b1e;
     color: var(--c5);
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
@@ -53,7 +53,6 @@ h2 { color: var(--c4); font-size: 0.85rem; text-transform: uppercase;
 pre.terminal {
     background: #1e1b1e;
     border: 1px solid #79be9a33;
-    box-shadow: 0 0 40px #79be9a18;
     padding: 8px;
     min-height: 544px;
     overflow-x: auto;
