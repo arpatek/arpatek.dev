@@ -64,11 +64,8 @@ pre.terminal > code { font-size: 15px; }
 
 /* blinking cursor */
 pre.terminal > code::after {
-    content: "";
-    width: 6px;
-    height: 12px;
-    background: var(--c5);
-    display: inline-block;
+    content: "_";
+    color: var(--c5);
     animation: blink 1.5s step-start infinite;
 }
 .no-cursor::after { animation: none !important; }
