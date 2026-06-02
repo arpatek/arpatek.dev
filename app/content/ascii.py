@@ -170,10 +170,10 @@ f"""
        {C1}Laptop{R} | Asahi Linux
 
        {BD}ASUS PN51 — Ryzen 7 5700U{R}
-       {C1}Proxmox hypervisor{R} | devstem
+       {C1}Proxmox hypervisor{R} | blackwall
 
        {BD}Raspberry Pi{R}
-       {C1}DNS / DHCP / VPN{R} | netrunner-rpi
+       {C1}DNS / DHCP / VPN{R} | netrunner
 
 {C2}SOFTWARE{R}
        {C1}Shell{R}       zsh (Mac, Asahi)  |  bash (servers)
@@ -192,35 +192,35 @@ f"""
 
 {C2}INFRASTRUCTURE{R}
        {BD}Proxmox VE 9{R}
-       {C1}devstem{R} | ASUS PN51 (Ryzen 7 5700U) | pve.arpatek.dev
+       {C1}blackwall{R} | ASUS PN51 (Ryzen 7 5700U) | pve.arpatek.dev
               Single-node hypervisor. All VMs run here. No cluster, no HA.
 
        {BD}k3s — 3-node cluster{R}
-       {C1}prod-k3s-master-0 + 2 workers{R} | Debian 13
+       {C1}erebus + sandevistan + kerenzikov{R} | Debian 13
               Traefik ingress, cert-manager wildcard TLS (Let's Encrypt).
               Runs arpatek.dev and proxies all internal service UIs publicly.
 
 {C2}IDENTITY & NETWORK{R}
        {BD}FreeIPA{R}
-       {C1}prod-ipa-0{R} | Rocky Linux 9
+       {C1}mikoshi{R} | Rocky Linux 9
               Central identity, SSH auth, sudo policy, DNS for home.arpa.
 
        {BD}Pi-hole{R}
-       {C1}netrunner-rpi{R} | Raspberry Pi | pi.arpatek.dev
+       {C1}netrunner{R} | Raspberry Pi | pi.arpatek.dev
               Network-wide DNS, DHCP, content filter. Upstream for FreeIPA.
 
        {BD}WireGuard{R}
-       {C1}netrunner-rpi{R} | Raspberry Pi
+       {C1}netrunner{R} | Raspberry Pi
               VPN into 10.33.111.0/24. Clients use Pi-hole for DNS.
 
 {C2}DEV & OBSERVABILITY{R}
        {BD}Gitea + act_runner{R}
-       {C1}prod-git-0{R} | Debian 13 | git.arpatek.dev
+       {C1}soulkiller{R} | Debian 13 | git.arpatek.dev
               Self-hosted Git, container registry, and CI/CD.
               Push-to-deploy pipeline for arpatek.dev.
 
        {BD}PLG Stack — Prometheus, Loki, Grafana{R}
-       {C1}prod-mon-0{R} | Debian 13 | gf.arpatek.dev | pm.arpatek.dev
+       {C1}netwatch{R} | Debian 13 | gf.arpatek.dev | pm.arpatek.dev
               Hub-and-spoke observability. node_exporter + cAdvisor + Alloy
               agents ship metrics and logs from every host.
 
@@ -232,6 +232,12 @@ f"""
 CHANGELOG = (
 f"""
 {C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
+
+{C2}2026-06-02{R}
+       {BD}lab{R}      All VMs renamed to Cyberpunk 2077 theme —
+                blackwall, mikoshi, soulkiller, netwatch,
+                erebus, sandevistan, kerenzikov, netrunner
+       {BD}site{R}     Updated /uses, /lab, /now with current hostnames
 
 {C2}2026-05-12{R}
        {BD}site{R}     /contact page, /cv PDF download, footer links redesign
@@ -260,7 +266,7 @@ f"""
        {BD}lab{R}      WireGuard VPN — remote access into 10.33.111.0/24
 
 {C2}2026-01-11{R}
-       {BD}lab{R}      Pi-hole — DNS, DHCP, content filter (netrunner-rpi)
+       {BD}lab{R}      Pi-hole — DNS, DHCP, content filter (netrunner)
 
 {C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
 """
@@ -269,10 +275,10 @@ f"""
 # ──[ Now ]─────────────────────────────────────────────────────────────────────────────
 NOW = (
 f"""
-{C2}NOW(7){R}                          2026-05-12                          {C2}NOW(7){R}
+{C2}NOW(7){R}                          2026-06-02                          {C2}NOW(7){R}
 
 {C2}WORK{R}
-       Building out the homelab — k3s, IaC, observability. This site.
+       RHCSA study. Using the homelab for cert prep and DevOps practice.
 
 {C2}READING{R}
        The Bible (RSVCE)
@@ -285,15 +291,26 @@ f"""
        The Stranger — Camus
        Learning Modern Linux — Michael Hausenblas
 
+{C2}MANGA{R}
+       Vagabond
+       Goodnight Punpun
+       Dr. Stone
+       Edens Zero
+       Fire Force
+
 {C2}WATCHING{R}
        Catholic theology debates.
-       Roast of Kevin Hart — Netflix  (pretty funny)
+       Shawn Ryan Show — youtube.com/@ShawnRyanShow
+       The Way with Brian Davila — youtube.com/@TheWaywithBrianDavila
+       Veronica Explains — youtube.com/@VeronicaExplains
+       Switch and Click — youtube.com/@SwitchandClickOfficial
+       Caleb Hammer — youtube.com/@CalebHammer
 
 {C2}PLAYING{R}
        Pokemon Champions — copying meta teams, not sorry.
 
 {C2}DAILY DRIVER{R}
-       Testing Asahi Linux on the M1 MacBook Air. Mostly works.
+       Asahi Linux on the M1 MacBook Air. Full-time daily driver.
 
 {C2}NOW(7){R}                       California, USA                       {C2}NOW(7){R}
 """

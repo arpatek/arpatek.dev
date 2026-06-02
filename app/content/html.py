@@ -459,11 +459,11 @@ USES = f"""<!DOCTYPE html>
       </div>
       <div class="entry">
         <div class="entry-title">ASUS PN51 &mdash; Ryzen 7 5700U</div>
-        <div class="entry-org">Proxmox hypervisor (devstem)</div>
+        <div class="entry-org">Proxmox hypervisor (blackwall)</div>
       </div>
       <div class="entry">
         <div class="entry-title">Raspberry Pi</div>
-        <div class="entry-org">DNS / DHCP / VPN (netrunner-rpi)</div>
+        <div class="entry-org">DNS / DHCP / VPN (netrunner)</div>
       </div>
     </div>
 
@@ -516,12 +516,12 @@ LAB = f"""<!DOCTYPE html>
       <h2>Infrastructure</h2>
       <div class="entry">
         <div class="entry-title">Proxmox VE 9</div>
-        <div class="entry-org">devstem &nbsp;&bull;&nbsp; ASUS PN51 (Ryzen 7 5700U) &nbsp;&bull;&nbsp; <a href="https://pve.arpatek.dev">pve.arpatek.dev</a></div>
+        <div class="entry-org">blackwall &nbsp;&bull;&nbsp; ASUS PN51 (Ryzen 7 5700U) &nbsp;&bull;&nbsp; <a href="https://pve.arpatek.dev">pve.arpatek.dev</a></div>
         <ul><li>Single-node hypervisor running all VMs. No cluster, no HA — intentional.</li></ul>
       </div>
       <div class="entry">
         <div class="entry-title">k3s &mdash; 3-node cluster</div>
-        <div class="entry-org">prod-k3s-master-0 + 2 workers &nbsp;&bull;&nbsp; Debian 13</div>
+        <div class="entry-org">erebus + sandevistan + kerenzikov &nbsp;&bull;&nbsp; Debian 13</div>
         <ul>
           <li>Lightweight Kubernetes for public workloads. Traefik ingress, cert-manager TLS.</li>
           <li>Runs arpatek.dev and proxies git.arpatek.dev, gf.arpatek.dev, pm.arpatek.dev, pi.arpatek.dev, pve.arpatek.dev</li>
@@ -533,17 +533,17 @@ LAB = f"""<!DOCTYPE html>
       <h2>Identity &amp; Network</h2>
       <div class="entry">
         <div class="entry-title">FreeIPA</div>
-        <div class="entry-org">prod-ipa-0 &nbsp;&bull;&nbsp; Rocky Linux 9</div>
+        <div class="entry-org">mikoshi &nbsp;&bull;&nbsp; Rocky Linux 9</div>
         <ul><li>Central identity, SSH auth, sudo policy, and DNS authority for home.arpa. Every VM is an IPA client.</li></ul>
       </div>
       <div class="entry">
         <div class="entry-title">Pi-hole</div>
-        <div class="entry-org">netrunner-rpi &nbsp;&bull;&nbsp; Raspberry Pi &nbsp;&bull;&nbsp; <a href="https://pi.arpatek.dev">pi.arpatek.dev</a></div>
+        <div class="entry-org">netrunner &nbsp;&bull;&nbsp; Raspberry Pi &nbsp;&bull;&nbsp; <a href="https://pi.arpatek.dev">pi.arpatek.dev</a></div>
         <ul><li>Network-wide DNS resolver, DHCP server, and content filter. Upstream for FreeIPA queries.</li></ul>
       </div>
       <div class="entry">
         <div class="entry-title">WireGuard</div>
-        <div class="entry-org">netrunner-rpi &nbsp;&bull;&nbsp; Raspberry Pi</div>
+        <div class="entry-org">netrunner &nbsp;&bull;&nbsp; Raspberry Pi</div>
         <ul><li>VPN into the 10.33.111.0/24 network. Connected clients use Pi-hole for DNS, matching LAN behavior.</li></ul>
       </div>
     </div>
@@ -552,12 +552,12 @@ LAB = f"""<!DOCTYPE html>
       <h2>Dev &amp; Observability</h2>
       <div class="entry">
         <div class="entry-title">Gitea + act_runner</div>
-        <div class="entry-org">prod-git-0 &nbsp;&bull;&nbsp; Debian 13 &nbsp;&bull;&nbsp; <a href="https://git.arpatek.dev">git.arpatek.dev</a></div>
+        <div class="entry-org">soulkiller &nbsp;&bull;&nbsp; Debian 13 &nbsp;&bull;&nbsp; <a href="https://git.arpatek.dev">git.arpatek.dev</a></div>
         <ul><li>Self-hosted Git, container registry, and CI/CD. Pushes built images to k3s on every commit.</li></ul>
       </div>
       <div class="entry">
         <div class="entry-title">PLG Stack &mdash; Prometheus, Loki, Grafana</div>
-        <div class="entry-org">prod-mon-0 &nbsp;&bull;&nbsp; Debian 13 &nbsp;&bull;&nbsp; <a href="https://gf.arpatek.dev">gf.arpatek.dev</a> &nbsp;&bull;&nbsp; <a href="https://pm.arpatek.dev">pm.arpatek.dev</a></div>
+        <div class="entry-org">netwatch &nbsp;&bull;&nbsp; Debian 13 &nbsp;&bull;&nbsp; <a href="https://gf.arpatek.dev">gf.arpatek.dev</a> &nbsp;&bull;&nbsp; <a href="https://pm.arpatek.dev">pm.arpatek.dev</a></div>
         <ul><li>Hub-and-spoke observability. node_exporter + cAdvisor + Alloy agents on every host.</li></ul>
       </div>
     </div>
@@ -597,6 +597,18 @@ CHANGELOG = f"""<!DOCTYPE html>
 
     <div class="man-header">
       <span>CHANGELOG(7)</span><span>arpatek</span><span>CHANGELOG(7)</span>
+    </div>
+
+    <div class="section">
+      <h2>2026-06-02</h2>
+      <div class="entry">
+        <div class="entry-title">Homelab: all VMs renamed to Cyberpunk 2077 theme</div>
+        <div class="entry-org">blackwall, mikoshi, soulkiller, netwatch, erebus, sandevistan, kerenzikov, netrunner</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Site: updated /uses, /lab, /now with current hostnames</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
     </div>
 
     <div class="section">
@@ -647,7 +659,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <h2>2026-03-01</h2>
       <div class="entry">
         <div class="entry-title">Homelab: FreeIPA &mdash; identity, auth, DNS</div>
-        <div class="entry-org">prod-ipa-0 &mdash; SSH policy, HBAC, BIND for home.arpa</div>
+        <div class="entry-org">mikoshi &mdash; SSH policy, HBAC, BIND for home.arpa</div>
       </div>
     </div>
 
@@ -655,7 +667,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <h2>2026-02-21</h2>
       <div class="entry">
         <div class="entry-title">Homelab: WireGuard VPN</div>
-        <div class="entry-org">netrunner-rpi &mdash; remote access into 10.33.111.0/24</div>
+        <div class="entry-org">netrunner &mdash; remote access into 10.33.111.0/24</div>
       </div>
     </div>
 
@@ -663,7 +675,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <h2>2026-01-11</h2>
       <div class="entry">
         <div class="entry-title">Homelab: Pi-hole &mdash; DNS, DHCP, content filter</div>
-        <div class="entry-org">netrunner-rpi &mdash; network-wide resolver, upstream for FreeIPA</div>
+        <div class="entry-org">netrunner &mdash; network-wide resolver, upstream for FreeIPA</div>
       </div>
     </div>
 
@@ -759,12 +771,12 @@ NOW = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-header">
-      <span>NOW(7)</span><span>2026-05-12</span><span>NOW(7)</span>
+      <span>NOW(7)</span><span>2026-06-02</span><span>NOW(7)</span>
     </div>
 
     <div class="section">
       <h2>Work</h2>
-      <p>Building out the homelab &mdash; k3s, IaC, observability. This site.</p>
+      <p>RHCSA study. Using the homelab for cert prep and DevOps practice.</p>
     </div>
 
     <div class="section">
@@ -783,10 +795,25 @@ NOW = f"""<!DOCTYPE html>
     </div>
 
     <div class="section">
+      <h2>Manga</h2>
+      <ul>
+        <li>Vagabond</li>
+        <li>Goodnight Punpun</li>
+        <li>Dr. Stone</li>
+        <li>Edens Zero</li>
+        <li>Fire Force</li>
+      </ul>
+    </div>
+
+    <div class="section">
       <h2>Watching</h2>
       <ul>
         <li>Catholic theology debates</li>
-        <li>Roast of Kevin Hart &mdash; Netflix &nbsp;<span style="color:var(--c4)">pretty funny</span></li>
+        <li><a href="https://www.youtube.com/@ShawnRyanShow">Shawn Ryan Show</a></li>
+        <li><a href="https://www.youtube.com/@TheWaywithBrianDavila">The Way with Brian Davila</a></li>
+        <li><a href="https://www.youtube.com/@VeronicaExplains">Veronica Explains</a></li>
+        <li><a href="https://www.youtube.com/@SwitchandClickOfficial">Switch and Click</a></li>
+        <li><a href="https://www.youtube.com/@CalebHammer">Caleb Hammer</a></li>
       </ul>
     </div>
 
@@ -797,7 +824,7 @@ NOW = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>Daily Driver</h2>
-      <p>Testing Asahi Linux on the M1 MacBook Air. Mostly works.</p>
+      <p>Asahi Linux on the M1 MacBook Air. Full-time daily driver.</p>
     </div>
 
     <div class="man-footer">
