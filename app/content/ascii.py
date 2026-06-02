@@ -279,6 +279,12 @@ f"""
 
 {C2}WORK{R}
        RHCSA study. Using the homelab for cert prep and DevOps practice.
+       Just finished a full homelab rename to a CP2077 naming theme.
+       Renamed the FreeIPA server — not officially supported. Ended up
+       doing a fresh install, re-enrolling every client, and chasing a
+       kinit Generic error for hours (UID outside IPA ID range, KDC
+       can't generate a PAC/SID). Documented every gotcha. It's done.
+       codeberg.org/arpatek/home.arpa/src/branch/main/ipa/docs/gotchas.md
 
 {C2}READING{R}
        The Bible (RSVCE)

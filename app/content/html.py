@@ -777,6 +777,7 @@ NOW = f"""<!DOCTYPE html>
     <div class="section">
       <h2>Work</h2>
       <p>RHCSA study. Using the homelab for cert prep and DevOps practice.</p>
+      <p>Just finished a full homelab rename to a CP2077 naming theme. Renamed the FreeIPA server — not officially supported. Ended up doing a fresh install, re-enrolling every client, and chasing a kinit Generic error for hours (UID outside IPA ID range, KDC can&rsquo;t generate a PAC/SID). Documented every gotcha. It&rsquo;s done. <a href="https://codeberg.org/arpatek/home.arpa/src/branch/main/ipa/docs/gotchas.md">gotchas.md</a></p>
     </div>
 
     <div class="section">
