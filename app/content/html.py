@@ -64,7 +64,7 @@ a, a:visited { color: var(--c1); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 h1 { color: var(--c2); margin-bottom: 20px; }
-h2 { color: var(--c4); font-size: 0.85rem; text-transform: uppercase;
+h2 { color: var(--c2); font-size: 0.85rem; text-transform: uppercase;
      letter-spacing: 0.08em; margin: 1.4rem 0 0.4rem; }
 
 /* nav */
