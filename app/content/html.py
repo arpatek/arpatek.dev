@@ -127,7 +127,7 @@ pre.terminal > code::after {
 .entry-org  { color: var(--c1); font-size: 0.9rem; }
 """
 
-# ──[ Terminal commands shown in the browser ]───────────────────────────────────────────
+# ──[ Terminal commands shown in the browser ]──────────────────────────────────────────
 _COMMANDS_JS = r"""
 const G0 = '<span style="color:#b9746f">';
 const G1 = '<span style="color:#cd9b98">';
