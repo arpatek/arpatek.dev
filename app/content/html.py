@@ -33,6 +33,18 @@ _FAVICON_JS = """
 })();
 """
 
+# ──[ Open Graph ]───────────────────────────────────────────────────────────────────────
+# Link previews on LinkedIn, Slack, Discord, iMessage. og:url stays canonical rather
+# than per-page — every page is the same site, and the shared URL is what gets opened.
+_OG = """  <meta name="description" content="Systems automation engineer. Three years of hardware validation and QC automation at TrueNAS. Self-hosted lab on Proxmox, k3s, FreeIPA, and WireGuard.">
+  <meta property="og:site_name" content="arpatek">
+  <meta property="og:title" content="Juan Garcia &mdash; Linux &amp; Infrastructure">
+  <meta property="og:description" content="Systems automation engineer. Three years of hardware validation and QC automation at TrueNAS. Self-hosted lab on Proxmox, k3s, FreeIPA, and WireGuard.">
+  <meta property="og:image" content="https://arpatek.dev/static/profile.png">
+  <meta property="og:url" content="https://arpatek.dev">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">"""
+
 # ──[ Shared Theme ]────────────────────────────────────────────────────────────────────
 _STYLES = """
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -246,6 +258,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>arpatek</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -290,6 +303,7 @@ MANPAGE = f"""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>manpage</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -436,6 +450,7 @@ USES = f"""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>uses — arpatek</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -501,6 +516,7 @@ LAB = f"""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>lab — arpatek</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -612,6 +628,7 @@ CHANGELOG = f"""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>changelog — arpatek</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -749,6 +766,7 @@ CONTACT = f"""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>contact — arpatek</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -807,6 +825,7 @@ NOW = f"""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>now — arpatek</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
