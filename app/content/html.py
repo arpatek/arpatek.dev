@@ -460,12 +460,12 @@ USES = f"""<!DOCTYPE html>
     <div class="section">
       <h2>Hardware</h2>
       <div class="entry">
-        <div class="entry-title">M1 Mac Mini</div>
-        <div class="entry-org">Main workstation &mdash; macOS &nbsp;&bull;&nbsp; UTM lab, 4 VMs bridged</div>
+        <div class="entry-title">M1 MacBook Air</div>
+        <div class="entry-org">Main workstation (darwin) &nbsp;&bull;&nbsp; 2 aarch64 RHEL VMs, shared network</div>
       </div>
       <div class="entry">
-        <div class="entry-title">M1 MacBook Air</div>
-        <div class="entry-org">Laptop &mdash; macOS &nbsp;&bull;&nbsp; 2 aarch64 RHEL VMs, shared network</div>
+        <div class="entry-title">M1 Mac Mini</div>
+        <div class="entry-org">Dedicated UTM hypervisor (mizutani) &nbsp;&bull;&nbsp; 4 lab VMs, bridged</div>
       </div>
       <div class="entry">
         <div class="entry-title">ASUS PN51 &mdash; Ryzen 7 5700U</div>
@@ -564,6 +564,25 @@ LAB = f"""<!DOCTYPE html>
     </div>
 
     <div class="section">
+      <h2>Dev &amp; Practice</h2>
+      <div class="entry">
+        <div class="entry-title">errata</div>
+        <div class="entry-org">blackwall &nbsp;&bull;&nbsp; RHEL 10.0 &nbsp;&bull;&nbsp; x86_64</div>
+        <ul><li>The RHCSA course VM, and the only x86 RHEL in the lab, so its minor stays pinned. Rebuilt from scratch whenever the course calls for a fresh install.</li></ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">UTM practice fleet</div>
+        <div class="entry-org">mizutani &nbsp;&bull;&nbsp; M1 Mac Mini &nbsp;&bull;&nbsp; bridged</div>
+        <ul><li>gort (RHEL 10.2), talos (Debian 13), clank (Ubuntu 26.04), hal (Alpine 3.24). Reachable over LAN and WireGuard.</li></ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Practice VMs</div>
+        <div class="entry-org">darwin &nbsp;&bull;&nbsp; M1 MacBook Air &nbsp;&bull;&nbsp; shared networking</div>
+        <ul><li>glados and tars, both RHEL 10.2 on aarch64. For putting the course material to use rather than following it, so the minor is free to move. Outside FreeIPA &mdash; EX200 assumes local users.</li></ul>
+      </div>
+    </div>
+
+    <div class="section">
       <h2>Dev &amp; Observability</h2>
       <div class="entry">
         <div class="entry-title">Gitea + act_runner</div>
@@ -623,6 +642,10 @@ CHANGELOG = f"""<!DOCTYPE html>
       <div class="entry">
         <div class="entry-title">Site: /now and /uses refreshed &mdash; new reading list, Asahi and iTerm2 dropped, UTM drill VMs described</div>
         <div class="entry-org">arpatek.dev</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Homelab: Mac Mini repurposed as a dedicated UTM hypervisor; MacBook Air is now the main workstation</div>
+        <div class="entry-org">mizutani, darwin</div>
       </div>
       <div class="entry">
         <div class="entry-title">Homelab: edgerunner documented &mdash; Pi-hole replica, plus the nas and stor SMB shares alongside netrunner&rsquo;s tank</div>
@@ -862,8 +885,9 @@ NOW = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>Daily Driver</h2>
-      <p>macOS on the M1 MacBook Air. Linux runs in UTM &mdash; 4 bridged VMs on the
-      Mac Mini, 2 aarch64 RHEL VMs on the Air.</p>
+      <p>macOS on the M1 MacBook Air &mdash; now the main workstation. The Mac Mini was
+      repurposed into a dedicated UTM hypervisor: 4 bridged lab VMs there, 2 aarch64
+      RHEL VMs on the Air.</p>
     </div>
 
     <div class="man-footer">

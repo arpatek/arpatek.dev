@@ -178,11 +178,11 @@ f"""
 {C2}USES(7){R}                    Hardware & Software                    {C2}USES(7){R}
 
 {C2}HARDWARE{R}
-       {BD}M1 Mac Mini{R}
-       {C1}Main workstation{R} | macOS | UTM lab — 4 VMs, bridged
-
        {BD}M1 MacBook Air{R}
-       {C1}Laptop{R} | macOS | 2 aarch64 RHEL VMs, shared network
+       {C1}Main workstation{R} | darwin | 2 aarch64 RHEL VMs, shared net
+
+       {BD}M1 Mac Mini{R}
+       {C1}Dedicated UTM hypervisor{R} | mizutani | 4 lab VMs, bridged
 
        {BD}ASUS PN51 — Ryzen 7 5700U{R}
        {C1}Proxmox hypervisor{R} | blackwall
@@ -235,6 +235,25 @@ f"""
        {C1}netrunner{R} | Raspberry Pi
               VPN into 10.33.111.0/24. Clients use Pi-hole for DNS.
 
+{C2}DEV & PRACTICE{R}
+       {BD}errata{R}
+       {C1}blackwall{R} | RHEL 10.0 | x86_64
+              The RHCSA course VM, and the only x86 RHEL in the lab, so
+              its minor stays pinned. Rebuilt from scratch whenever the
+              course calls for a fresh install.
+
+       {BD}UTM practice fleet{R}
+       {C1}mizutani{R} | M1 Mac Mini | bridged
+              gort (RHEL 10.2), talos (Debian 13), clank (Ubuntu 26.04),
+              hal (Alpine 3.24). Reachable over LAN and WireGuard.
+
+       {BD}Practice VMs{R}
+       {C1}darwin{R} | M1 MacBook Air | shared networking
+              glados and tars, both RHEL 10.2 on aarch64. For putting
+              the course material to use rather than following it, so
+              the minor is free to move. Outside FreeIPA — EX200
+              assumes local users.
+
 {C2}DEV & OBSERVABILITY{R}
        {BD}Gitea + act_runner{R}
        {C1}soulkiller{R} | Debian 13 | git.arpatek.dev
@@ -260,6 +279,8 @@ f"""
                 outcomes, 2025–present lab entry, updated cert roadmap
        {BD}site{R}     /now and /uses refreshed — new reading list, Asahi and
                 iTerm2 dropped, UTM drill VMs described
+       {BD}lab{R}      Mac Mini repurposed as a dedicated UTM hypervisor;
+                MacBook Air is now the main workstation
        {BD}lab{R}      edgerunner documented — Pi-hole replica, plus the
                 nas and stor SMB shares alongside netrunner's tank
 
@@ -357,8 +378,9 @@ f"""
        Pokemon Champions — copying meta teams, not sorry.
 
 {C2}DAILY DRIVER{R}
-       macOS on the M1 MacBook Air. Linux runs in UTM — 4 bridged VMs on
-       the Mac Mini, 2 aarch64 RHEL VMs on the Air.
+       macOS on the M1 MacBook Air — now the main workstation. The Mac
+       Mini was repurposed into a dedicated UTM hypervisor: 4 bridged
+       lab VMs there, 2 aarch64 RHEL VMs on the Air.
 
 {C2}NOW(7){R}                       California, USA                       {C2}NOW(7){R}
 """
