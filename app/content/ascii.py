@@ -360,6 +360,8 @@ f"""
        The Four Agreements — Don Miguel Ruiz
 
 {C2}MANGA{R}
+       One Piece — battles and reveals back to back right now
+       Boruto: Two Blue Vortex — finally going somewhere
        Vagabond
        Goodnight Punpun
        Dr. Stone
@@ -367,6 +369,7 @@ f"""
        Fire Force
 
 {C2}WATCHING{R}
+       Bleach: Thousand-Year Blood War — earns the Big 3 title.
        Catholic theology debates.
        Shawn Ryan Show — youtube.com/@ShawnRyanShow
        The Way with Brian Davila — youtube.com/@TheWaywithBrianDavila
@@ -375,7 +378,10 @@ f"""
        Caleb Hammer — youtube.com/@CalebHammer
 
 {C2}PLAYING{R}
-       Pokemon Champions — copying meta teams, not sorry.
+       Pokemon Champions — Master Ball tier. Still copying meta teams,
+       still not sorry.
+       Black Ops 6 — back in rotation, most kills most matches.
+       Dead Cells — near-perfect loop. Love this game.
 
 {C2}DAILY DRIVER{R}
        macOS on the M1 MacBook Air — now the main workstation. The Mac

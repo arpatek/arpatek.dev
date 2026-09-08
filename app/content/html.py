@@ -877,6 +877,8 @@ NOW = f"""<!DOCTYPE html>
     <div class="section">
       <h2>Manga</h2>
       <ul>
+        <li>One Piece &mdash; battles and reveals back to back right now</li>
+        <li>Boruto: Two Blue Vortex &mdash; finally going somewhere</li>
         <li>Vagabond</li>
         <li>Goodnight Punpun</li>
         <li>Dr. Stone</li>
@@ -888,6 +890,7 @@ NOW = f"""<!DOCTYPE html>
     <div class="section">
       <h2>Watching</h2>
       <ul>
+        <li>Bleach: Thousand-Year Blood War &mdash; earns the Big 3 title</li>
         <li>Catholic theology debates</li>
         <li><a href="https://www.youtube.com/@ShawnRyanShow">Shawn Ryan Show</a></li>
         <li><a href="https://www.youtube.com/@TheWaywithBrianDavila">The Way with Brian Davila</a></li>
@@ -899,7 +902,9 @@ NOW = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>Playing</h2>
-      <p>Pok&eacute;mon Champions &mdash; copying meta teams, not sorry.</p>
+      <p>Pok&eacute;mon Champions &mdash; Master Ball tier. Still copying meta teams, still not sorry.</p>
+      <p>Black Ops 6 &mdash; back in rotation, most kills most matches.</p>
+      <p>Dead Cells &mdash; near-perfect loop. Love this game.</p>
     </div>
 
     <div class="section">
