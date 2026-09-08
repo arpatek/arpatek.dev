@@ -179,22 +179,22 @@ f"""
 
 {C2}HARDWARE{R}
        {BD}M1 Mac Mini{R}
-       {C1}Main workstation{R} | macOS
+       {C1}Main workstation{R} | macOS | UTM lab — 4 VMs, bridged
 
        {BD}M1 MacBook Air{R}
-       {C1}Laptop{R} | Asahi Linux
+       {C1}Laptop{R} | macOS | 2 aarch64 RHEL VMs, shared network
 
        {BD}ASUS PN51 — Ryzen 7 5700U{R}
        {C1}Proxmox hypervisor{R} | blackwall
 
-       {BD}Raspberry Pi{R}
-       {C1}DNS / DHCP / VPN{R} | netrunner
+       {BD}Raspberry Pi x2{R}
+       {C1}DNS / DHCP / VPN / NAS{R} | netrunner + edgerunner
 
 {C2}SOFTWARE{R}
-       {C1}Shell{R}       zsh (Mac, Asahi)  |  bash (servers)
-       {C1}Editor{R}      Neovim + LazyVim (Mac, MacBook)  |  Vim (RHEL)
-       {C1}Terminal{R}    iTerm2 (Mac)  |  Ghostty (MacBook)
-       {C1}OS{R}          macOS  |  Asahi Linux  |  Rocky Linux 9  |  Debian 13
+       {C1}Shell{R}       zsh (macOS)  |  bash (servers)
+       {C1}Editor{R}      Neovim + LazyVim (macOS)  |  Vim (RHEL)
+       {C1}Terminal{R}    Ghostty
+       {C1}OS{R}          macOS  |  RHEL 10  |  Rocky Linux 9  |  Debian 13
 
 {C2}USES(7){R}                    California, USA                    {C2}USES(7){R}
 """
@@ -220,9 +220,16 @@ f"""
        {C1}mikoshi{R} | Rocky Linux 9
               Central identity, SSH auth, sudo policy, DNS for home.arpa.
 
-       {BD}Pi-hole{R}
-       {C1}netrunner{R} | Raspberry Pi | pi.arpatek.dev
+       {BD}Pi-hole — HA pair{R}
+       {C1}netrunner + edgerunner{R} | Raspberry Pi | pi.arpatek.dev
               Network-wide DNS, DHCP, content filter. Upstream for FreeIPA.
+              edgerunner runs a replica so DNS survives losing netrunner.
+
+       {BD}SMB storage{R}
+       {C1}netrunner + edgerunner{R} | Raspberry Pi
+              tank — 500GB mdadm RAID1 of two WD Red SA500 SSDs on
+              netrunner. nas 500GB and stor 250GB (M.2 SATA) on
+              edgerunner, both over USB.
 
        {BD}WireGuard{R}
        {C1}netrunner{R} | Raspberry Pi
@@ -251,6 +258,10 @@ f"""
 {C2}2026-09-08{R}
        {BD}site{R}     /man and /cv resume rewritten — quantified QC
                 outcomes, 2025–present lab entry, updated cert roadmap
+       {BD}site{R}     /now and /uses refreshed — new reading list, Asahi and
+                iTerm2 dropped, UTM drill VMs described
+       {BD}lab{R}      edgerunner documented — Pi-hole replica, plus the
+                nas and stor SMB shares alongside netrunner's tank
 
 {C2}2026-06-02{R}
        {BD}lab{R}      All VMs renamed to Cyberpunk 2077 theme —
@@ -294,27 +305,38 @@ f"""
 # ──[ Now ]─────────────────────────────────────────────────────────────────────────────
 NOW = (
 f"""
-{C2}NOW(7){R}                          2026-06-02                          {C2}NOW(7){R}
+{C2}NOW(7){R}                          2026-09-08                          {C2}NOW(7){R}
 
 {C2}WORK{R}
-       RHCSA study. Using the homelab for cert prep and DevOps practice.
-       Just finished a full homelab rename to a CP2077 naming theme.
-       Renamed the FreeIPA server — not officially supported. Ended up
-       doing a fresh install, re-enrolling every client, and chasing a
-       kinit Generic error for hours (UID outside IPA ID range, KDC
-       can't generate a PAC/SID). Documented every gotcha. It's done.
-       codeberg.org/arpatek/home.arpa/src/branch/main/ipa/docs/gotchas.md
+       RHCSA study. The homelab buildout is done — it's a practice
+       environment now, not a project.
+       Heavy vim drilling lately. EX200 has no GUI, so editing is the
+       one skill that taxes every other task until it's automatic.
+       Drill VMs live in UTM on Apple Silicon — a mixed-distro fleet
+       bridged on the Mac Mini, two aarch64 RHEL VMs on the Air.
+       NAS now spans both Pis: tank is a 500GB mdadm RAID1 of two WD
+       Red SA500 SSDs on netrunner; nas and stor sit on edgerunner —
+       stor a new 250GB M.2 SATA SSD. All three exported over SMB.
+       Caught devkit pulling the WireGuard private key over SSH on every
+       run — wg show all dump prints it as the first field of the first
+       line, and a NOPASSWD sudoers rule made that passwordless. Dropped
+       the rule, stripped it out of setup.sh, wrote down why.
+       codeberg.org/arpatek/devkit/src/branch/main/docs/decisions.md
 
 {C2}READING{R}
+       We — Yevgeny Zamyatin
        The Bible (RSVCE)
+       Meditations — Marcus Aurelius
+       Discourses and Selected Writings — Epictetus
+       Confessions — Saint Augustine
+       Beyond Good and Evil — Nietzsche
+       Metamorphosis — Kafka
+       A Tale of Two Cities — Charles Dickens
+       Neuromancer — William Gibson
+       Red Rising — Pierce Brown
        Behold a Pale Horse — William Cooper
        The Alchemist — Paulo Coelho
        The Four Agreements — Don Miguel Ruiz
-       Metamorphosis — Kafka
-       Crime and Punishment — Dostoevsky
-       The Plague — Camus
-       The Stranger — Camus
-       Learning Modern Linux — Michael Hausenblas
 
 {C2}MANGA{R}
        Vagabond
@@ -335,7 +357,8 @@ f"""
        Pokemon Champions — copying meta teams, not sorry.
 
 {C2}DAILY DRIVER{R}
-       Asahi Linux on the M1 MacBook Air. Full-time daily driver.
+       macOS on the M1 MacBook Air. Linux runs in UTM — 4 bridged VMs on
+       the Mac Mini, 2 aarch64 RHEL VMs on the Air.
 
 {C2}NOW(7){R}                       California, USA                       {C2}NOW(7){R}
 """

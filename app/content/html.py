@@ -461,28 +461,28 @@ USES = f"""<!DOCTYPE html>
       <h2>Hardware</h2>
       <div class="entry">
         <div class="entry-title">M1 Mac Mini</div>
-        <div class="entry-org">Main workstation &mdash; macOS</div>
+        <div class="entry-org">Main workstation &mdash; macOS &nbsp;&bull;&nbsp; UTM lab, 4 VMs bridged</div>
       </div>
       <div class="entry">
         <div class="entry-title">M1 MacBook Air</div>
-        <div class="entry-org">Laptop &mdash; Asahi Linux</div>
+        <div class="entry-org">Laptop &mdash; macOS &nbsp;&bull;&nbsp; 2 aarch64 RHEL VMs, shared network</div>
       </div>
       <div class="entry">
         <div class="entry-title">ASUS PN51 &mdash; Ryzen 7 5700U</div>
         <div class="entry-org">Proxmox hypervisor (blackwall)</div>
       </div>
       <div class="entry">
-        <div class="entry-title">Raspberry Pi</div>
-        <div class="entry-org">DNS / DHCP / VPN (netrunner)</div>
+        <div class="entry-title">Raspberry Pi &times;2</div>
+        <div class="entry-org">DNS / DHCP / VPN / NAS (netrunner + edgerunner)</div>
       </div>
     </div>
 
     <div class="section">
       <h2>Software</h2>
-      <p><span class="label">Shell</span> zsh (Mac, Asahi) &nbsp;&bull;&nbsp; bash (servers)</p>
-      <p><span class="label">Editor</span> Neovim + LazyVim (Mac, MacBook) &nbsp;&bull;&nbsp; Vim (RHEL)</p>
-      <p><span class="label">Terminal</span> iTerm2 (Mac) &nbsp;&bull;&nbsp; Ghostty (MacBook)</p>
-      <p><span class="label">OS</span> macOS &nbsp;&bull;&nbsp; Asahi Linux &nbsp;&bull;&nbsp; Rocky Linux 9 &nbsp;&bull;&nbsp; Debian 13</p>
+      <p><span class="label">Shell</span> zsh (macOS) &nbsp;&bull;&nbsp; bash (servers)</p>
+      <p><span class="label">Editor</span> Neovim + LazyVim (macOS) &nbsp;&bull;&nbsp; Vim (RHEL)</p>
+      <p><span class="label">Terminal</span> Ghostty</p>
+      <p><span class="label">OS</span> macOS &nbsp;&bull;&nbsp; RHEL 10 &nbsp;&bull;&nbsp; Rocky Linux 9 &nbsp;&bull;&nbsp; Debian 13</p>
     </div>
 
     <div class="man-footer">
@@ -547,9 +547,14 @@ LAB = f"""<!DOCTYPE html>
         <ul><li>Central identity, SSH auth, sudo policy, and DNS authority for home.arpa. Every VM is an IPA client.</li></ul>
       </div>
       <div class="entry">
-        <div class="entry-title">Pi-hole</div>
-        <div class="entry-org">netrunner &nbsp;&bull;&nbsp; Raspberry Pi &nbsp;&bull;&nbsp; <a href="https://pi.arpatek.dev">pi.arpatek.dev</a></div>
-        <ul><li>Network-wide DNS resolver, DHCP server, and content filter. Upstream for FreeIPA queries.</li></ul>
+        <div class="entry-title">Pi-hole &mdash; HA pair</div>
+        <div class="entry-org">netrunner + edgerunner &nbsp;&bull;&nbsp; Raspberry Pi &nbsp;&bull;&nbsp; <a href="https://pi.arpatek.dev">pi.arpatek.dev</a></div>
+        <ul><li>Network-wide DNS resolver, DHCP server, and content filter. Upstream for FreeIPA queries. edgerunner runs a replica so DNS survives losing netrunner.</li></ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">SMB storage</div>
+        <div class="entry-org">netrunner + edgerunner &nbsp;&bull;&nbsp; Raspberry Pi</div>
+        <ul><li><code>tank</code> &mdash; 500GB mdadm RAID1 of two WD Red SA500 SSDs on netrunner. <code>nas</code> 500GB and <code>stor</code> 250GB (M.2 SATA) on edgerunner, both over USB.</li></ul>
       </div>
       <div class="entry">
         <div class="entry-title">WireGuard</div>
@@ -614,6 +619,14 @@ CHANGELOG = f"""<!DOCTYPE html>
       <div class="entry">
         <div class="entry-title">Site: /man and /cv resume rewritten &mdash; quantified QC outcomes, 2025&ndash;present lab entry, updated cert roadmap</div>
         <div class="entry-org">arpatek.dev</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Site: /now and /uses refreshed &mdash; new reading list, Asahi and iTerm2 dropped, UTM drill VMs described</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Homelab: edgerunner documented &mdash; Pi-hole replica, plus the nas and stor SMB shares alongside netrunner&rsquo;s tank</div>
+        <div class="entry-org">edgerunner</div>
       </div>
     </div>
 
@@ -789,27 +802,33 @@ NOW = f"""<!DOCTYPE html>
     </div>
 
     <div class="man-header">
-      <span>NOW(7)</span><span>2026-06-02</span><span>NOW(7)</span>
+      <span>NOW(7)</span><span>2026-09-08</span><span>NOW(7)</span>
     </div>
 
     <div class="section">
       <h2>Work</h2>
-      <p>RHCSA study. Using the homelab for cert prep and DevOps practice.</p>
-      <p>Just finished a full homelab rename to a CP2077 naming theme. Renamed the FreeIPA server — not officially supported. Ended up doing a fresh install, re-enrolling every client, and chasing a kinit Generic error for hours (UID outside IPA ID range, KDC can&rsquo;t generate a PAC/SID). Documented every gotcha. It&rsquo;s done. <a href="https://codeberg.org/arpatek/home.arpa/src/branch/main/ipa/docs/gotchas.md">gotchas.md</a></p>
+      <p>RHCSA study. The homelab buildout is done &mdash; it&rsquo;s a practice environment now, not a project.</p>
+      <p>Heavy vim drilling lately. EX200 has no GUI, so editing is the one skill that taxes every other task until it&rsquo;s automatic. Drill VMs live in UTM on Apple Silicon &mdash; a mixed-distro fleet bridged on the Mac Mini, two aarch64 RHEL VMs on the Air.</p>
+      <p>NAS now spans both Pis: <code>tank</code> is a 500GB mdadm RAID1 of two WD Red SA500 SSDs on netrunner; <code>nas</code> and <code>stor</code> sit on edgerunner &mdash; <code>stor</code> a new 250GB M.2 SATA SSD. All three exported over SMB.</p>
+      <p>Caught devkit pulling the WireGuard private key over SSH on every run &mdash; <code>wg show all dump</code> prints it as the first field of the first line, and a NOPASSWD sudoers rule made that passwordless. Dropped the rule, stripped it out of setup.sh, wrote down why. <a href="https://codeberg.org/arpatek/devkit/src/branch/main/docs/decisions.md">decisions.md</a></p>
     </div>
 
     <div class="section">
       <h2>Reading</h2>
       <ul>
+        <li>We &mdash; Yevgeny Zamyatin</li>
         <li>The Bible (RSVCE)</li>
+        <li>Meditations &mdash; Marcus Aurelius</li>
+        <li>Discourses and Selected Writings &mdash; Epictetus</li>
+        <li>Confessions &mdash; Saint Augustine</li>
+        <li>Beyond Good and Evil &mdash; Nietzsche</li>
+        <li>Metamorphosis &mdash; Kafka</li>
+        <li>A Tale of Two Cities &mdash; Charles Dickens</li>
+        <li>Neuromancer &mdash; William Gibson</li>
+        <li>Red Rising &mdash; Pierce Brown</li>
         <li>Behold a Pale Horse &mdash; William Cooper</li>
         <li>The Alchemist &mdash; Paulo Coelho</li>
         <li>The Four Agreements &mdash; Don Miguel Ruiz</li>
-        <li>Metamorphosis &mdash; Kafka</li>
-        <li>Crime and Punishment &mdash; Dostoevsky</li>
-        <li>The Plague &mdash; Camus</li>
-        <li>The Stranger &mdash; Camus</li>
-        <li>Learning Modern Linux &mdash; Michael Hausenblas</li>
       </ul>
     </div>
 
@@ -843,7 +862,8 @@ NOW = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>Daily Driver</h2>
-      <p>Asahi Linux on the M1 MacBook Air. Full-time daily driver.</p>
+      <p>macOS on the M1 MacBook Air. Linux runs in UTM &mdash; 4 bridged VMs on the
+      Mac Mini, 2 aarch64 RHEL VMs on the Air.</p>
     </div>
 
     <div class="man-footer">
