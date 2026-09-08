@@ -78,19 +78,19 @@ f"""
        juan [--automate] [--build] [--break-then-fix]
 
 {C2}DESCRIPTION{R}
-       Systems automation engineer with production experience building
-       hardware validation tooling at scale. Strong background in Linux,
-       Bash, Python, and infrastructure-as-code. Hands-on with Ansible,
-       Terraform, Kubernetes, and self-hosted infrastructure monitoring
-       stacks. Pursuing RHCSA cert; roadmap includes RHCE, Terraform
-       Associate, CKA, CKS, and AWS.
+       Systems automation engineer with three years of hardware
+       validation and QC automation at scale. Strong background in Linux
+       and Bash; hands-on with IPMI, Redfish, ZFS, and SAS/HBA. Building
+       a self-hosted lab on Proxmox, k3s, FreeIPA, and WireGuard.
+       Pursuing RHCSA cert; roadmap includes RHCE, Terraform Associate,
+       CKA, CKS, and AWS.
 
 {C2}EXPERIENCE{R}
        {BD}Senior Test Technician{R}
        {C1}TrueNAS{R} | 2021 – 2024
 
-              * Built a 22,000+ line Bash/Python automation suite (CC &
-                SWQC) for TrueNAS manufacturing QC
+              * Extended and maintained a 22,000+ line Bash/Python
+                automation suite (CC & SWQC) for manufacturing QC
               * Automated BIOS, firmware, and HW validation via IPMI and
                 Redfish API for 16+ systems at once
               * Developed Python Redfish API clients for BIOS push/export

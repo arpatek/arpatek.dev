@@ -318,9 +318,11 @@ MANPAGE = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>Description</h2>
-      <p>Systems automation engineer with production experience building hardware validation
-      tooling at scale. Strong background in Linux, Bash, Python, and infrastructure-as-code.
-      Pursuing RHCSA; roadmap includes RHCE, Terraform Associate, CKA, CKS, and AWS.</p>
+      <p>Systems automation engineer with three years of hardware validation and QC
+      automation at scale. Strong background in Linux and Bash; hands-on with IPMI,
+      Redfish, ZFS, and SAS/HBA. Building a self-hosted lab on Proxmox, k3s, FreeIPA,
+      and WireGuard. Pursuing RHCSA; roadmap includes RHCE, Terraform Associate, CKA,
+      CKS, and AWS.</p>
     </div>
 
     <div class="section">
@@ -330,7 +332,7 @@ MANPAGE = f"""<!DOCTYPE html>
         <div class="entry-title">Senior Test Technician</div>
         <div class="entry-org">TrueNAS &nbsp;&bull;&nbsp; 2021 &ndash; 2024</div>
         <ul>
-          <li>Built a 22,000+ line Bash/Python automation suite (CC &amp; SWQC) for manufacturing QC</li>
+          <li>Extended and maintained a 22,000+ line Bash/Python automation suite (CC &amp; SWQC) for manufacturing QC</li>
           <li>Automated BIOS, firmware, and HW validation via IPMI and Redfish API for 16+ systems</li>
           <li>Developed Python Redfish API clients for BIOS push/export on liquid immersion platforms</li>
           <li>Integrated with PBS archive servers and PostgreSQL for burn-in parsing and reporting</li>
