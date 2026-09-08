@@ -319,21 +319,36 @@ MANPAGE = f"""<!DOCTYPE html>
     <div class="section">
       <h2>Description</h2>
       <p>Systems automation engineer with three years of hardware validation and QC
-      automation at scale. Strong background in Linux and Bash; hands-on with IPMI,
-      Redfish, ZFS, and SAS/HBA. Building a self-hosted lab on Proxmox, k3s, FreeIPA,
-      and WireGuard. Pursuing RHCSA; roadmap includes RHCE, Terraform Associate, CKA,
-      CKS, and AWS.</p>
+      automation. Strong background in Linux and Bash; hands-on with IPMI, Redfish,
+      ZFS, and SAS/HBA. Runs a self-hosted lab on Proxmox, k3s, FreeIPA, and WireGuard.
+      Pursuing RHCSA (EX200); roadmap includes AWS SAA, Terraform Associate, CKA,
+      RHCE, and CKS.</p>
     </div>
 
     <div class="section">
       <h2>Experience</h2>
 
       <div class="entry">
+        <div class="entry-title">Independent Infrastructure Study</div>
+        <div class="entry-org">Personal Lab &nbsp;&bull;&nbsp; 2025 &ndash; Present</div>
+        <ul>
+          <li>Self-hosted lab on Proxmox: 3-node k3s cluster, FreeIPA identity/DNS, Pi-hole HA pair</li>
+          <li>Runs arpatek.dev on k3s behind Traefik with wildcard TLS; single inbound UDP port for WireGuard</li>
+          <li>CI/CD via Gitea Actions and act_runner: builds to a self-hosted registry, rolls out to k3s on push</li>
+          <li>Metrics, logs, and dashboards across 6 hosts via Prometheus, Loki, Grafana, Alloy, node_exporter</li>
+          <li>Documented per service in home.arpa: architecture, decisions, gotchas, and upgrade notes</li>
+          <li>Preparing for RHCSA (EX200) on RHEL 10; Linux administration and Bash scripting coursework</li>
+        </ul>
+      </div>
+
+      <div class="entry">
         <div class="entry-title">Senior Test Technician</div>
         <div class="entry-org">TrueNAS &nbsp;&bull;&nbsp; 2021 &ndash; 2024</div>
         <ul>
           <li>Extended and maintained a 22,000+ line Bash/Python automation suite (CC &amp; SWQC) for manufacturing QC</li>
-          <li>Automated BIOS, firmware, and HW validation via IPMI and Redfish API for 16+ systems</li>
+          <li>Cut per-system validation from 30&ndash;60 min of manual checks to minutes of report review</li>
+          <li>Sustained batches of 50+ systems/day, raising configuration/QC throughput without added headcount</li>
+          <li>Automated BIOS, firmware, and HW validation via IPMI and Redfish API for 16+ server platforms</li>
           <li>Developed Python Redfish API clients for BIOS push/export on liquid immersion platforms</li>
           <li>Integrated with PBS archive servers and PostgreSQL for burn-in parsing and reporting</li>
           <li>Validated firmware compliance against Redbook specs: ZFS, HBA firmware, SMART health</li>
@@ -359,13 +374,6 @@ MANPAGE = f"""<!DOCTYPE html>
         </ul>
       </div>
 
-      <div class="entry">
-        <div class="entry-title">Passenger Service Supervisor</div>
-        <div class="entry-org">Pacific Aviation &nbsp;&bull;&nbsp; 2019 &ndash; 2021</div>
-        <ul>
-          <li>Coordinated airline operations and communicated between international teams</li>
-        </ul>
-      </div>
     </div>
 
     <div class="section">
@@ -599,6 +607,14 @@ CHANGELOG = f"""<!DOCTYPE html>
 
     <div class="man-header">
       <span>CHANGELOG(7)</span><span>arpatek</span><span>CHANGELOG(7)</span>
+    </div>
+
+    <div class="section">
+      <h2>2026-09-08</h2>
+      <div class="entry">
+        <div class="entry-title">Site: /man and /cv resume rewritten &mdash; quantified QC outcomes, 2025&ndash;present lab entry, updated cert roadmap</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
     </div>
 
     <div class="section">

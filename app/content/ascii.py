@@ -79,20 +79,40 @@ f"""
 
 {C2}DESCRIPTION{R}
        Systems automation engineer with three years of hardware
-       validation and QC automation at scale. Strong background in Linux
-       and Bash; hands-on with IPMI, Redfish, ZFS, and SAS/HBA. Building
-       a self-hosted lab on Proxmox, k3s, FreeIPA, and WireGuard.
-       Pursuing RHCSA cert; roadmap includes RHCE, Terraform Associate,
-       CKA, CKS, and AWS.
+       validation and QC automation. Strong background in Linux and
+       Bash; hands-on with IPMI, Redfish, ZFS, and SAS/HBA. Runs a
+       self-hosted lab on Proxmox, k3s, FreeIPA, and WireGuard. Pursuing
+       RHCSA (EX200); roadmap includes AWS SAA, Terraform Associate,
+       CKA, RHCE, and CKS.
 
 {C2}EXPERIENCE{R}
+       {BD}Independent Infrastructure Study{R}
+       {C1}Personal Lab{R} | 2025 – Present
+
+              * Self-hosted lab on Proxmox: 3-node k3s cluster, FreeIPA
+                identity/DNS, Pi-hole HA pair
+              * Runs arpatek.dev on k3s behind Traefik with wildcard
+                TLS; single inbound UDP port for WireGuard
+              * CI/CD via Gitea Actions and act_runner: builds to a
+                self-hosted registry, rolls out to k3s on push
+              * Metrics, logs, and dashboards across 6 hosts via
+                Prometheus, Loki, Grafana, Alloy, node_exporter
+              * Documented per service in home.arpa: architecture,
+                decisions, gotchas, and upgrade notes
+              * Preparing for RHCSA (EX200) on RHEL 10; Linux
+                administration and Bash scripting coursework
+
        {BD}Senior Test Technician{R}
        {C1}TrueNAS{R} | 2021 – 2024
 
               * Extended and maintained a 22,000+ line Bash/Python
                 automation suite (CC & SWQC) for manufacturing QC
+              * Cut per-system validation from 30–60 min of manual
+                checks to minutes of report review
+              * Sustained batches of 50+ systems/day, raising
+                configuration/QC throughput without added headcount
               * Automated BIOS, firmware, and HW validation via IPMI and
-                Redfish API for 16+ systems at once
+                Redfish API for 16+ server platforms
               * Developed Python Redfish API clients for BIOS push/export
                 on liquid immersion platforms
               * Integrated with PBS archive servers and PostgreSQL to
@@ -114,11 +134,6 @@ f"""
 
               * Managed AV setup, live audio/video services, and video editing
               * Designed and executed digital marketing strategies for SMBs
-
-       {BD}Passenger Service Supervisor{R}
-       {C1}Pacific Aviation{R} | 2019 – 2021
-
-              * Coordinated airline operations between international teams
 
 {C2}SKILLS{R}
        {C1}Languages{R}       Bash, Python, HCL
@@ -232,6 +247,10 @@ f"""
 CHANGELOG = (
 f"""
 {C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
+
+{C2}2026-09-08{R}
+       {BD}site{R}     /man and /cv resume rewritten — quantified QC
+                outcomes, 2025–present lab entry, updated cert roadmap
 
 {C2}2026-06-02{R}
        {BD}lab{R}      All VMs renamed to Cyberpunk 2077 theme —
