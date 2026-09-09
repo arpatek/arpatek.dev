@@ -82,11 +82,12 @@ h3 { color: var(--c5); font-size: 0.85rem; font-weight: 700;
      margin: 1.1rem 0 0.2rem; }
 
 /* nav */
-#nav { border-bottom: 1px solid #9db9b244; margin-bottom: 20px; overflow: hidden; }
-#nav a { display: block; float: left; padding: 12px 14px; color: var(--c5); }
+#nav { display: flex; flex-wrap: wrap; align-items: center;
+       border-bottom: 1px solid #9db9b244; margin-bottom: 20px; }
+#nav a { padding: 12px 14px; color: var(--c5); }
 #nav a:hover { background: #332e33; text-decoration: none; }
 #nav a.active { color: var(--c1); }
-#nav a.right { float: right; }
+#nav a.right { margin-left: auto; }
 
 /* terminal block */
 pre.terminal {
@@ -113,7 +114,7 @@ pre.terminal > code::after {
 @media (max-width: 600px) {
     body { font-size: 11px; padding: 0 4px; }
     pre.terminal > code { font-size: 10px; }
-    #nav a { padding: 10px 8px; }
+    #nav a { padding: 10px 8px; } #nav a.right { margin-left: 0; }
 }
 
 /* footer */
