@@ -12,13 +12,17 @@ curl arpatek.dev
 |----------|------|---------|
 | `/` | ASCII portfolio with banner | Terminal emulator with typing animation |
 | `/man` | Manpage-formatted resume | Styled HTML manpage |
-| `/uses` | Hardware & software setup | Styled page |
+| `/env` | Hardware & software setup | Styled page |
 | `/lab` | Homelab services (home.arpa) | Styled page |
 | `/changelog` | Site and project history | Styled page |
-| `/now` | What I'm up to | Styled page |
+| `/status` | Current and recent technical work | Styled page |
+| `/latest` | Updates, reading, watching, playing | Styled page |
 | `/resume` | Contact info | Styled contact page |
 | `/cv` | — | Downloads resume PDF |
 | `/help` | All available endpoints | — |
+
+`/uses` and `/now` 301-redirect to `/env` and `/status` — the indieweb
+conventions stay linkable.
 
 ### Hidden
 
@@ -48,7 +52,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 app/
 ├── main.py
 ├── routes/
-│   ├── portfolio.py     # /, /man, /uses, /lab, /changelog, /now, /resume, /cv, /help
+│   ├── portfolio.py     # /, /man, /env, /lab, /status, /latest, /changelog, /resume, /cv, /help
 │   └── animations.py    # /lambda, /boo, /xmas
 ├── content/
 │   ├── ascii.py         # ANSI-colored curl output
