@@ -56,8 +56,10 @@ _NAV_JS = r"""
         a.insertAdjacentHTML('afterbegin', prefix);
     }
 
-    const label = open =>
-        '<span class="ls-p">$</span> <span class="ls-c">' + (open ? 'clear' : 'ls -l') + '</span>';
+    // fast-syntax-highlighting colours the command and its flags separately
+    const label = open => open
+        ? '<span class="ls-p">$</span> <span class="ls-c">clear</span>'
+        : '<span class="ls-p">$</span> <span class="ls-c">ls</span> <span class="ls-f">-l</span>';
 
     const btn = document.createElement('button');
     btn.id   = 'nav-toggle';
@@ -136,6 +138,7 @@ h3 { color: var(--c5); font-size: 0.85rem; font-weight: 700;
 #nav-toggle { display: none; }
 #nav-toggle .ls-p { color: #dcd6d6; }
 #nav-toggle .ls-c { color: #c3b283; }
+#nav-toggle .ls-f { color: #9db9b2; }
 /* same cursor and keyframes as the terminal block, so the toggle reads as a
    live prompt rather than a heading */
 #nav-toggle::after { content: " _"; color: var(--c5);
