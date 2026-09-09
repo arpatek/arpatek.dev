@@ -136,6 +136,10 @@ h3 { color: var(--c5); font-size: 0.85rem; font-weight: 700;
 #nav-toggle { display: none; }
 #nav-toggle .ls-p { color: #dcd6d6; }
 #nav-toggle .ls-c { color: #c3b283; }
+/* same cursor and keyframes as the terminal block, so the toggle reads as a
+   live prompt rather than a heading */
+#nav-toggle::after { content: " _"; color: var(--c5);
+                    animation: blink 1.5s step-start infinite; }
 .ls { display: none; }
 
 /* terminal block */
