@@ -93,7 +93,7 @@ pre.terminal {
     background: #1c1a16;
     border: 1px solid #79be9a33;
     padding: 8px;
-    min-height: 640px;
+    min-height: 680px;
     overflow-x: auto;
     line-height: 16px;
     margin: 16px 0;
