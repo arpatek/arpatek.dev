@@ -33,6 +33,34 @@ _FAVICON_JS = """
 })();
 """
 
+# ──[ Nav toggle JS ]───────────────────────────────────────────────────────────────────
+# Injected rather than written into all eight nav blocks. The 'js' class is added
+# only once the button exists, so the nav stays visible if the script never runs.
+_NAV_JS = r"""
+(function () {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+
+    document.documentElement.classList.add('js');
+
+    const btn = document.createElement('button');
+    btn.id   = 'nav-toggle';
+    btn.type = 'button';
+    btn.textContent = '\u2261 menu';
+    btn.setAttribute('aria-controls', 'nav');
+    btn.setAttribute('aria-expanded', 'false');
+
+    btn.addEventListener('click', function () {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? '\u00d7 close' : '\u2261 menu';
+    });
+
+    nav.parentNode.insertBefore(btn, nav);
+})();
+"""
+
+
 # ──[ Open Graph ]──────────────────────────────────────────────────────────────────────
 # Link previews on LinkedIn, Slack, Discord, iMessage. og:url stays canonical rather
 # than per-page — every page is the same site, and the shared URL is what gets opened.
@@ -88,6 +116,7 @@ h3 { color: var(--c5); font-size: 0.85rem; font-weight: 700;
 #nav a:hover { background: #332e33; text-decoration: none; }
 #nav a.active { color: var(--c1); }
 #nav a.right { margin-left: auto; }
+#nav-toggle { display: none; }
 
 /* terminal block */
 pre.terminal {
@@ -114,9 +143,15 @@ pre.terminal > code::after {
 @media (max-width: 600px) {
     body { font-size: 11px; padding: 0 4px; }
     pre.terminal > code { font-size: 10px; }
-    #nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-  #nav::-webkit-scrollbar { display: none; }
-  #nav a { padding: 10px 8px; flex: 0 0 auto; }
+    #nav-toggle { display: block; width: 100%; text-align: left; font: inherit;
+                color: var(--c5); background: none; border: 1px solid #9db9b244;
+                padding: 10px 8px; margin: 8px 0; cursor: pointer; }
+  .js #nav { flex-direction: column; align-items: stretch; max-height: 0;
+             overflow: hidden; border-bottom: none; margin-bottom: 0;
+             transition: max-height 0.2s ease; }
+  .js #nav.open { max-height: 60vh; overflow-y: auto; margin-bottom: 20px;
+                  border-bottom: 1px solid #9db9b244; }
+  #nav a { padding: 10px 8px; }
   #nav a.right { margin-left: 0; }
 }
 
@@ -300,7 +335,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
   </div>
   <script>{_COMMANDS_JS}</script>
   <script>{_TERMINAL_JS}</script>
-  <script>{_FAVICON_JS}</script>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -448,7 +483,7 @@ MANPAGE = f"""<!DOCTYPE html>
       <span>ARPATEK(1)</span><span>California, USA</span><span>ARPATEK(1)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}</script>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -515,7 +550,7 @@ ENV = f"""<!DOCTYPE html>
       <span>arpatek</span><span>California, USA</span><span>arpatek.dev/env</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}</script>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -628,7 +663,7 @@ LAB = f"""<!DOCTYPE html>
       <span>LAB(8)</span><span>home.arpa</span><span>LAB(8)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}</script>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -771,7 +806,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <span>CHANGELOG(7)</span><span>arpatek</span><span>CHANGELOG(7)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}</script>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -831,7 +866,7 @@ CONTACT = f"""<!DOCTYPE html>
       <span>CONTACT(7)</span><span>California, USA</span><span>CONTACT(7)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}</script>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -886,7 +921,7 @@ STATUS = f"""<!DOCTYPE html>
       <span>STATUS(1)</span><span>California, USA</span><span>STATUS(1)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}</script>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -988,7 +1023,7 @@ LATEST = f"""<!DOCTYPE html>
       <span>LATEST(7)</span><span>California, USA</span><span>LATEST(7)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}</script>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
 </body>
 </html>"""
 
