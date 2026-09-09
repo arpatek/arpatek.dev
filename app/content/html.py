@@ -43,17 +43,34 @@ _NAV_JS = r"""
 
     document.documentElement.classList.add('js');
 
+    // eza colours each permission bit separately, so the mode string is built
+    // per character rather than dropped in as one blob of text.
+    const CLS  = { d: 'ls-d', r: 'ls-r', w: 'ls-w', x: 'ls-x', '-': 'ls-n' };
+    const MODE = 'drwxr-xr-x';
+
+    const prefix = '<span class="ls">'
+        + MODE.split('').map(c => '<span class="' + CLS[c] + '">' + c + '</span>').join('')
+        + '  <span class="ls-u">arpatek</span>  </span>';
+
+    for (const a of nav.querySelectorAll('a')) {
+        a.insertAdjacentHTML('afterbegin', prefix);
+    }
+
+    const label = open =>
+        '<span class="ls-p">$</span> <span class="ls-c">' + (open ? 'clear' : 'ls -l') + '</span>';
+
     const btn = document.createElement('button');
     btn.id   = 'nav-toggle';
     btn.type = 'button';
-    btn.textContent = '$ ls -l';
+    btn.innerHTML = label(false);
     btn.setAttribute('aria-controls', 'nav');
     btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'menu');
 
     btn.addEventListener('click', function () {
         const open = nav.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.textContent = open ? '$ clear' : '$ ls -l';
+        btn.innerHTML = label(open);
     });
 
     nav.parentNode.insertBefore(btn, nav);
@@ -117,6 +134,9 @@ h3 { color: var(--c5); font-size: 0.85rem; font-weight: 700;
 #nav a.active { color: var(--c1); }
 #nav a.right { margin-left: auto; }
 #nav-toggle { display: none; }
+#nav-toggle .ls-p { color: #dcd6d6; }
+#nav-toggle .ls-c { color: #c3b283; }
+.ls { display: none; }
 
 /* terminal block */
 pre.terminal {
@@ -151,12 +171,17 @@ pre.terminal > code::after {
              transition: max-height 0.2s ease; }
   .js #nav.open { max-height: 60vh; overflow-y: auto; margin-bottom: 20px;
                   border-bottom: 1px solid #9db9b244; }
-  /* the open menu reads as ls -l output, in the terminal block's palette */
-  .js #nav.open::before { content: "total 8"; color: var(--c4); padding: 8px 8px 2px; }
-  .js #nav.open a::before { content: "drwxr-xr-x  arpatek  "; color: var(--c4);
-                            white-space: pre; }
-  .js #nav.open a { color: var(--c1); }
-  .js #nav.open a.active { color: var(--c2); }
+  /* mirrors how eza colours a long listing, in the terminal block's palette.
+     eza prints no total line, so neither do we. */
+  .js #nav.open .ls    { display: inline; white-space: pre; }
+  .js #nav.open .ls-d  { color: #9db9b2; font-weight: 700; }   /* type, bold blue */
+  .js #nav.open .ls-r  { color: #c3b283; }                     /* read, yellow    */
+  .js #nav.open .ls-w  { color: #b9746f; }                     /* write, red      */
+  .js #nav.open .ls-x  { color: #79be9a; }                     /* exec, green     */
+  .js #nav.open .ls-n  { color: #877887; }                     /* absent, dim     */
+  .js #nav.open .ls-u  { color: #c3b283; font-weight: 700; }   /* owner           */
+  .js #nav.open a          { color: #9db9b2; font-weight: 700; }
+  .js #nav.open a.active   { color: #79be9a; font-weight: 700; }
   #nav a { padding: 10px 8px; }
   #nav a.right { margin-left: 0; }
 }
