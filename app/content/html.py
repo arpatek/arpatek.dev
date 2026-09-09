@@ -78,6 +78,8 @@ a:hover { text-decoration: underline; }
 h1 { color: var(--c2); margin-bottom: 20px; }
 h2 { color: var(--c2); font-size: 0.85rem; text-transform: uppercase;
      letter-spacing: 0.08em; margin: 1.4rem 0 0.4rem; }
+h3 { color: var(--c5); font-size: 0.85rem; font-weight: 700;
+     margin: 1.1rem 0 0.2rem; }
 
 /* nav */
 #nav { border-bottom: 1px solid #9db9b244; margin-bottom: 20px; overflow: hidden; }
@@ -270,10 +272,11 @@ PORTFOLIO = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/" class="active">home</a>
       <a href="/man">manpage</a>
-      <a href="/uses">uses</a>
+      <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/status">status</a>
+      <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -314,10 +317,11 @@ MANPAGE = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man" class="active">manpage</a>
-      <a href="/uses">uses</a>
+      <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/status">status</a>
+      <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -443,12 +447,12 @@ MANPAGE = f"""<!DOCTYPE html>
 </html>"""
 
 # ──[ Uses ]────────────────────────────────────────────────────────────────────────────
-USES = f"""<!DOCTYPE html>
+ENV = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>uses — arpatek</title>
+  <title>env — arpatek</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -461,15 +465,16 @@ USES = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man">manpage</a>
-      <a href="/uses" class="active">uses</a>
+      <a href="/env" class="active">env</a>
       <a href="/lab">lab</a>
+      <a href="/status">status</a>
+      <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
     <div class="man-header">
-      <span>USES(7)</span><span>Hardware &amp; Software</span><span>USES(7)</span>
+      <span>ENVIRON(7)</span><span>Hardware &amp; Software</span><span>ENVIRON(7)</span>
     </div>
 
     <div class="section">
@@ -527,10 +532,11 @@ LAB = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man">manpage</a>
-      <a href="/uses">uses</a>
+      <a href="/env">env</a>
       <a href="/lab" class="active">lab</a>
+      <a href="/status">status</a>
+      <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -639,10 +645,11 @@ CHANGELOG = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man">manpage</a>
-      <a href="/uses">uses</a>
+      <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/status">status</a>
+      <a href="/latest">latest</a>
       <a href="/changelog" class="active">changelog</a>
-      <a href="/now">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
@@ -777,10 +784,11 @@ CONTACT = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man">manpage</a>
-      <a href="/uses">uses</a>
+      <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/status">status</a>
+      <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/now">now</a>
       <a href="/resume" class="active right">contact</a>
     </div>
 
@@ -818,12 +826,12 @@ CONTACT = f"""<!DOCTYPE html>
 </html>"""
 
 # ──[ Now ]─────────────────────────────────────────────────────────────────────────────
-NOW = f"""<!DOCTYPE html>
+STATUS = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>now — arpatek</title>
+  <title>status — arpatek</title>
   <link rel="icon" type="image/gif" href="/static/favicon.gif">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -836,23 +844,82 @@ NOW = f"""<!DOCTYPE html>
     <div id="nav">
       <a href="/">home</a>
       <a href="/man">manpage</a>
-      <a href="/uses">uses</a>
+      <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/status" class="active">status</a>
+      <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/now" class="active">now</a>
       <a href="/resume" class="right">contact</a>
     </div>
 
     <div class="man-header">
-      <span>NOW(7)</span><span>2026-09-08</span><span>NOW(7)</span>
+      <span>STATUS(1)</span><span>2026-09-08</span><span>STATUS(1)</span>
     </div>
 
     <div class="section">
-      <h2>Work</h2>
-      <p>RHCSA study. The homelab buildout is done &mdash; it&rsquo;s a practice environment now, not a project.</p>
-      <p>Heavy vim drilling lately. EX200 has no GUI, so editing is the one skill that taxes every other task until it&rsquo;s automatic. Drill VMs live in UTM on Apple Silicon &mdash; a mixed-distro fleet bridged on the Mac Mini, two aarch64 RHEL VMs on the Air.</p>
-      <p>NAS now spans both Pis: <code>tank</code> is a 500GB mdadm RAID1 of two WD Red SA500 SSDs on netrunner; <code>nas</code> and <code>stor</code> sit on edgerunner &mdash; <code>stor</code> a new 250GB M.2 SATA SSD. All three exported over SMB.</p>
-      <p>Caught devkit pulling the WireGuard private key over SSH on every run &mdash; <code>wg show all dump</code> prints it as the first field of the first line, and a NOPASSWD sudoers rule made that passwordless. Dropped the rule, stripped it out of setup.sh, wrote down why. <a href="https://codeberg.org/arpatek/devkit/src/branch/main/docs/decisions.md">decisions.md</a></p>
+      <h2>Current</h2>
+      <h3>RHCSA &mdash; EX200</h3>
+      <p>Studying for the exam. The homelab buildout is done &mdash; it&rsquo;s a practice environment now, not a project.</p>
+      <h3>Vim drilling</h3>
+      <p>EX200 has no GUI, so editing is the one skill that taxes every other task until it&rsquo;s automatic. Drill VMs live in UTM on Apple Silicon &mdash; a mixed-distro fleet bridged on the Mac Mini, two aarch64 RHEL VMs on the Air.</p>
+    </div>
+
+    <div class="section">
+      <h2>Recent</h2>
+      <h3>NAS across both Pis</h3>
+      <p><code>tank</code> is a 500GB mdadm RAID1 of two WD Red SA500 SSDs on netrunner; <code>nas</code> and <code>stor</code> sit on edgerunner &mdash; <code>stor</code> a new 250GB M.2 SATA SSD. All three exported over SMB.</p>
+      <h3>devkit &mdash; WireGuard private key exposure</h3>
+      <p>devkit pulled the WireGuard private key over SSH on every run. <code>wg show all dump</code> prints it as the first field of the first line, and a NOPASSWD sudoers rule made that passwordless. Dropped the rule, stripped it out of <code>setup.sh</code>, wrote down why. <a href="https://codeberg.org/arpatek/devkit/src/branch/main/docs/decisions.md">decisions.md</a></p>
+    </div>
+
+    <div class="man-footer">
+      <span>STATUS(1)</span><span>California, USA</span><span>STATUS(1)</span>
+    </div>
+  </div>
+  <script>{_FAVICON_JS}</script>
+</body>
+</html>"""
+
+LATEST = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>latest — arpatek</title>
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>{_STYLES}</style>
+</head>
+<body>
+  <div id="container">
+    <div id="nav">
+      <a href="/">home</a>
+      <a href="/man">manpage</a>
+      <a href="/env">env</a>
+      <a href="/lab">lab</a>
+      <a href="/status">status</a>
+      <a href="/latest" class="active">latest</a>
+      <a href="/changelog">changelog</a>
+      <a href="/resume" class="right">contact</a>
+    </div>
+
+    <div class="man-header">
+      <span>LATEST(7)</span><span>2026-09-08</span><span>LATEST(7)</span>
+    </div>
+
+    <div class="section">
+      <h2>Updates</h2>
+      <h3>Daily driver &mdash; back on macOS</h3>
+      <p>macOS on the M1 MacBook Air is the main workstation again. The Mac Mini was repurposed into a dedicated UTM hypervisor: 4 bridged lab VMs there, 2 aarch64 RHEL VMs on the Air.</p>
+      <h3>Editor &mdash; VSCodium over VS Code</h3>
+      <p>Same editor without the Microsoft telemetry and branding. Settings and extensions tracked in dotfiles.</p>
+      <h3>Terminal &mdash; Ghostty, with tmux for splits</h3>
+      <p>macOS native tabs are exposed as separate AXWindows, so AeroSpace tiles each tab and leaves half the screen empty. Unbinding <code>super+t</code> forces the single-window path: tmux panes, or Ghostty&rsquo;s own splits on <code>super+d</code>.</p>
+      <h3>Window management &mdash; AeroSpace</h3>
+      <p>Tiling on macOS, nine persistent workspaces.</p>
     </div>
 
     <div class="section">
@@ -879,7 +946,7 @@ NOW = f"""<!DOCTYPE html>
       <ul>
         <li>One Piece &mdash; battles and reveals back to back right now</li>
         <li>Boruto: Two Blue Vortex &mdash; finally going somewhere</li>
-        <li>Vagabond</li>
+        <li>Vagabond &mdash; vol 17, deep in Kojiro&rsquo;s arc</li>
         <li>Goodnight Punpun</li>
         <li>Dr. Stone</li>
         <li>Edens Zero</li>
@@ -902,20 +969,12 @@ NOW = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>Playing</h2>
-      <p>Pok&eacute;mon Champions &mdash; Master Ball tier. Still copying meta teams, still not sorry.</p>
+      <p>Pok&eacute;mon Champions &mdash; Master Ball tier.</p>
       <p>Black Ops 6 &mdash; back in rotation, most kills most matches.</p>
       <p>Dead Cells &mdash; near-perfect loop. Love this game.</p>
     </div>
-
-    <div class="section">
-      <h2>Daily Driver</h2>
-      <p>macOS on the M1 MacBook Air &mdash; now the main workstation. The Mac Mini was
-      repurposed into a dedicated UTM hypervisor: 4 bridged lab VMs there, 2 aarch64
-      RHEL VMs on the Air.</p>
-    </div>
-
     <div class="man-footer">
-      <span>NOW(7)</span><span>California, USA</span><span>NOW(7)</span>
+      <span>LATEST(7)</span><span>California, USA</span><span>LATEST(7)</span>
     </div>
   </div>
   <script>{_FAVICON_JS}</script>

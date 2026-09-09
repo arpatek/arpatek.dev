@@ -10,11 +10,11 @@ Author: Juan Garcia (arpatek)
 # ──[ Imports ]─────────────────────────────────────────────────────────────────────────
 from fastapi import APIRouter
 from fastapi.requests  import Request
-from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, RedirectResponse, Response
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
-from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, USES as ASCII_USES, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG, CONTACT as ASCII_CONTACT, NOW as ASCII_NOW
-from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, USES as HTML_USES, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG, CONTACT as HTML_CONTACT, NOW as HTML_NOW
+from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, ENV as ASCII_ENV, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG, CONTACT as ASCII_CONTACT, STATUS as ASCII_STATUS, LATEST as ASCII_LATEST
+from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, ENV as HTML_ENV, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG, CONTACT as HTML_CONTACT, STATUS as HTML_STATUS, LATEST as HTML_LATEST
 
 
 # ──[ Router ]──────────────────────────────────────────────────────────────────────────
@@ -43,12 +43,12 @@ async def manpage(request: Request) -> Response:
     return HTMLResponse(HTML_MANPAGE)
 
 
-@router.get("/uses")
-async def uses(request: Request) -> Response:
+@router.get("/env")
+async def env(request: Request) -> Response:
     ua = request.headers.get("user-agent", "")
     if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_USES)
-    return HTMLResponse(HTML_USES)
+        return PlainTextResponse(ASCII_ENV)
+    return HTMLResponse(HTML_ENV)
 
 
 @router.get("/lab")
@@ -67,12 +67,33 @@ async def changelog(request: Request) -> Response:
     return HTMLResponse(HTML_CHANGELOG)
 
 
-@router.get("/now")
-async def now(request: Request) -> Response:
+@router.get("/status")
+async def status(request: Request) -> Response:
     ua = request.headers.get("user-agent", "")
     if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_NOW)
-    return HTMLResponse(HTML_NOW)
+        return PlainTextResponse(ASCII_STATUS)
+    return HTMLResponse(HTML_STATUS)
+
+
+@router.get("/latest")
+async def latest(request: Request) -> Response:
+    ua = request.headers.get("user-agent", "")
+    if ua.lower().startswith("curl"):
+        return PlainTextResponse(ASCII_LATEST)
+    return HTMLResponse(HTML_LATEST)
+
+
+# ──[ Legacy Redirects ]────────────────────────────────────────────────────────────────
+# /uses and /now are the indieweb conventions and are linked by uses.tech and
+# nownownow.com, so the old paths keep working rather than 404ing.
+@router.get("/uses")
+async def uses_legacy() -> Response:
+    return RedirectResponse("/env", status_code=301)
+
+
+@router.get("/now")
+async def now_legacy() -> Response:
+    return RedirectResponse("/status", status_code=301)
 
 
 @router.get("/resume")

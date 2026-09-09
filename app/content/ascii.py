@@ -172,10 +172,10 @@ f"""
 """
 )
 
-# ──[ Uses ]────────────────────────────────────────────────────────────────────────────
-USES = (
+# ──[ Env ]────────────────────────────────────────────────────────────────────────────
+ENV = (
 f"""
-{C2}USES(7){R}                    Hardware & Software                    {C2}USES(7){R}
+{C2}ENVIRON(7){R}                  Hardware & Software                  {C2}ENVIRON(7){R}
 
 {C2}HARDWARE{R}
        {BD}M1 MacBook Air{R}
@@ -196,7 +196,7 @@ f"""
        {C1}Terminal{R}    Ghostty
        {C1}OS{R}          macOS  |  RHEL 10  |  Rocky Linux 9  |  Debian 13
 
-{C2}USES(7){R}                    California, USA                    {C2}USES(7){R}
+{C2}ENVIRON(7){R}                    California, USA                    {C2}ENVIRON(7){R}
 """
 )
 
@@ -275,6 +275,8 @@ f"""
 {C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
 
 {C2}2026-09-08{R}
+       {BD}site{R}     /uses renamed to /env; /now split into /status and
+                /latest — old paths 301 redirect
        {BD}site{R}     /man and /cv resume rewritten — quantified QC
                 outcomes, 2025–present lab entry, updated cert roadmap
        {BD}site{R}     /now and /uses refreshed — new reading list, Asahi and
@@ -323,26 +325,62 @@ f"""
 """
 )
 
-# ──[ Now ]─────────────────────────────────────────────────────────────────────────────
-NOW = (
+# ──[ Status ]─────────────────────────────────────────────────────────────────────────────
+STATUS = (
 f"""
-{C2}NOW(7){R}                          2026-09-08                          {C2}NOW(7){R}
+{C2}STATUS(1){R}                       2026-09-08                        {C2}STATUS(1){R}
 
-{C2}WORK{R}
-       RHCSA study. The homelab buildout is done — it's a practice
-       environment now, not a project.
-       Heavy vim drilling lately. EX200 has no GUI, so editing is the
-       one skill that taxes every other task until it's automatic.
-       Drill VMs live in UTM on Apple Silicon — a mixed-distro fleet
-       bridged on the Mac Mini, two aarch64 RHEL VMs on the Air.
-       NAS now spans both Pis: tank is a 500GB mdadm RAID1 of two WD
-       Red SA500 SSDs on netrunner; nas and stor sit on edgerunner —
-       stor a new 250GB M.2 SATA SSD. All three exported over SMB.
-       Caught devkit pulling the WireGuard private key over SSH on every
-       run — wg show all dump prints it as the first field of the first
-       line, and a NOPASSWD sudoers rule made that passwordless. Dropped
-       the rule, stripped it out of setup.sh, wrote down why.
-       codeberg.org/arpatek/devkit/src/branch/main/docs/decisions.md
+{C2}CURRENT{R}
+       {BD}RHCSA — EX200{R}
+              Studying for the exam. The homelab buildout is done — it is a
+              practice environment now, not a project.
+
+       {BD}Vim drilling{R}
+              EX200 has no GUI, so editing is the one skill that taxes every
+              other task until it is automatic. Drill VMs live in UTM on
+              Apple Silicon — a mixed-distro fleet bridged on the Mac Mini,
+              two aarch64 RHEL VMs on the Air.
+
+{C2}RECENT{R}
+       {BD}NAS across both Pis{R}
+              tank is a 500GB mdadm RAID1 of two WD Red SA500 SSDs on
+              netrunner; nas and stor sit on edgerunner — stor a new 250GB
+              M.2 SATA SSD. All three exported over SMB.
+
+       {BD}devkit — WireGuard private key exposure{R}
+              devkit pulled the WireGuard private key over SSH on every run.
+              wg show all dump prints it as the first field of the first
+              line, and a NOPASSWD sudoers rule made that passwordless.
+              Dropped the rule, stripped it out of setup.sh, wrote down why.
+              codeberg.org/arpatek/devkit/src/branch/main/docs/decisions.md
+
+{C2}STATUS(1){R}                     California, USA                     {C2}STATUS(1){R}
+"""
+)
+
+# ──[ Latest ]─────────────────────────────────────────────────────────────────────────
+LATEST = (
+f"""
+{C2}LATEST(7){R}                       2026-09-08                        {C2}LATEST(7){R}
+
+{C2}UPDATES{R}
+       {BD}Daily driver — back on macOS{R}
+              macOS on the M1 MacBook Air is the main workstation again. The
+              Mac Mini was repurposed into a dedicated UTM hypervisor: 4
+              bridged lab VMs there, 2 aarch64 RHEL VMs on the Air.
+
+       {BD}Editor — VSCodium over VS Code{R}
+              Same editor without the Microsoft telemetry and branding.
+              Settings and extensions tracked in dotfiles.
+
+       {BD}Terminal — Ghostty, with tmux for splits{R}
+              macOS native tabs are exposed as separate AXWindows, so
+              AeroSpace tiles each tab and leaves half the screen empty.
+              Unbinding super+t forces the single-window path: tmux panes,
+              or Ghostty's own splits on super+d.
+
+       {BD}Window management — AeroSpace{R}
+              Tiling on macOS, nine persistent workspaces.
 
 {C2}READING{R}
        We — Yevgeny Zamyatin
@@ -362,7 +400,7 @@ f"""
 {C2}MANGA{R}
        One Piece — battles and reveals back to back right now
        Boruto: Two Blue Vortex — finally going somewhere
-       Vagabond
+       Vagabond — vol 17, deep in Kojiro's arc
        Goodnight Punpun
        Dr. Stone
        Edens Zero
@@ -378,17 +416,11 @@ f"""
        Caleb Hammer — youtube.com/@CalebHammer
 
 {C2}PLAYING{R}
-       Pokemon Champions — Master Ball tier. Still copying meta teams,
-       still not sorry.
+       Pokemon Champions — Master Ball tier.
        Black Ops 6 — back in rotation, most kills most matches.
        Dead Cells — near-perfect loop. Love this game.
 
-{C2}DAILY DRIVER{R}
-       macOS on the M1 MacBook Air — now the main workstation. The Mac
-       Mini was repurposed into a dedicated UTM hypervisor: 4 bridged
-       lab VMs there, 2 aarch64 RHEL VMs on the Air.
-
-{C2}NOW(7){R}                       California, USA                       {C2}NOW(7){R}
+{C2}LATEST(7){R}                     California, USA                     {C2}LATEST(7){R}
 """
 )
 
@@ -399,10 +431,11 @@ f"""
 
   {C1}$ curl arpatek.dev{R}              This page
   {C1}$ curl arpatek.dev/man{R}          Full resume in manpage format
-  {C1}$ curl arpatek.dev/uses{R}         Hardware & software setup
+  {C1}$ curl arpatek.dev/env{R}          Hardware & software setup
   {C1}$ curl arpatek.dev/lab{R}          Homelab services (home.arpa)
+  {C1}$ curl arpatek.dev/status{R}       What I'm working on
+  {C1}$ curl arpatek.dev/latest{R}       Updates, reading, watching, playing
   {C1}$ curl arpatek.dev/changelog{R}    Site and project history
-  {C1}$ curl arpatek.dev/now{R}          What I'm up to
   {C1}$ curl arpatek.dev/help{R}         This list
 
   {C2}hidden{R}
