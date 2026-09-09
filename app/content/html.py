@@ -46,14 +46,14 @@ _NAV_JS = r"""
     const btn = document.createElement('button');
     btn.id   = 'nav-toggle';
     btn.type = 'button';
-    btn.textContent = '$ ls';
+    btn.textContent = '$ ls -l';
     btn.setAttribute('aria-controls', 'nav');
     btn.setAttribute('aria-expanded', 'false');
 
     btn.addEventListener('click', function () {
         const open = nav.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.textContent = open ? '$ clear' : '$ ls';
+        btn.textContent = open ? '$ clear' : '$ ls -l';
     });
 
     nav.parentNode.insertBefore(btn, nav);
@@ -151,6 +151,12 @@ pre.terminal > code::after {
              transition: max-height 0.2s ease; }
   .js #nav.open { max-height: 60vh; overflow-y: auto; margin-bottom: 20px;
                   border-bottom: 1px solid #9db9b244; }
+  /* the open menu reads as ls -l output, in the terminal block's palette */
+  .js #nav.open::before { content: "total 8"; color: var(--c4); padding: 8px 8px 2px; }
+  .js #nav.open a::before { content: "drwxr-xr-x  arpatek  "; color: var(--c4);
+                            white-space: pre; }
+  .js #nav.open a { color: var(--c1); }
+  .js #nav.open a.active { color: var(--c2); }
   #nav a { padding: 10px 8px; }
   #nav a.right { margin-left: 0; }
 }
