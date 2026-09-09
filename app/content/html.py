@@ -46,14 +46,14 @@ _NAV_JS = r"""
     const btn = document.createElement('button');
     btn.id   = 'nav-toggle';
     btn.type = 'button';
-    btn.textContent = '\u2261 menu';
+    btn.textContent = '$ ls';
     btn.setAttribute('aria-controls', 'nav');
     btn.setAttribute('aria-expanded', 'false');
 
     btn.addEventListener('click', function () {
         const open = nav.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.textContent = open ? '\u00d7 close' : '\u2261 menu';
+        btn.textContent = open ? '$ clear' : '$ ls';
     });
 
     nav.parentNode.insertBefore(btn, nav);
