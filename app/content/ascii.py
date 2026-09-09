@@ -55,8 +55,10 @@ f"""
 
   {G6}${R} {G2}curl{R} {C1}arpatek.dev{R}              This page
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/man{R}          Full resume in manpage format
-  {G6}${R} {G2}curl{R} {C1}arpatek.dev/uses{R}         Hardware & software setup
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/env{R}          Hardware & software setup
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/lab{R}          Homelab services (home.arpa)
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/status{R}       What I'm working on
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/latest{R}       Updates, reading, watching, playing
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/changelog{R}    Site and project history
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/help{R}         All available endpoints
 
