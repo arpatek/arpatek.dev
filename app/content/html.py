@@ -660,6 +660,10 @@ CHANGELOG = f"""<!DOCTYPE html>
     <div class="section">
       <h2>2026-09-08</h2>
       <div class="entry">
+        <div class="entry-title">Site: /uses renamed to /env; /now split into /status and /latest &mdash; old paths 301 redirect</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
+      <div class="entry">
         <div class="entry-title">Site: /man and /cv resume rewritten &mdash; quantified QC outcomes, 2025&ndash;present lab entry, updated cert roadmap</div>
         <div class="entry-org">arpatek.dev</div>
       </div>
