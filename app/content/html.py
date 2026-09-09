@@ -33,7 +33,7 @@ _FAVICON_JS = """
 })();
 """
 
-# ──[ Open Graph ]───────────────────────────────────────────────────────────────────────
+# ──[ Open Graph ]──────────────────────────────────────────────────────────────────────
 # Link previews on LinkedIn, Slack, Discord, iMessage. og:url stays canonical rather
 # than per-page — every page is the same site, and the shared URL is what gets opened.
 _OG = """  <meta name="description" content="Systems automation engineer. Three years of hardware validation and QC automation at TrueNAS. Self-hosted lab on Proxmox, k3s, FreeIPA, and WireGuard.">
