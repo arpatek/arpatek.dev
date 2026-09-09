@@ -114,7 +114,10 @@ pre.terminal > code::after {
 @media (max-width: 600px) {
     body { font-size: 11px; padding: 0 4px; }
     pre.terminal > code { font-size: 10px; }
-    #nav a { padding: 10px 8px; } #nav a.right { margin-left: 0; }
+    #nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  #nav::-webkit-scrollbar { display: none; }
+  #nav a { padding: 10px 8px; flex: 0 0 auto; }
+  #nav a.right { margin-left: 0; }
 }
 
 /* footer */
