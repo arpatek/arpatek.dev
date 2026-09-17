@@ -93,3 +93,9 @@ transfer verbatim to the other.
 
 Keep the old path as a 301 redirect whenever the name is a convention other sites
 link to, as `/uses` and `/now` are.
+
+## License
+
+The code is MIT. The content it serves is not — the resume text, the ASCII banner, the
+`λ` mark, and the arpatek name are excluded from the grant. Fork the server, not the
+identity.
