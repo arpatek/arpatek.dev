@@ -2,7 +2,9 @@
 portfolio.py - Portfolio route handlers
 ========================================================================================
 
-Handles GET /, GET /man, GET /contact for arpatek.dev.
+Serves every content page twice from one route: ANSI text to curl, HTML to browsers.
+Pages are registered from a table rather than one decorator each, so adding a page is
+a row in PAGES plus the two content blocks.
 
 Author: Juan Garcia (arpatek)
 """
@@ -20,106 +22,78 @@ from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANP
 # ──[ Router ]──────────────────────────────────────────────────────────────────────────
 router = APIRouter()
 
-
-# ──[ Route Handlers ]──────────────────────────────────────────────────────────────────
-@router.get("/")
-async def root(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_PORTFOLIO)
-    return HTMLResponse(HTML_PORTFOLIO)
+# Starlette's own Route adds HEAD whenever GET is registered; FastAPI's APIRoute takes
+# the method list verbatim and does not. Without HEAD spelled out here, `curl -I` and
+# any uptime monitor that probes with HEAD get a 405 on a page that plainly exists.
+METHODS = ["GET", "HEAD"]
 
 
-@router.get("/help")
+# ──[ Dual-rendered Pages ]─────────────────────────────────────────────────────────────
+# path -> (curl body, browser body). A new page also needs a nav entry, a legend line,
+# and a /help line — see the README's rename checklist for every place a path appears.
+PAGES: dict[str, tuple[str, str]] = {
+    "/":          (ASCII_PORTFOLIO, HTML_PORTFOLIO),
+    "/man":       (ASCII_MANPAGE,   HTML_MANPAGE),
+    "/env":       (ASCII_ENV,       HTML_ENV),
+    "/lab":       (ASCII_LAB,       HTML_LAB),
+    "/projects":  (ASCII_PROJECTS,  HTML_PROJECTS),
+    "/status":    (ASCII_STATUS,    HTML_STATUS),
+    "/latest":    (ASCII_LATEST,    HTML_LATEST),
+    "/changelog": (ASCII_CHANGELOG, HTML_CHANGELOG),
+    "/contact":   (ASCII_CONTACT,   HTML_CONTACT),
+}
+
+
+def _register_page(path: str, ascii_body: str, html_body: str) -> None:
+    # Each page is registered through its own call, so ascii_body and html_body are
+    # bound per handler. Closing over the loop variables directly would leave every
+    # handler pointing at the last pair in the table.
+    async def handler(request: Request) -> Response:
+        ua = request.headers.get("user-agent", "")
+        if ua.lower().startswith("curl"):
+            return PlainTextResponse(ascii_body)
+        return HTMLResponse(html_body)
+
+    handler.__name__ = path.strip("/").replace("-", "_") or "root"
+    router.add_api_route(path, handler, methods=METHODS)
+
+
+for _path, (_ascii, _html) in PAGES.items():
+    _register_page(_path, _ascii, _html)
+
+
+# ──[ Legacy Redirects ]────────────────────────────────────────────────────────────────
+# old path -> current path. /uses and /now are the indieweb conventions and are linked
+# by uses.tech and nownownow.com; /resume served the contact page for four months before
+# the rename. All three were live and linked, so they redirect rather than 404.
+REDIRECTS: dict[str, str] = {
+    "/uses":   "/env",
+    "/now":    "/status",
+    "/resume": "/contact",
+}
+
+
+def _register_redirect(path: str, target: str) -> None:
+    async def handler() -> Response:
+        return RedirectResponse(target, status_code=301)
+
+    handler.__name__ = f"{path.strip('/')}_legacy"
+    router.add_api_route(path, handler, methods=METHODS)
+
+
+for _path, _target in REDIRECTS.items():
+    _register_redirect(_path, _target)
+
+
+# ──[ Single-format Routes ]────────────────────────────────────────────────────────────
+# /help is plain text to everyone. It is a list of curl commands, so an HTML rendering
+# would only wrap the nav around text that already reads correctly in a terminal.
+@router.api_route("/help", methods=METHODS)
 async def help(request: Request) -> Response:
     return PlainTextResponse(ASCII_HELP)
 
 
-@router.get("/man")
-async def manpage(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_MANPAGE)
-    return HTMLResponse(HTML_MANPAGE)
-
-
-@router.get("/env")
-async def env(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_ENV)
-    return HTMLResponse(HTML_ENV)
-
-
-@router.get("/lab")
-async def lab(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_LAB)
-    return HTMLResponse(HTML_LAB)
-
-
-@router.get("/projects")
-async def projects(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_PROJECTS)
-    return HTMLResponse(HTML_PROJECTS)
-
-
-@router.get("/changelog")
-async def changelog(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_CHANGELOG)
-    return HTMLResponse(HTML_CHANGELOG)
-
-
-@router.get("/status")
-async def status(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_STATUS)
-    return HTMLResponse(HTML_STATUS)
-
-
-@router.get("/latest")
-async def latest(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_LATEST)
-    return HTMLResponse(HTML_LATEST)
-
-
-# ──[ Legacy Redirects ]────────────────────────────────────────────────────────────────
-# /uses and /now are the indieweb conventions and are linked by uses.tech and
-# nownownow.com, so the old paths keep working rather than 404ing.
-@router.get("/uses")
-async def uses_legacy() -> Response:
-    return RedirectResponse("/env", status_code=301)
-
-
-@router.get("/now")
-async def now_legacy() -> Response:
-    return RedirectResponse("/status", status_code=301)
-
-
-# /resume served the contact page for four months before the rename. It is not an
-# indieweb convention, but it was live and linked, so it redirects rather than 404ing.
-@router.get("/resume")
-async def resume_legacy() -> Response:
-    return RedirectResponse("/contact", status_code=301)
-
-
-@router.get("/contact")
-async def contact(request: Request) -> Response:
-    ua = request.headers.get("user-agent", "")
-    if ua.lower().startswith("curl"):
-        return PlainTextResponse(ASCII_CONTACT)
-    return HTMLResponse(HTML_CONTACT)
-
-
-@router.get("/cv")
+@router.api_route("/cv", methods=METHODS)
 async def cv() -> Response:
     return FileResponse(
         "app/static/jgarcia.cv.pdf",
