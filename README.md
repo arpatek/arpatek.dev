@@ -94,6 +94,17 @@ transfer verbatim to the other.
 Keep the old path as a 301 redirect whenever the name is a convention other sites
 link to, as `/uses` and `/now` are.
 
+## Credits
+
+The curl-first approach and the page structure — ASCII banner, side-by-side info boxes, the
+`Legend` block of `$ curl` lines, and the typing-animation terminal in the browser view —
+derive from [ysap.sh](https://ysap.sh) by Dave Eddy
+([github.com/bahamas10/ysap](https://github.com/bahamas10/ysap)), which builds the same
+two-audience site out of `make` and Bash rather than a web framework.
+
+Mine: the FastAPI implementation, the content, the palette, and the manpage formatting across
+`/man`, `/env`, `/lab`, `/status`, and `/latest`.
+
 ## License
 
 The code is MIT. The content it serves is not — the resume text, the ASCII banner, the
