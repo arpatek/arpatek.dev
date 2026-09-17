@@ -57,6 +57,7 @@ f"""
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/man{R}          Full resume in manpage format
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/env{R}          Hardware & software setup
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/lab{R}          Homelab services (home.arpa)
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/projects{R}     Repos and the decisions behind them
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/status{R}       What I'm working on
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/latest{R}       Updates, reading, watching, playing
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/changelog{R}    Site and project history
@@ -286,12 +287,151 @@ f"""
 """
 )
 
+
+# ──[ Projects ]────────────────────────────────────────────────────────────────────────
+PROJECTS = (
+f"""
+{C2}PROJECTS(7){R}                      arpatek                      {C2}PROJECTS(7){R}
+
+{C2}INFRASTRUCTURE{R}
+       {BD}home.arpa{R}
+       {C1}Shell{R} | codeberg.org/arpatek/home.arpa
+              Documentation for eight lab services — Proxmox, FreeIPA,
+              Gitea, PLG, k3s, Pi-hole, WireGuard, NAS — each with
+              architecture, decisions, gotchas, and upgrade notes.
+              Documents the lab; does not deploy it. Config copies kept
+              here as a record of what was live drifted silently, which
+              is why arpa-iac exists.
+
+       {BD}arpa-iac{R}
+       {C1}Ansible{R} | codeberg.org/arpatek/arpa-iac
+              Control repo that deploys what home.arpa describes —
+              inventory, roles, vaulted secrets, per-host vars.
+              Written after one evening turned up three problems nobody
+              could see: smb.conf dividers 79 chars on the Pis and 80 in
+              the repo, nas-health probing only edgerunner so netrunner's
+              RAID1 went unchecked, and no alloy or node_exporter on
+              edgerunner at all. Nothing was broken. Everything was
+              invisible. --check --diff makes the claim testable.
+
+       {BD}terraform-xo{R}
+       {C1}HCL{R} | codeberg.org/arpatek/terraform-xo | {DM}refactor pending{R}
+              Provisions VMs on XCP-ng through the Xen Orchestra
+              WebSocket API, cloud-init templated, multi-VM via count.
+              Predates the move to Proxmox, so it targets a hypervisor
+              the lab no longer runs. The WebSocket token auth and the
+              cloud-init templating are the parts worth carrying over.
+
+       {BD}ansible-baseline{R}
+       {C1}Ansible{R} | codeberg.org/arpatek/ansible-baseline | {DM}refactor pending{R}
+              Four roles — core utils, extra utils, Oh My Zsh, sshd
+              hardening — with per-role playbooks and tag selection.
+              The hardening role disables PasswordAuthentication, so the
+              key has to be in place before the first run or the host
+              locks you out. Debian and Ubuntu only, and written for the
+              pre-Proxmox lab.
+
+       {BD}puppet-modules{R}
+       {C1}Puppet{R} | codeberg.org/arpatek/puppet-modules | {DM}refactor pending{R}
+              Eight modules for Debian VMs — packages, shell, sshd, UFW,
+              nginx, Let's Encrypt, static site — composed into a dev
+              role and a prod role.
+              Also pre-Proxmox, written for the gg3.dev XCP-ng VMs. What
+              survives the move is the enforcement model: Ansible applies
+              once and walks away, Puppet keeps checking, which is what
+              catches drift nobody is watching for.
+
+{C2}TOOLS{R}
+       {BD}devkit{R}
+       {C1}Python, Bash{R} | codeberg.org/arpatek/devkit
+              dialog TUI over ten modules — Proxmox, k3s, Pi-hole,
+              WireGuard, FreeIPA, Prometheus, Gitea — dispatched from
+              one menu.json.
+              The WireGuard module stays interactive on purpose. wg show
+              all dump prints the interface private key as the first
+              field of its first line, so a NOPASSWD sudoers rule would
+              hand the VPN key to anyone reaching the account. A forced
+              command in authorized_keys was no help either — netrunner
+              is FreeIPA-enrolled, and sss_ssh_authorizedkeys bypasses it.
+
+       {BD}snaputil{R}
+       {C1}Python{R} | codeberg.org/arpatek/snaputil
+              System snapshot — CPU, memory, disks, network — in
+              formatted tables.
+              Detects whether stdout is a TTY and drops from rich to
+              plain prettytable when piped, so one command is both
+              readable interactively and greppable in a log.
+
+       {BD}portal-22{R}
+       {C1}Python{R} | codeberg.org/arpatek/portal-22
+              SSH key and config generator. Single-key CLI mode, bulk
+              YAML mode, writes host entries to ~/.ssh/config.local.
+              The naming convention is the payload, not the keygen.
+              arpa-iac's inventory reuses these host aliases, so SSH
+              supplies the key and Ansible never duplicates that config.
+
+       {BD}citadel{R}
+       {C1}Python{R} | codeberg.org/arpatek/citadel | {DM}refactor pending{R}
+              Pattern-based password generator — random, pattern plus
+              random, or pattern plus scope plus random.
+              secrets, never random. Standard library only, so it runs
+              on any box with python3 and nothing to install first.
+
+       {BD}cloudflare-ddns{R}
+       {C1}Bash{R} | codeberg.org/arpatek/cloudflare-ddns
+              systemd service and timer keeping a Cloudflare A record
+              pointed at the host's current public IP.
+              Reads before it writes, so a stable IP costs one API call
+              and no change. Token and zone live in an env file the unit
+              loads, never in the script.
+
+{C2}ENVIRONMENT{R}
+       {BD}dotfiles{R}
+       {C1}Shell{R} | codeberg.org/arpatek/dotfiles
+              Zsh, tmux, Neovim, Git, and SSH config, symlinked by an
+              OS-aware installer. One checkout drives a RHEL server and
+              a Mac.
+              The OS is detected twice — uname -s at install time for
+              bootstrap, $OSTYPE at shell runtime for interactive
+              tweaks. .zprofile has to run after macOS path_helper or
+              Homebrew loses the PATH fight.
+
+{C2}SITE{R}
+       {BD}arpatek.dev{R}
+       {C1}Python{R} | codeberg.org/arpatek/arpatek.dev
+              This site. FastAPI serving ASCII to curl and a terminal UI
+              to browsers, on k3s behind Traefik with wildcard TLS,
+              push-to-deploy through Gitea Actions.
+              Content negotiation reads the user-agent, not Accept —
+              curl sends */* and would match anything. Page structure
+              derives from Dave Eddy's ysap.sh.
+
+{C2}PRIOR WORK{R}
+       {BD}factory-config-qc{R}
+       {C1}Bash{R} | codeberg.org/arpatek/factory-config-qc | {DM}archived{R}
+              Manufacturing QC automation at iXsystems, 2022–2024. One
+              dialog TUI over 17 operations — BMC reset across five
+              board vendors, per-model BIOS and fan configuration,
+              burn-in parsing, Redfish validation, GOLD-baseline diffing.
+              Operators type serial numbers and nothing else. BMC
+              addresses, per-unit IPMI passwords, and the bill of
+              materials are looked up from the burn-in archive and
+              PostgreSQL. Cut validation from 30–60 minutes of manual
+              checks per system to minutes of report review, sustained
+              at 50+ systems a day.
+
+{C2}PROJECTS(7){R}                  California, USA                  {C2}PROJECTS(7){R}
+"""
+)
+
 # ──[ Changelog ]───────────────────────────────────────────────────────────────────────
 CHANGELOG = (
 f"""
 {C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
 
 {C2}2026-09-17{R}
+       {BD}site{R}     /projects added — thirteen repos grouped, each with
+                the decision or constraint behind it
        {BD}site{R}     /resume renamed to /contact — old path 301 redirects
        {BD}site{R}     contact added to the home legend and /help; it was
                 reachable only from the browser nav before
@@ -455,6 +595,7 @@ f"""
   {C1}$ curl arpatek.dev/man{R}          Full resume in manpage format
   {C1}$ curl arpatek.dev/env{R}          Hardware & software setup
   {C1}$ curl arpatek.dev/lab{R}          Homelab services (home.arpa)
+  {C1}$ curl arpatek.dev/projects{R}     Repos and the decisions behind them
   {C1}$ curl arpatek.dev/status{R}       What I'm working on
   {C1}$ curl arpatek.dev/latest{R}       Updates, reading, watching, playing
   {C1}$ curl arpatek.dev/changelog{R}    Site and project history

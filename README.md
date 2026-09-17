@@ -14,6 +14,7 @@ curl arpatek.dev
 | `/man` | Manpage-formatted resume | Styled HTML manpage |
 | `/env` | Hardware & software setup | Styled page |
 | `/lab` | Homelab services (home.arpa) | Styled page |
+| `/projects` | Repos and the decisions behind them | Styled page |
 | `/changelog` | Site and project history | Styled page |
 | `/status` | Current and recent technical work | Styled page |
 | `/latest` | Updates, reading, watching, playing | Styled page |
@@ -52,7 +53,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 app/
 ├── main.py
 ├── routes/
-│   ├── portfolio.py     # /, /man, /env, /lab, /status, /latest, /changelog, /contact, /cv, /help
+│   ├── portfolio.py     # /, /man, /env, /lab, /projects, /status, /latest, /changelog, /contact, /cv, /help
 │   └── animations.py    # /lambda, /boo, /xmas
 ├── content/
 │   ├── ascii.py         # ANSI-colored curl output

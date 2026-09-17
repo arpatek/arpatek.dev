@@ -267,6 +267,7 @@ ${C2}└────────────────────────
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/man${R}          Full resume in manpage format
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/env${R}          Hardware &amp; software setup
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/lab${R}          Homelab services (home.arpa)
+  ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/projects${R}     Repos and the decisions behind them
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/status${R}       What I'm working on
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/latest${R}       Updates, reading, watching, playing
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/changelog${R}    Site and project history
@@ -354,6 +355,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
       <a href="/man">manpage</a>
       <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/projects">projects</a>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
@@ -399,6 +401,7 @@ MANPAGE = f"""<!DOCTYPE html>
       <a href="/man" class="active">manpage</a>
       <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/projects">projects</a>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
@@ -554,6 +557,7 @@ ENV = f"""<!DOCTYPE html>
       <a href="/man">manpage</a>
       <a href="/env" class="active">env</a>
       <a href="/lab">lab</a>
+      <a href="/projects">projects</a>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
@@ -621,6 +625,7 @@ LAB = f"""<!DOCTYPE html>
       <a href="/man">manpage</a>
       <a href="/env">env</a>
       <a href="/lab" class="active">lab</a>
+      <a href="/projects">projects</a>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
@@ -713,6 +718,170 @@ LAB = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
+# ──[ Projects ]────────────────────────────────────────────────────────────────────────
+PROJECTS = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>projects — arpatek</title>
+  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+{_OG}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>{_STYLES}</style>
+</head>
+<body>
+  <div id="container">
+    <div id="nav">
+      <a href="/">home</a>
+      <a href="/man">manpage</a>
+      <a href="/env">env</a>
+      <a href="/lab">lab</a>
+      <a href="/projects" class="active">projects</a>
+      <a href="/status">status</a>
+      <a href="/latest">latest</a>
+      <a href="/changelog">changelog</a>
+      <a href="/contact" class="right">contact</a>
+    </div>
+
+    <div class="man-header">
+      <span>PROJECTS(7)</span><span>arpatek</span><span>PROJECTS(7)</span>
+    </div>
+
+    <div class="section">
+      <h2>Infrastructure</h2>
+      <div class="entry">
+        <div class="entry-title">home.arpa</div>
+        <div class="entry-org">Shell &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/home.arpa">codeberg.org/arpatek/home.arpa</a></div>
+        <ul>
+          <li>Documentation for eight lab services &mdash; Proxmox, FreeIPA, Gitea, PLG, k3s, Pi-hole, WireGuard, NAS &mdash; each with architecture, decisions, gotchas, and upgrade notes.</li>
+          <li>Documents the lab; does not deploy it. Config copies kept here as a record of what was live drifted silently, which is why arpa-iac exists.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">arpa-iac</div>
+        <div class="entry-org">Ansible &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/arpa-iac">codeberg.org/arpatek/arpa-iac</a></div>
+        <ul>
+          <li>Control repo that deploys what home.arpa describes &mdash; inventory, roles, vaulted secrets, per-host vars.</li>
+          <li>Written after one evening turned up three problems nobody could see: smb.conf dividers 79 chars on the Pis and 80 in the repo, nas-health probing only edgerunner so netrunner's RAID1 went unchecked, and no alloy or node_exporter on edgerunner at all. Nothing was broken. Everything was invisible. <code>--check --diff</code> makes the claim testable.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">terraform-xo</div>
+        <div class="entry-org">HCL &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/terraform-xo">codeberg.org/arpatek/terraform-xo</a> &nbsp;&bull;&nbsp; refactor pending</div>
+        <ul>
+          <li>Provisions VMs on XCP-ng through the Xen Orchestra WebSocket API, cloud-init templated, multi-VM via <code>count</code>.</li>
+          <li>Predates the move to Proxmox, so it targets a hypervisor the lab no longer runs. The WebSocket token auth and the cloud-init templating are the parts worth carrying over.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">ansible-baseline</div>
+        <div class="entry-org">Ansible &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/ansible-baseline">codeberg.org/arpatek/ansible-baseline</a> &nbsp;&bull;&nbsp; refactor pending</div>
+        <ul>
+          <li>Four roles &mdash; core utils, extra utils, Oh My Zsh, sshd hardening &mdash; with per-role playbooks and tag selection.</li>
+          <li>The hardening role disables PasswordAuthentication, so the key has to be in place before the first run or the host locks you out. Debian and Ubuntu only, and written for the pre-Proxmox lab.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">puppet-modules</div>
+        <div class="entry-org">Puppet &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/puppet-modules">codeberg.org/arpatek/puppet-modules</a> &nbsp;&bull;&nbsp; refactor pending</div>
+        <ul>
+          <li>Eight modules for Debian VMs &mdash; packages, shell, sshd, UFW, nginx, Let's Encrypt, static site &mdash; composed into a dev role and a prod role.</li>
+          <li>Also pre-Proxmox, written for the gg3.dev XCP-ng VMs. What survives the move is the enforcement model: Ansible applies once and walks away, Puppet keeps checking, which is what catches drift nobody is watching for.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tools</h2>
+      <div class="entry">
+        <div class="entry-title">devkit</div>
+        <div class="entry-org">Python, Bash &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/devkit">codeberg.org/arpatek/devkit</a></div>
+        <ul>
+          <li><code>dialog</code> TUI over ten modules &mdash; Proxmox, k3s, Pi-hole, WireGuard, FreeIPA, Prometheus, Gitea &mdash; dispatched from one menu.json.</li>
+          <li>The WireGuard module stays interactive on purpose. <code>wg show all dump</code> prints the interface private key as the first field of its first line, so a NOPASSWD sudoers rule would hand the VPN key to anyone reaching the account. A forced command in authorized_keys was no help either &mdash; netrunner is FreeIPA-enrolled, and sss_ssh_authorizedkeys bypasses it.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">snaputil</div>
+        <div class="entry-org">Python &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/snaputil">codeberg.org/arpatek/snaputil</a></div>
+        <ul>
+          <li>System snapshot &mdash; CPU, memory, disks, network &mdash; in formatted tables.</li>
+          <li>Detects whether stdout is a TTY and drops from rich to plain prettytable when piped, so one command is both readable interactively and greppable in a log.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">portal-22</div>
+        <div class="entry-org">Python &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/portal-22">codeberg.org/arpatek/portal-22</a></div>
+        <ul>
+          <li>SSH key and config generator. Single-key CLI mode, bulk YAML mode, writes host entries to <code>~/.ssh/config.local</code>.</li>
+          <li>The naming convention is the payload, not the keygen. arpa-iac's inventory reuses these host aliases, so SSH supplies the key and Ansible never duplicates that config.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">citadel</div>
+        <div class="entry-org">Python &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/citadel">codeberg.org/arpatek/citadel</a> &nbsp;&bull;&nbsp; refactor pending</div>
+        <ul>
+          <li>Pattern-based password generator &mdash; random, pattern plus random, or pattern plus scope plus random.</li>
+          <li><code>secrets</code>, never <code>random</code>. Standard library only, so it runs on any box with python3 and nothing to install first.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-title">cloudflare-ddns</div>
+        <div class="entry-org">Bash &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/cloudflare-ddns">codeberg.org/arpatek/cloudflare-ddns</a></div>
+        <ul>
+          <li>systemd service and timer keeping a Cloudflare A record pointed at the host's current public IP.</li>
+          <li>Reads before it writes, so a stable IP costs one API call and no change. Token and zone live in an env file the unit loads, never in the script.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Environment</h2>
+      <div class="entry">
+        <div class="entry-title">dotfiles</div>
+        <div class="entry-org">Shell &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/dotfiles">codeberg.org/arpatek/dotfiles</a></div>
+        <ul>
+          <li>Zsh, tmux, Neovim, Git, and SSH config, symlinked by an OS-aware installer. One checkout drives a RHEL server and a Mac.</li>
+          <li>The OS is detected twice &mdash; <code>uname -s</code> at install time for bootstrap, <code>$OSTYPE</code> at shell runtime for interactive tweaks. <code>.zprofile</code> has to run after macOS path_helper or Homebrew loses the PATH fight.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Site</h2>
+      <div class="entry">
+        <div class="entry-title">arpatek.dev</div>
+        <div class="entry-org">Python &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/arpatek.dev">codeberg.org/arpatek/arpatek.dev</a></div>
+        <ul>
+          <li>This site. FastAPI serving ASCII to curl and a terminal UI to browsers, on k3s behind Traefik with wildcard TLS, push-to-deploy through Gitea Actions.</li>
+          <li>Content negotiation reads the user-agent, not Accept &mdash; curl sends <code>*/*</code> and would match anything. Page structure derives from Dave Eddy's ysap.sh.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Prior work</h2>
+      <div class="entry">
+        <div class="entry-title">factory-config-qc</div>
+        <div class="entry-org">Bash &nbsp;&bull;&nbsp; <a href="https://codeberg.org/arpatek/factory-config-qc">codeberg.org/arpatek/factory-config-qc</a> &nbsp;&bull;&nbsp; archived</div>
+        <ul>
+          <li>Manufacturing QC automation at iXsystems, 2022&ndash;2024. One <code>dialog</code> TUI over 17 operations &mdash; BMC reset across five board vendors, per-model BIOS and fan configuration, burn-in parsing, Redfish validation, GOLD-baseline diffing.</li>
+          <li>Operators type serial numbers and nothing else. BMC addresses, per-unit IPMI passwords, and the bill of materials are looked up from the burn-in archive and PostgreSQL. Cut validation from 30&ndash;60 minutes of manual checks per system to minutes of report review, sustained at 50+ systems a day.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="man-footer">
+      <span>PROJECTS(7)</span><span>California, USA</span><span>PROJECTS(7)</span>
+    </div>
+  </div>
+  <script>{_FAVICON_JS}{_NAV_JS}</script>
+</body>
+</html>"""
+
 # ──[ Changelog ]───────────────────────────────────────────────────────────────────────
 CHANGELOG = f"""<!DOCTYPE html>
 <html lang="en">
@@ -734,6 +903,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <a href="/man">manpage</a>
       <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/projects">projects</a>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog" class="active">changelog</a>
@@ -746,6 +916,10 @@ CHANGELOG = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>2026-09-17</h2>
+      <div class="entry">
+        <div class="entry-title">Site: /projects added &mdash; thirteen repos grouped, each with the decision or constraint behind it</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
       <div class="entry">
         <div class="entry-title">Site: /resume renamed to /contact &mdash; old path 301 redirects</div>
         <div class="entry-org">arpatek.dev</div>
@@ -888,6 +1062,7 @@ CONTACT = f"""<!DOCTYPE html>
       <a href="/man">manpage</a>
       <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/projects">projects</a>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
@@ -948,6 +1123,7 @@ STATUS = f"""<!DOCTYPE html>
       <a href="/man">manpage</a>
       <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/projects">projects</a>
       <a href="/status" class="active">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
@@ -1003,6 +1179,7 @@ LATEST = f"""<!DOCTYPE html>
       <a href="/man">manpage</a>
       <a href="/env">env</a>
       <a href="/lab">lab</a>
+      <a href="/projects">projects</a>
       <a href="/status">status</a>
       <a href="/latest" class="active">latest</a>
       <a href="/changelog">changelog</a>

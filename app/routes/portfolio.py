@@ -13,8 +13,8 @@ from fastapi.requests  import Request
 from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, RedirectResponse, Response
 
 # ──[ Internal Module Imports ]─────────────────────────────────────────────────────────
-from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, ENV as ASCII_ENV, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG, CONTACT as ASCII_CONTACT, STATUS as ASCII_STATUS, LATEST as ASCII_LATEST
-from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, ENV as HTML_ENV, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG, CONTACT as HTML_CONTACT, STATUS as HTML_STATUS, LATEST as HTML_LATEST
+from app.content.ascii import PORTFOLIO as ASCII_PORTFOLIO, MANPAGE as ASCII_MANPAGE, HELP as ASCII_HELP, ENV as ASCII_ENV, LAB as ASCII_LAB, CHANGELOG as ASCII_CHANGELOG, CONTACT as ASCII_CONTACT, STATUS as ASCII_STATUS, LATEST as ASCII_LATEST, PROJECTS as ASCII_PROJECTS
+from app.content.html  import PORTFOLIO as HTML_PORTFOLIO,  MANPAGE as HTML_MANPAGE, ENV as HTML_ENV, LAB as HTML_LAB, CHANGELOG as HTML_CHANGELOG, CONTACT as HTML_CONTACT, STATUS as HTML_STATUS, LATEST as HTML_LATEST, PROJECTS as HTML_PROJECTS
 
 
 # ──[ Router ]──────────────────────────────────────────────────────────────────────────
@@ -57,6 +57,14 @@ async def lab(request: Request) -> Response:
     if ua.lower().startswith("curl"):
         return PlainTextResponse(ASCII_LAB)
     return HTMLResponse(HTML_LAB)
+
+
+@router.get("/projects")
+async def projects(request: Request) -> Response:
+    ua = request.headers.get("user-agent", "")
+    if ua.lower().startswith("curl"):
+        return PlainTextResponse(ASCII_PROJECTS)
+    return HTMLResponse(HTML_PROJECTS)
 
 
 @router.get("/changelog")
