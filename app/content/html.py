@@ -442,14 +442,16 @@ MANPAGE = f"""<!DOCTYPE html>
         <div class="entry-title">Senior Test Technician</div>
         <div class="entry-org">TrueNAS &nbsp;&bull;&nbsp; 2021 &ndash; 2024</div>
         <ul>
-          <li>Extended and maintained a 22,000+ line Bash/Python automation suite (CC &amp; SWQC) for manufacturing QC</li>
+          <li>Extended a 22,000-line Bash automation suite (CC &amp; SWQC) for manufacturing QC, contributing ~11,600 lines across 38 scripts</li>
           <li>Cut per-system validation from 30&ndash;60 min of manual checks to minutes of report review</li>
           <li>Sustained batches of 50+ systems/day, raising configuration/QC throughput without added headcount</li>
           <li>Automated BIOS, firmware, and HW validation via IPMI and Redfish API for 16+ server platforms</li>
-          <li>Developed Python Redfish API clients for BIOS push/export on liquid immersion platforms</li>
+          <li>Built Redfish API automation for BMC hardening and BIOS diffing on liquid-immersion platforms where vendor tooling could not reach the board</li>
+          <li>Maintained the Jenkins pipeline publishing stable TrueNAS ISOs into the iPXE boot menu; migrated netboot from PXE to iPXE with the DevOps engineer</li>
           <li>Integrated with PBS archive servers and PostgreSQL for burn-in parsing and reporting</li>
           <li>Validated firmware compliance against Redbook specs: ZFS, HBA firmware, SMART health</li>
-          <li>Automated multi-node HA pair diffing and generated diff sheets for QC traceability</li>
+          <li>Generated per-order diff sheets from a GOLD baseline for QC traceability, with HA variants capturing both nodes</li>
+          <li>Produced dated, attributed evidence bundles so support could independently prove a unit shipped built-to-order and functional</li>
         </ul>
       </div>
 
@@ -475,7 +477,7 @@ MANPAGE = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>Skills</h2>
-      <p><span class="label">Languages</span> Bash, Python, HCL</p>
+      <p><span class="label">Languages</span> Bash (primary), Python, HCL</p>
       <p><span class="label">Systems</span> RHEL, Ubuntu, Debian, TrueNAS, TCP/IP, VLANs, ZFS, IPMI, Redfish</p>
       <p><span class="label">IaC</span> Terraform, Ansible, Puppet</p>
       <p><span class="label">Containers</span> Docker, Kubernetes (k3s)</p>
@@ -485,7 +487,12 @@ MANPAGE = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>Projects</h2>
+      <p><span class="label">factory-config-qc</span> Manufacturing QC automation &mdash; batch BIOS config and hardware validation via IPMI/Redfish (archived)</p>
       <p><span class="label">home.arpa</span> Self-hosted homelab &mdash; IaC, monitoring, identity, DNS, VPN, k3s</p>
+      <p><span class="label">arpa-iac</span> Ansible-enforced state for the homelab</p>
+      <p><span class="label">arpatek.dev</span> FastAPI portfolio &mdash; ASCII for curl, TUI for browser</p>
+      <p><span class="label">dotfiles</span> Cross-platform Zsh, tmux, Neovim, Git, SSH</p>
+      <p><span class="label">devkit</span> Data-driven TUI launcher for homelab ops</p>
       <p><span class="label">terraform-xo</span> XCP-ng VM provisioning via Terraform + XO API</p>
       <p><span class="label">ansible-baseline</span> Post-provisioning automation for Debian VMs</p>
       <p><span class="label">puppet-modules</span> Puppet module collection for homelab VM hardening</p>

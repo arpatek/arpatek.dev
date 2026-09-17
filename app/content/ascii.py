@@ -107,22 +107,30 @@ f"""
        {BD}Senior Test Technician{R}
        {C1}TrueNAS{R} | 2021 – 2024
 
-              * Extended and maintained a 22,000+ line Bash/Python
-                automation suite (CC & SWQC) for manufacturing QC
+              * Extended a 22,000-line Bash automation suite (CC & SWQC)
+                for manufacturing QC, contributing ~11,600 lines across
+                38 scripts
               * Cut per-system validation from 30–60 min of manual
                 checks to minutes of report review
               * Sustained batches of 50+ systems/day, raising
                 configuration/QC throughput without added headcount
               * Automated BIOS, firmware, and HW validation via IPMI and
                 Redfish API for 16+ server platforms
-              * Developed Python Redfish API clients for BIOS push/export
-                on liquid immersion platforms
+              * Built Redfish API automation for BMC hardening and BIOS
+                diffing on liquid-immersion platforms where vendor
+                tooling could not reach the board
+              * Maintained the Jenkins pipeline publishing stable TrueNAS
+                ISOs into the iPXE boot menu; migrated netboot from PXE
+                to iPXE with the DevOps engineer
               * Integrated with PBS archive servers and PostgreSQL to
                 automate burn-in parsing and reporting
               * Validated firmware compliance against Redbook specs: ZFS
                 pool status, HBA firmware, SMART health
-              * Automated multi-node HA pair diffing and generated diff
-                sheets for QC traceability
+              * Generated per-order diff sheets from a GOLD baseline for
+                QC traceability, with HA variants capturing both nodes
+              * Produced dated, attributed evidence bundles so support
+                could independently prove a unit shipped built-to-order
+                and functional
 
        {BD}Computer Hardware Technician{R}
        {C1}EMR CPR/Corovan{R} | 2021
@@ -138,7 +146,7 @@ f"""
               * Designed and executed digital marketing strategies for SMBs
 
 {C2}SKILLS{R}
-       {C1}Languages{R}       Bash, Python, HCL
+       {C1}Languages{R}       Bash (primary), Python, HCL
        {C1}Systems{R}         Linux (RHEL, Ubuntu, TrueNAS/FreeBSD), TCP/IP,
                        VLANs, ZFS, SAS/HBA, BIOS, IPMI, Redfish API
        {C1}IaC{R}             Terraform, Ansible, Puppet
@@ -148,8 +156,14 @@ f"""
        {C1}Tools{R}           Git, Vim, tmux, SSH
 
 {C2}PROJECTS{R}
+       {C1}factory-config-qc{R} Manufacturing QC automation — batch BIOS config and
+                        hardware validation via IPMI/Redfish (archived)
        {C1}home.arpa{R}        Self-hosted homelab — IaC, monitoring, identity,
                         DNS, VPN, and container orchestration
+       {C1}arpa-iac{R}         Ansible-enforced state for the homelab
+       {C1}arpatek.dev{R}      FastAPI portfolio — ASCII for curl, TUI for browser
+       {C1}dotfiles{R}         Cross-platform Zsh, tmux, Neovim, Git, SSH
+       {C1}devkit{R}           Data-driven TUI launcher for homelab ops
        {C1}terraform-xo{R}     XCP-ng VM provisioning via Terraform + XO API
        {C1}ansible-baseline{R} Post-provisioning automation for Debian VMs
        {C1}puppet-modules{R}   Puppet module collection for homelab VM hardening
