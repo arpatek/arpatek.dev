@@ -17,12 +17,12 @@ curl arpatek.dev
 | `/changelog` | Site and project history | Styled page |
 | `/status` | Current and recent technical work | Styled page |
 | `/latest` | Updates, reading, watching, playing | Styled page |
-| `/resume` | Contact info | Styled contact page |
+| `/contact` | Contact info | Styled contact page |
 | `/cv` | — | Downloads resume PDF |
 | `/help` | All available endpoints | — |
 
 `/uses` and `/now` 301-redirect to `/env` and `/status` — the indieweb
-conventions stay linkable.
+conventions stay linkable. `/resume` 301-redirects to `/contact`.
 
 ### Hidden
 
@@ -52,7 +52,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 app/
 ├── main.py
 ├── routes/
-│   ├── portfolio.py     # /, /man, /env, /lab, /status, /latest, /changelog, /resume, /cv, /help
+│   ├── portfolio.py     # /, /man, /env, /lab, /status, /latest, /changelog, /contact, /cv, /help
 │   └── animations.py    # /lambda, /boo, /xmas
 ├── content/
 │   ├── ascii.py         # ANSI-colored curl output

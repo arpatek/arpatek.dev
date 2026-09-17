@@ -2,7 +2,7 @@
 portfolio.py - Portfolio route handlers
 ========================================================================================
 
-Handles GET /, GET /man, GET /resume for arpatek.dev.
+Handles GET /, GET /man, GET /contact for arpatek.dev.
 
 Author: Juan Garcia (arpatek)
 """
@@ -96,8 +96,15 @@ async def now_legacy() -> Response:
     return RedirectResponse("/status", status_code=301)
 
 
+# /resume served the contact page for four months before the rename. It is not an
+# indieweb convention, but it was live and linked, so it redirects rather than 404ing.
 @router.get("/resume")
-async def resume(request: Request) -> Response:
+async def resume_legacy() -> Response:
+    return RedirectResponse("/contact", status_code=301)
+
+
+@router.get("/contact")
+async def contact(request: Request) -> Response:
     ua = request.headers.get("user-agent", "")
     if ua.lower().startswith("curl"):
         return PlainTextResponse(ASCII_CONTACT)

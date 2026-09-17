@@ -60,6 +60,7 @@ f"""
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/status{R}       What I'm working on
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/latest{R}       Updates, reading, watching, playing
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/changelog{R}    Site and project history
+  {G6}${R} {G2}curl{R} {C1}arpatek.dev/contact{R}      Contact and links
   {G6}${R} {G2}curl{R} {C1}arpatek.dev/help{R}         All available endpoints
 
 
@@ -290,6 +291,11 @@ CHANGELOG = (
 f"""
 {C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
 
+{C2}2026-09-17{R}
+       {BD}site{R}     /resume renamed to /contact — old path 301 redirects
+       {BD}site{R}     contact added to the home legend and /help; it was
+                reachable only from the browser nav before
+
 {C2}2026-09-08{R}
        {BD}site{R}     /uses renamed to /env; /now split into /status and
                 /latest — old paths 301 redirect
@@ -452,6 +458,7 @@ f"""
   {C1}$ curl arpatek.dev/status{R}       What I'm working on
   {C1}$ curl arpatek.dev/latest{R}       Updates, reading, watching, playing
   {C1}$ curl arpatek.dev/changelog{R}    Site and project history
+  {C1}$ curl arpatek.dev/contact{R}      Contact and links
   {C1}$ curl arpatek.dev/help{R}         This list
 
   {C2}hidden{R}

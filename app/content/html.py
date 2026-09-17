@@ -270,6 +270,7 @@ ${C2}└────────────────────────
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/status${R}       What I'm working on
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/latest${R}       Updates, reading, watching, playing
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/changelog${R}    Site and project history
+  ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/contact${R}      Contact and links
   ${G6}$${R} ${G2}curl${R} ${C1}arpatek.dev/help${R}         All available endpoints
 
 `.split('\n')
@@ -356,7 +357,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" class="right">contact</a>
+      <a href="/contact" class="right">contact</a>
     </div>
 
     <h1><a href="/lambda" target="_blank" style="color:inherit;text-decoration:none;font-size:1.3em;vertical-align:middle">λ</a> arpatek.dev</h1>
@@ -401,7 +402,7 @@ MANPAGE = f"""<!DOCTYPE html>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" class="right">contact</a>
+      <a href="/contact" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -556,7 +557,7 @@ ENV = f"""<!DOCTYPE html>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" class="right">contact</a>
+      <a href="/contact" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -623,7 +624,7 @@ LAB = f"""<!DOCTYPE html>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" class="right">contact</a>
+      <a href="/contact" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -736,13 +737,24 @@ CHANGELOG = f"""<!DOCTYPE html>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog" class="active">changelog</a>
-      <a href="/resume" class="right">contact</a>
+      <a href="/contact" class="right">contact</a>
     </div>
 
     <div class="man-header">
       <span>CHANGELOG(7)</span><span>arpatek</span><span>CHANGELOG(7)</span>
     </div>
 
+    <div class="section">
+      <h2>2026-09-17</h2>
+      <div class="entry">
+        <div class="entry-title">Site: /resume renamed to /contact &mdash; old path 301 redirects</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
+      <div class="entry">
+        <div class="entry-title">Site: contact added to the home legend and /help; it was reachable only from the browser nav before</div>
+        <div class="entry-org">arpatek.dev</div>
+      </div>
+    </div>
     <div class="section">
       <h2>2026-09-08</h2>
       <div class="entry">
@@ -879,7 +891,7 @@ CONTACT = f"""<!DOCTYPE html>
       <a href="/status">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" class="active right">contact</a>
+      <a href="/contact" class="active right">contact</a>
     </div>
 
     <div class="man-header">
@@ -939,7 +951,7 @@ STATUS = f"""<!DOCTYPE html>
       <a href="/status" class="active">status</a>
       <a href="/latest">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" class="right">contact</a>
+      <a href="/contact" class="right">contact</a>
     </div>
 
     <div class="man-header">
@@ -994,7 +1006,7 @@ LATEST = f"""<!DOCTYPE html>
       <a href="/status">status</a>
       <a href="/latest" class="active">latest</a>
       <a href="/changelog">changelog</a>
-      <a href="/resume" class="right">contact</a>
+      <a href="/contact" class="right">contact</a>
     </div>
 
     <div class="man-header">
