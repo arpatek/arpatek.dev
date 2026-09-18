@@ -1,5 +1,7 @@
 # arpatek.dev
 
+[![built by arpatek](.assets/badge.svg)](https://arpatek.dev)
+
 Personal portfolio site that serves ASCII art to `curl` clients and a terminal-emulator HTML page to browsers.
 
 ```
