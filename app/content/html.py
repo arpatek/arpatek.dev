@@ -19,7 +19,7 @@ _NAV_JS = r"""
 
     document.documentElement.classList.add('js');
 
-    // eza colours each permission bit separately, so the mode string is built
+    // eza colors each permission bit separately, so the mode string is built
     // per character rather than dropped in as one blob of text.
     const CLS  = { d: 'ls-d', r: 'ls-r', w: 'ls-w', x: 'ls-x', '-': 'ls-n' };
     const MODE = 'drwxr-xr-x';
@@ -32,7 +32,7 @@ _NAV_JS = r"""
         a.insertAdjacentHTML('afterbegin', prefix);
     }
 
-    // fast-syntax-highlighting colours the command and its flags separately
+    // fast-syntax-highlighting colors the command and its flags separately
     const label = open => open
         ? '<span class="ls-p">$</span> <span class="ls-c">clear</span>'
         : '<span class="ls-p">$</span> <span class="ls-c">ls</span> <span class="ls-f">-l</span>';
@@ -154,7 +154,7 @@ pre.terminal > code::after {
              transition: max-height 0.2s ease; }
   .js #nav.open { max-height: 60vh; overflow-y: auto; margin-bottom: 20px;
                   border-bottom: 1px solid #9db9b244; }
-  /* mirrors how eza colours a long listing, in the terminal block's palette.
+  /* mirrors how eza colors a long listing, in the terminal block's palette.
      eza prints no total line, so neither do we. */
   .js #nav.open .ls    { display: inline; white-space: pre; }
   .js #nav.open .ls-d  { color: #9db9b2; font-weight: 700; }   /* type, bold blue */
