@@ -9,30 +9,6 @@ types out commands and output to simulate a live shell session.
 Author: Juan Garcia (arpatek)
 """
 
-# ──[ Favicon JS ]──────────────────────────────────────────────────────────────────────
-_FAVICON_JS = """
-(function() {
-    var link = document.querySelector("link[rel='icon']");
-    var interval = null;
-    function startAnim() {
-        if (interval) return;
-        link.href = '/static/favicon.gif?t=' + Date.now();
-        interval = setInterval(function() {
-            link.href = '/static/favicon.gif?t=' + Date.now();
-        }, 520);
-    }
-    function stopAnim() {
-        clearInterval(interval);
-        interval = null;
-        link.href = '/static/favicon.ico';
-    }
-    document.addEventListener('visibilitychange', function() {
-        document.hidden ? stopAnim() : startAnim();
-    });
-    startAnim();
-})();
-"""
-
 # ──[ Nav toggle JS ]───────────────────────────────────────────────────────────────────
 # Injected rather than written into all eight nav blocks. The 'js' class is added
 # only once the button exists, so the nav stays visible if the script never runs.
@@ -340,7 +316,10 @@ PORTFOLIO = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>arpatek</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -376,7 +355,7 @@ PORTFOLIO = f"""<!DOCTYPE html>
   </div>
   <script>{_COMMANDS_JS}</script>
   <script>{_TERMINAL_JS}</script>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -387,7 +366,10 @@ MANPAGE = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>manpage</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -532,7 +514,7 @@ MANPAGE = f"""<!DOCTYPE html>
       <span>ARPATEK(1)</span><span>California, USA</span><span>ARPATEK(1)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -543,7 +525,10 @@ ENV = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>env — arpatek</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -600,7 +585,7 @@ ENV = f"""<!DOCTYPE html>
       <span>arpatek</span><span>California, USA</span><span>arpatek.dev/env</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -611,7 +596,10 @@ LAB = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>lab — arpatek</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -714,7 +702,7 @@ LAB = f"""<!DOCTYPE html>
       <span>LAB(8)</span><span>home.arpa</span><span>LAB(8)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -725,7 +713,10 @@ PROJECTS = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>projects — arpatek</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -878,7 +869,7 @@ PROJECTS = f"""<!DOCTYPE html>
       <span>PROJECTS(7)</span><span>California, USA</span><span>PROJECTS(7)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -889,7 +880,10 @@ CHANGELOG = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>changelog — arpatek</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -916,6 +910,10 @@ CHANGELOG = f"""<!DOCTYPE html>
 
     <div class="section">
       <h2>2026-09-17</h2>
+      <div class="entry">
+        <div class="entry-title">Site: &lambda;t mark adopted as the site icon &mdash; svg-first favicon chain, apple-touch icon added</div>
+        <div class="entry-org">arpatek.dev &mdash; animated binary favicon retired</div>
+      </div>
       <div class="entry">
         <div class="entry-title">Site: /projects added &mdash; thirteen repos grouped, each with the decision or constraint behind it</div>
         <div class="entry-org">arpatek.dev</div>
@@ -1037,7 +1035,7 @@ CHANGELOG = f"""<!DOCTYPE html>
       <span>CHANGELOG(7)</span><span>arpatek</span><span>CHANGELOG(7)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -1048,7 +1046,10 @@ CONTACT = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>contact — arpatek</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1098,7 +1099,7 @@ CONTACT = f"""<!DOCTYPE html>
       <span>CONTACT(7)</span><span>California, USA</span><span>CONTACT(7)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -1109,7 +1110,10 @@ STATUS = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>status — arpatek</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1154,7 +1158,7 @@ STATUS = f"""<!DOCTYPE html>
       <span>STATUS(1)</span><span>California, USA</span><span>STATUS(1)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 
@@ -1165,7 +1169,10 @@ LATEST = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>latest — arpatek</title>
-  <link rel="icon" type="image/gif" href="/static/favicon.gif">
+  <link rel="icon" type="image/svg+xml" href="/static/brand/arpatek.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/brand/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon-180.png">
 {_OG}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1257,7 +1264,7 @@ LATEST = f"""<!DOCTYPE html>
       <span>LATEST(7)</span><span>California, USA</span><span>LATEST(7)</span>
     </div>
   </div>
-  <script>{_FAVICON_JS}{_NAV_JS}</script>
+  <script>{_NAV_JS}</script>
 </body>
 </html>"""
 

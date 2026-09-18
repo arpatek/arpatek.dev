@@ -430,6 +430,9 @@ f"""
 {C2}CHANGELOG(7){R}                    arpatek                    {C2}CHANGELOG(7){R}
 
 {C2}2026-09-17{R}
+       {BD}site{R}     λt mark adopted as the site icon — svg-first favicon
+                chain, apple-touch icon added, animated binary favicon
+                retired
        {BD}site{R}     /projects added — thirteen repos grouped, each with
                 the decision or constraint behind it
        {BD}site{R}     /resume renamed to /contact — old path 301 redirects
