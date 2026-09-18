@@ -94,14 +94,14 @@ f"""
        {C1}Personal Lab{R} | 2025 – Present
 
               * Self-hosted lab on Proxmox: 3-node k3s cluster, FreeIPA
-                identity/DNS, Pi-hole HA pair
+                identity/DNS, redundant Pi-hole DNS
               * Runs arpatek.dev on k3s behind Traefik with wildcard
                 TLS; single inbound UDP port for WireGuard
               * CI/CD via Gitea Actions and act_runner: builds to a
                 self-hosted registry, rolls out to k3s on push
-              * Metrics, logs, and dashboards across 6 hosts via
+              * Metrics, logs, and dashboards across 4 hosts via
                 Prometheus, Loki, Grafana, Alloy, node_exporter
-              * Documented per service in home.arpa: architecture,
+              * Eight services documented in home.arpa: architecture,
                 decisions, gotchas, and upgrade notes
               * Preparing for RHCSA (EX200) on RHEL 10; Linux
                 administration and Bash scripting coursework
@@ -129,7 +129,7 @@ f"""
               * Validated firmware compliance against Redbook specs: ZFS
                 pool status, HBA firmware, SMART health
               * Generated per-order diff sheets from a GOLD baseline for
-                QC traceability, with HA variants capturing both nodes
+                QC traceability
               * Produced dated, attributed evidence bundles so support
                 could independently prove a unit shipped built-to-order
                 and functional
@@ -238,7 +238,7 @@ f"""
        {C1}mikoshi{R} | Rocky Linux 9
               Central identity, SSH auth, sudo policy, DNS for home.arpa.
 
-       {BD}Pi-hole — HA pair{R}
+       {BD}Pi-hole — primary + replica{R}
        {C1}netrunner + edgerunner{R} | Raspberry Pi | pi.arpatek.dev
               Network-wide DNS, DHCP, content filter. Upstream for FreeIPA.
               edgerunner runs a replica so DNS survives losing netrunner.

@@ -415,11 +415,11 @@ MANPAGE = f"""<!DOCTYPE html>
         <div class="entry-title">Independent Infrastructure Study</div>
         <div class="entry-org">Personal Lab &nbsp;&bull;&nbsp; 2025 &ndash; Present</div>
         <ul>
-          <li>Self-hosted lab on Proxmox: 3-node k3s cluster, FreeIPA identity/DNS, Pi-hole HA pair</li>
+          <li>Self-hosted lab on Proxmox: 3-node k3s cluster, FreeIPA identity/DNS, redundant Pi-hole DNS</li>
           <li>Runs arpatek.dev on k3s behind Traefik with wildcard TLS; single inbound UDP port for WireGuard</li>
           <li>CI/CD via Gitea Actions and act_runner: builds to a self-hosted registry, rolls out to k3s on push</li>
-          <li>Metrics, logs, and dashboards across 6 hosts via Prometheus, Loki, Grafana, Alloy, node_exporter</li>
-          <li>Documented per service in home.arpa: architecture, decisions, gotchas, and upgrade notes</li>
+          <li>Metrics, logs, and dashboards across 4 hosts via Prometheus, Loki, Grafana, Alloy, node_exporter</li>
+          <li>Eight services documented in home.arpa: architecture, decisions, gotchas, and upgrade notes</li>
           <li>Preparing for RHCSA (EX200) on RHEL 10; Linux administration and Bash scripting coursework</li>
         </ul>
       </div>
@@ -436,7 +436,7 @@ MANPAGE = f"""<!DOCTYPE html>
           <li>Maintained the Jenkins pipeline publishing stable TrueNAS ISOs into the iPXE boot menu; migrated netboot from PXE to iPXE with the DevOps engineer</li>
           <li>Integrated with PBS archive servers and PostgreSQL for burn-in parsing and reporting</li>
           <li>Validated firmware compliance against Redbook specs: ZFS, HBA firmware, SMART health</li>
-          <li>Generated per-order diff sheets from a GOLD baseline for QC traceability, with HA variants capturing both nodes</li>
+          <li>Generated per-order diff sheets from a GOLD baseline for QC traceability</li>
           <li>Produced dated, attributed evidence bundles so support could independently prove a unit shipped built-to-order and functional</li>
         </ul>
       </div>
@@ -649,7 +649,7 @@ LAB = f"""<!DOCTYPE html>
         <ul><li>Central identity, SSH auth, sudo policy, and DNS authority for home.arpa. Every VM is an IPA client.</li></ul>
       </div>
       <div class="entry">
-        <div class="entry-title">Pi-hole &mdash; HA pair</div>
+        <div class="entry-title">Pi-hole &mdash; primary + replica</div>
         <div class="entry-org">netrunner + edgerunner &nbsp;&bull;&nbsp; Raspberry Pi &nbsp;&bull;&nbsp; <a href="https://pi.arpatek.dev">pi.arpatek.dev</a></div>
         <ul><li>Network-wide DNS resolver, DHCP server, and content filter. Upstream for FreeIPA queries. edgerunner runs a replica so DNS survives losing netrunner.</li></ul>
       </div>
