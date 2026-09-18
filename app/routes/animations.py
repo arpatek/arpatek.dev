@@ -96,7 +96,7 @@ def _gif_html() -> str:
         '<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">'
         '<style>'
         '*{margin:0;padding:0;box-sizing:border-box;}'
-        'html,body{background:#292329;display:flex;justify-content:center;align-items:center;min-height:100vh;}'
+        'html,body{background:#1c1a16;display:flex;justify-content:center;align-items:center;min-height:100vh;}'
         'pre{font-family:"JetBrains Mono","Courier New",monospace;font-size:11px;color:#00ff00;white-space:pre;line-height:1.2;}'
         '</style></head><body>'
         '<pre id="a"></pre>'
